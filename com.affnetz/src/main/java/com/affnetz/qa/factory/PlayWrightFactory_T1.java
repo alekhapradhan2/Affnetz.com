@@ -7,15 +7,18 @@ import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
+import com.microsoft.playwright.options.WaitUntilState;
 
-public class playWrightFactory {
+public class PlayWrightFactory_T1 {
 
 	static Playwright playwright;
 	static Browser browser;
 	static BrowserContext browserContext;
 	static Page page;
+	static String Loginurl="https://t1.affnetz.org/login";
+	static String donateUrl="https://t1.affnetz.org/donate";
 	
-	public static Page intitBrowser(String browserName)
+	public static Page intitBrowser(String browserName,String whichPage)
 	{
 		playwright=Playwright.create();
 		switch (browserName.toLowerCase()) {
@@ -39,7 +42,17 @@ public class playWrightFactory {
 		
 		browserContext=browser.newContext();
 		page=browserContext.newPage();
-		page.navigate("https://t1.affnetz.org/login");
+		switch (whichPage.toLowerCase()) {
+		case "login":
+			page.navigate(Loginurl,new Page.NavigateOptions().setWaitUntil(WaitUntilState.NETWORKIDLE));
+			break;
+		case "donate":
+			page.navigate(donateUrl,new Page.NavigateOptions().setWaitUntil(WaitUntilState.NETWORKIDLE));
+			break;
+		default:
+			System.out.println(whichPage+"Not Exist");
+			break;
+		}
 		return page;	
 	}
 	

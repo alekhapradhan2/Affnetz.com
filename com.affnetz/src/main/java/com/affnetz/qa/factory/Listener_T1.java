@@ -15,9 +15,9 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
-public class listenres implements ITestListener {
+public class Listener_T1 implements ITestListener {
 	private static final String outpur_folder="./build/";
-	private static final String file_name="testExecution.png";
+	private static final String file_name="T1_testExecution.png";
 	private static ExtentReports extent=init();
 	public static ThreadLocal<ExtentTest> test= new ThreadLocal<ExtentTest>();
 	private static ExtentReports exetentReport;
@@ -47,13 +47,13 @@ public class listenres implements ITestListener {
 	@Override
 	public synchronized void onStart(ITestContext contrxt)
 	{
-		System.out.println("Test Suite Started");
+		System.out.println("T1_Test Suite Started");
 	}
 	
 	@Override
 	public synchronized void onFinish(ITestContext context)
 	{
-		System.out.println("Test Suite Started");
+		System.out.println("T1_Test Suite Complete");
 		extent.flush();
 		test.remove();
 	}
@@ -78,8 +78,8 @@ public class listenres implements ITestListener {
 	public synchronized void onTestSuccess(ITestResult result)
 	{
 		System.out.println(result.getMethod().getMethodName()+" passed");
-		test.get().pass("Test passed");
-//		test.get().pass(result.getThrowable(),MediaEntityBuilder.createScreenCaptureFromPath(playWrightFactory.takeScreenshot()).build());
+		test.get().pass("T1_Test passed");
+//		test.get().pass(result.getThrowable(),MediaEntityBuilder.createScreenCaptureFromPath(PlayWrightFactory_T1.takeScreenshot()).build());
 		test.get().getModel().setEndTime(getTime(result.getEndMillis()));
 		
 		
@@ -88,7 +88,7 @@ public class listenres implements ITestListener {
 	public synchronized void onTestFailure(ITestResult result)
 	{
 		System.out.println(result.getMethod().getMethodName()+" failed");
-		test.get().fail(result.getThrowable(),MediaEntityBuilder.createScreenCaptureFromPath(playWrightFactory.takeScreenshot()).build());
+		test.get().fail(result.getThrowable(),MediaEntityBuilder.createScreenCaptureFromPath(PlayWrightFactory_T1.takeScreenshot()).build());
 		test.get().getModel().setEndTime(getTime(result.getEndMillis()));
 
 	}
@@ -96,7 +96,7 @@ public class listenres implements ITestListener {
 	public synchronized void onTestSkipped(ITestResult result)
 	{
 		System.out.println(result.getMethod().getMethodName()+" skipped");
-		test.get().skip(result.getThrowable(),MediaEntityBuilder.createScreenCaptureFromPath(playWrightFactory.takeScreenshot()).build());
+		test.get().skip(result.getThrowable(),MediaEntityBuilder.createScreenCaptureFromPath(PlayWrightFactory_T1.takeScreenshot()).build());
 		test.get().getModel().setEndTime(getTime(result.getEndMillis()));
 	}
 	

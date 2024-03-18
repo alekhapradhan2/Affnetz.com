@@ -17,6 +17,10 @@ public class DashboardRepo_T1 {
 	
 	private String donorTable="xpath=(//table)[1]";
 	
+	private String Report="xpath=(//div[@class='v-list-group'])[4]";
+	
+	private String tributeDonationReport="xpath=//div[text()='Tribute Donation Report']";
+	
 	public DashboardRepo_T1(Page page)
 	{
 		this.page=page;
@@ -58,6 +62,14 @@ public class DashboardRepo_T1 {
 	
 		return flag;
 		
+	}
+	
+	public void clickOnReport() {
+		page.click(Report);
+	}
+	
+	public void clickOnTributeDonationReport() {
+		page.click(tributeDonationReport);
 	}
 
 }

@@ -4,18 +4,23 @@
 	<listeners>
 		<listener class-name="com.affnetz.qa.factory.Listener_T1"></listener>
 	</listeners>
-<!--
-<test name="LoginFunction">
+
+<!-- 	<test name="LoginFunction">
 		<classes>
 			<class name="com.affnetz.qa.test.Logintest_T1"></class>
 		</classes>
-	</test>
-	 -->
+	</test> 
+	
+	-->
+		
 	<test name="Public Donation">
+		<groups>
+			<run><include name="DirectDonation"></include></run>
+		</groups>
 		<classes>
 			<class name="com.affnetz.qa.test.PublicDonationTest_T1"></class>
 		</classes>
-	</test>
+	</test> 
 	
 	
 </suite>

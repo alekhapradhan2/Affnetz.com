@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-affnetz_com" class="navigator-link">
-              <span class="suite-name border-passed">affnetz.com</span>
+              <span class="suite-name border-failed">affnetz.com</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -60,7 +60,7 @@
                 </li>
                 <li>
                   <a href="#" panel-name="group-affnetz_com" class="navigator-link ">
-                    <span>0 groups</span>
+                    <span>2 groups</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -92,7 +92,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">7 methods,   7 passed</span>
+                    <span class="method-stats">8 methods, 1 failed,   7 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-affnetz_com" class="hide-methods failed suite-affnetz_com"> (hide)</a> <!-- hide-methods failed suite-affnetz_com -->
+                      <a href="#" panel-name="suite-affnetz_com" class="show-methods failed suite-affnetz_com"> (show)</a> <!-- show-methods failed suite-affnetz_com -->
+                    </span>
+                    <div class="method-list-content failed suite-affnetz_com">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-affnetz_com" title="com.affnetz.qa.test.PublicDonationTest_T1" class="method navigator-link" hash-for-method="isReciptDownload">isReciptDownload</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-affnetz_com -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -118,12 +132,12 @@
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-affnetz_com" title="com.affnetz.qa.test.PublicDonationTest_T1" class="method navigator-link" hash-for-method="isReciptDownload">isReciptDownload</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-affnetz_com" title="com.affnetz.qa.test.PublicDonationTest_T1" class="method navigator-link" hash-for-method="isSuperAdminSeeTheDonorDetails">isSuperAdminSeeTheDonorDetails</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-affnetz_com" title="com.affnetz.qa.test.PublicDonationTest_T1" class="method navigator-link" hash-for-method="isSuperAdminSeeTheDonorDetails">isSuperAdminSeeTheDonorDetails</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-affnetz_com" title="com.affnetz.qa.test.PublicDonationTest_T1" class="method navigator-link" hash-for-method="launchBrowser">launchBrowser</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -148,6 +162,27 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-affnetz_com" class="panel affnetz_com">
+          <div class="suite-affnetz_com-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">com.affnetz.qa.test.PublicDonationTest_T1</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="isReciptDownload">
+                  </a> <!-- isReciptDownload -->
+                  <span class="method-name">isReciptDownload</span>
+                  <div class="stack-trace">java.lang.NullPointerException: Cannot invoke &quot;org.testng.ITestResult.getMethod()&quot; because &quot;result&quot; is null
+	at com.affnetz.qa.factory.Listener_T1.onTestSuccess(Listener_T1.java:80)
+	at com.affnetz.qa.test.PublicDonationTest_T1.isReciptDownload(PublicDonationTest_T1.java:106)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 27 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-affnetz_com-class-failed -->
           <div class="suite-affnetz_com-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -177,16 +212,16 @@
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="isReciptDownload">
-                  </a> <!-- isReciptDownload -->
-                  <span class="method-name">isReciptDownload</span>
+                  <a name="isSuperAdminSeeTheDonorDetails">
+                  </a> <!-- isSuperAdminSeeTheDonorDetails -->
+                  <span class="method-name">isSuperAdminSeeTheDonorDetails</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="isSuperAdminSeeTheDonorDetails">
-                  </a> <!-- isSuperAdminSeeTheDonorDetails -->
-                  <span class="method-name">isSuperAdminSeeTheDonorDetails</span>
+                  <a name="launchBrowser">
+                  </a> <!-- launchBrowser -->
+                  <span class="method-name">launchBrowser</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -219,6 +254,11 @@
     &lt;listener class-name=&quot;com.affnetz.qa.factory.Listener_T1&quot;/&gt;
   &lt;/listeners&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Public Donation&quot;&gt;
+    &lt;groups&gt;
+      &lt;run&gt;
+        &lt;include name=&quot;DirectDonation&quot;/&gt;
+      &lt;/run&gt;
+    &lt;/groups&gt;
     &lt;classes&gt;
       &lt;class name=&quot;com.affnetz.qa.test.PublicDonationTest_T1&quot;/&gt;
     &lt;/classes&gt;
@@ -244,6 +284,78 @@
             <span class="header-content">Groups for affnetz.com</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="test-group">
+              <span class="test-group-name">DirectDonation</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">fillAllDonorDetails</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">isDonationDone</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">isDonationPage</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">isReciptDownload</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">isSuperAdminSeeTheDonorDetails</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">launchBrowser</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">setCardDetils</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">submitAllDetails</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+            <div class="test-group">
+              <span class="test-group-name">Donation</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">fillAllDonorDetails</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">isDonationDone</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">isDonationPage</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">isReciptDownload</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">isSuperAdminSeeTheDonorDetails</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">launchBrowser</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">setCardDetils</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">submitAllDetails</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="times-affnetz_com" class="panel">
@@ -260,40 +372,44 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(7);
+data.addRows(8);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'isSuperAdminSeeTheDonorDetails')
 data.setCell(0, 2, 'com.affnetz.qa.test.PublicDonationTest_T1')
-data.setCell(0, 3, 21617);
+data.setCell(0, 3, 35806);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'isDonationDone')
+data.setCell(1, 1, 'launchBrowser')
 data.setCell(1, 2, 'com.affnetz.qa.test.PublicDonationTest_T1')
-data.setCell(1, 3, 10829);
+data.setCell(1, 3, 22553);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'fillAllDonorDetails')
+data.setCell(2, 1, 'isDonationDone')
 data.setCell(2, 2, 'com.affnetz.qa.test.PublicDonationTest_T1')
-data.setCell(2, 3, 7777);
+data.setCell(2, 3, 10794);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'isReciptDownload')
+data.setCell(3, 1, 'fillAllDonorDetails')
 data.setCell(3, 2, 'com.affnetz.qa.test.PublicDonationTest_T1')
-data.setCell(3, 3, 3265);
+data.setCell(3, 3, 6203);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'submitAllDetails')
+data.setCell(4, 1, 'isReciptDownload')
 data.setCell(4, 2, 'com.affnetz.qa.test.PublicDonationTest_T1')
-data.setCell(4, 3, 2207);
+data.setCell(4, 3, 2845);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'setCardDetils')
+data.setCell(5, 1, 'submitAllDetails')
 data.setCell(5, 2, 'com.affnetz.qa.test.PublicDonationTest_T1')
-data.setCell(5, 3, 1050);
+data.setCell(5, 3, 2446);
 data.setCell(6, 0, 6)
-data.setCell(6, 1, 'isDonationPage')
+data.setCell(6, 1, 'setCardDetils')
 data.setCell(6, 2, 'com.affnetz.qa.test.PublicDonationTest_T1')
-data.setCell(6, 3, 61);
+data.setCell(6, 3, 746);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'isDonationPage')
+data.setCell(7, 2, 'com.affnetz.qa.test.PublicDonationTest_T1')
+data.setCell(7, 3, 106);
 window.suiteTableData['affnetz_com']= { tableData: data, tableDiv: 'times-div-affnetz_com'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 46 seconds</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-affnetz_com">
               </div> <!-- times-div-affnetz_com -->
             </div> <!-- times-div -->
@@ -308,9 +424,32 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-affnetz_com" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">0 ignored methods</span>
+            <span class="header-content">9 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">com.affnetz.qa.test.PublicDonationTest_T1</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">clickOnDonateButton</span>
+                <br/>
+                <span class="ignored-method-name">isPublicTributeDonorDetaiShowToSuperAdmin</span>
+                <br/>
+                <span class="ignored-method-name">goToPublicTributePage</span>
+                <br/>
+                <span class="ignored-method-name">submitAllDetails_Tribute</span>
+                <br/>
+                <span class="ignored-method-name">fillAllDonorDetails_Tribute</span>
+                <br/>
+                <span class="ignored-method-name">isDonationDone_Tribute</span>
+                <br/>
+                <span class="ignored-method-name">setCardDetils_Tribute</span>
+                <br/>
+                <span class="ignored-method-name">clickOneTribute</span>
+                <br/>
+                <span class="ignored-method-name">isReciptDownload_Tribute</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-affnetz_com" class="panel">
@@ -320,37 +459,39 @@ return data;
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
               <div class="chronological-class-name">com.affnetz.qa.test.PublicDonationTest_T1</div> <!-- chronological-class-name -->
-              <div class="configuration-test before">
-                <span class="method-name">setUp</span>
+              <div class="test-method">
+                <span class="method-name">launchBrowser</span>
                 <span class="method-start">0 ms</span>
-              </div> <!-- configuration-test before -->
+              </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">isDonationPage</span>
-                <span class="method-start">42100 ms</span>
+                <span class="method-start">22592 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">fillAllDonorDetails</span>
-                <span class="method-start">42183 ms</span>
+                <span class="method-start">22704 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">setCardDetils</span>
-                <span class="method-start">49978 ms</span>
+                <span class="method-start">28913 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">submitAllDetails</span>
-                <span class="method-start">51035 ms</span>
+                <span class="method-start">29683 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">isDonationDone</span>
-                <span class="method-start">53253 ms</span>
+                <span class="method-start">32137 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">isReciptDownload</span>
-                <span class="method-start">64088 ms</span>
+                <span class="method-start">42935 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">isSuperAdminSeeTheDonorDetails</span>
-                <span class="method-start">67370 ms</span>
+                <span class="method-start">45968 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

@@ -1,5 +1,7 @@
 package com.affnetz.qa.factory;
 
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 import java.nio.file.Paths;
 
 import com.microsoft.playwright.Browser;
@@ -45,15 +47,23 @@ public class PlayWrightFactory_T1 {
 		switch (whichPage.toLowerCase()) {
 		case "login":
 			page.navigate(Loginurl,new Page.NavigateOptions().setWaitUntil(WaitUntilState.NETWORKIDLE));
+			
 			break;
 		case "donate":
 			page.navigate(donateUrl,new Page.NavigateOptions().setWaitUntil(WaitUntilState.NETWORKIDLE));
+			
 			break;
 		default:
 			System.out.println(whichPage+"Not Exist");
 			break;
 		}
 		return page;	
+	}
+	
+	public static void closeBrowser() {
+		page.close();
+		browser.close();
+		playwright.close();
 	}
 	
 	public static String takeScreenshot()

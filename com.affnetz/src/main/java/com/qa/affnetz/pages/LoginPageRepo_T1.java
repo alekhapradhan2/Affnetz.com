@@ -101,17 +101,23 @@ public class LoginPageRepo_T1 {
 	
 	public void clickRegister()
 	{
-		page.click(registerLink);
+		Locator reg=page.locator(registerLink).first();
+		reg.waitFor();
+		reg.click();
 	}
 	
 	public void clickCalender()
 	{
-		page.click(calenderLink);
+		Locator cal=page.locator(calenderLink).first();
+		cal.waitFor();
+		cal.click();
 	}
 	
 	public void clickEvent()
 	{
-		page.click(eventsLink);
+		Locator event=page.locator(eventsLink).first();
+		event.waitFor();
+		event.click();
 	}
 	
 	public void clickfundRaising()

@@ -1,4 +1,4 @@
-package com.qa.affnetz.pages;
+package com.qa.affnetz.InternalPages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
@@ -15,11 +15,19 @@ public class DashboardRepo_T1 {
 	
 	private String searchButton="xpath=//span[contains(text(),'SEARCH')]";
 	
-	private String donorTable="xpath=(//table)[1]";
-	
-	private String Report="xpath=(//div[@class='v-list-group'])[4]";
+	private String Report="xpath=//div[text()='Reports']";
 	
 	private String tributeDonationReport="xpath=//div[text()='Tribute Donation Report']";
+	
+	private String TributeLink="xpath=//div[text()='Tribute']";
+	
+	private String donorReportLink="//a[contains(@href,'donations-report')]";
+	
+	private String DonorReportTable=".v-data-table__wrapper tr";
+	
+	private String peerToPeerFundaraisingLink="xpath=//div[text()='Peer-to-Peer Fundraising']";
+	
+	
 	
 	public DashboardRepo_T1(Page page)
 	{
@@ -64,6 +72,28 @@ public class DashboardRepo_T1 {
 		
 	}
 	
+	public boolean isDonorDetailsShownInDonorReport(String campName, String campMail,String campAmt) throws InterruptedException {
+		Locator row=page.locator(DonorReportTable);
+		Thread.sleep(3000);
+		boolean flag=false;
+		for(int i=1;i<row.count();i++)
+		{
+			Locator col=row.nth(i).locator("//td");
+			String name=col.nth(0).textContent().trim();
+			String mail=col.nth(1).textContent().trim();
+			 mail=mail.substring(0, mail.length()-3);
+			String amt=col.nth(7).textContent().trim();
+			System.out.println(name+" "+mail+" "+amt);
+			
+			if(name.equals(campName) && campMail.contains(mail) && amt.contains(campAmt))
+			{
+				flag=true;
+				break;
+			}
+		}
+		return flag;
+	}
+	
 	public void clickOnReport() {
 		page.click(Report);
 	}
@@ -71,5 +101,19 @@ public class DashboardRepo_T1 {
 	public void clickOnTributeDonationReport() {
 		page.click(tributeDonationReport);
 	}
+	
+	public void clickOnTributeLink() {
+		page.click(TributeLink);
+	}
+	
+	public void clickOnDonorReportLink() {
+		page.click(donorReportLink);
+	}
+	
+	public void clickOnPeerToPeerFundarasing() {
+		page.click(peerToPeerFundaraisingLink);
+	}
+	
+	
 
 }

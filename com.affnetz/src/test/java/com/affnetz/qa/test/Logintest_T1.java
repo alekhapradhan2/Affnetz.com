@@ -5,19 +5,24 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.affnetz.qa.factory.PlayWrightFactory_T1;
+import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.Page;
-import com.qa.affnetz.pages.LoginPageRepo_T1;
+import com.qa.affnetz.Publicapages.LoginPageRepo_T1;
+
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
+import java.io.IOException;
 
 
 public class Logintest_T1{
 	
 	
 	Page page;
+	Browser browser;
 	LoginPageRepo_T1 lp;
 	
 	@BeforeTest
-	public void setUp()
+	public void setUp() throws IOException
 	{
 //		pf=new playWrightFactory();
 		page=PlayWrightFactory_T1.intitBrowser("chromium","login");
@@ -31,10 +36,10 @@ public class Logintest_T1{
 	}
 	
 	@Test(priority =1,testName = "Enter Cradentilas", dependsOnMethods = "checkLoginPage")
-	public void doLoginWithValidCradential()
+	public void doLoginWithValidCradential() throws IOException
 	{
 		lp=new LoginPageRepo_T1(page);
-		lp.doLogin("t1admin", "%^&$T1Affnetz#$");
+		PlayWrightFactory_T1.login();
 		lp.isLogin();
 	}
 	
@@ -66,7 +71,6 @@ public class Logintest_T1{
 		
 
 	}
-	
 
 	
 	

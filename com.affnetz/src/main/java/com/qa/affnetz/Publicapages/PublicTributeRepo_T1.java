@@ -1,4 +1,4 @@
-package com.qa.affnetz.pages;
+package com.qa.affnetz.Publicapages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;

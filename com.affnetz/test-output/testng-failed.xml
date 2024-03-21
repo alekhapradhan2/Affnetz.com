@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [affnetz.com]" guice-stage="DEVELOPMENT">
+<suite name="Failed suite [Donation]" guice-stage="DEVELOPMENT">
   <listeners>
     <listener class-name="com.affnetz.qa.factory.Listener_T1"/>
   </listeners>
   <test thread-count="5" name="Public Donation(failed)">
     <groups>
       <run>
-        <include name="DirectDonation"/>
+        <include name="Donation"/>
       </run>
     </groups>
     <classes>
       <class name="com.affnetz.qa.test.PublicDonationTest_T1">
         <methods>
+          <include name="submitAllDetails_Tribute"/>
           <include name="setCardDetils"/>
-          <include name="isReciptDownload"/>
+          <include name="isReciptDownload_Tribute"/>
           <include name="isDonationPage"/>
+          <include name="isReciptDownload"/>
+          <include name="isDonationDone_Tribute"/>
           <include name="isDonationDone"/>
           <include name="submitAllDetails"/>
+          <include name="isReciptDownload_Campaign"/>
+          <include name="isPublicTributeDonorDetaiShowToSuperAdmin"/>
           <include name="fillAllDonorDetails"/>
         </methods>
       </class> <!-- com.affnetz.qa.test.PublicDonationTest_T1 -->
     </classes>
   </test> <!-- Public Donation(failed) -->
-</suite> <!-- Failed suite [affnetz.com] -->
+</suite> <!-- Failed suite [Donation] -->

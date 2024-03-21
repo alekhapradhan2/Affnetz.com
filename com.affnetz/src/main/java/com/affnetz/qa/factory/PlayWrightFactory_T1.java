@@ -2,7 +2,12 @@ package com.affnetz.qa.factory;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.Properties;
+
+import org.testng.annotations.Test;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
@@ -10,6 +15,7 @@ import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.options.WaitUntilState;
+import com.qa.affnetz.Publicapages.LoginPageRepo_T1;
 
 public class PlayWrightFactory_T1 {
 
@@ -17,12 +23,14 @@ public class PlayWrightFactory_T1 {
 	static Browser browser;
 	static BrowserContext browserContext;
 	static Page page;
-	static String Loginurl="https://t1.affnetz.org/login";
-	static String donateUrl="https://t1.affnetz.org/donate";
 	
-	public static Page intitBrowser(String browserName,String whichPage)
+	static LoginPageRepo_T1 lp;
+	static Properties prop;
+	
+	public static Page intitBrowser(String browserName,String whichPage) throws IOException
 	{
 		playwright=Playwright.create();
+
 		switch (browserName.toLowerCase()) {
 		case "chromium":
 			 browser=playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
@@ -46,11 +54,11 @@ public class PlayWrightFactory_T1 {
 		page=browserContext.newPage();
 		switch (whichPage.toLowerCase()) {
 		case "login":
-			page.navigate(Loginurl,new Page.NavigateOptions().setWaitUntil(WaitUntilState.NETWORKIDLE));
+			page.navigate(initProp().getProperty("loginUrl"),new Page.NavigateOptions().setWaitUntil(WaitUntilState.NETWORKIDLE));
 			
 			break;
 		case "donate":
-			page.navigate(donateUrl,new Page.NavigateOptions().setWaitUntil(WaitUntilState.NETWORKIDLE));
+			page.navigate(initProp().getProperty("donateUrl"),new Page.NavigateOptions().setWaitUntil(WaitUntilState.NETWORKIDLE));
 			
 			break;
 		default:
@@ -71,5 +79,22 @@ public class PlayWrightFactory_T1 {
 		String path=System.getProperty("user.dir")+"/screenshot/"+System.currentTimeMillis()+".png";
 		page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get(path)).setFullPage(true));
 		return path;
+	}
+	
+	
+	public static Properties initProp() throws IOException {
+		FileInputStream file=new FileInputStream("src/test/resources/config.properties");
+		prop=new Properties();
+		prop.load(file);
+		
+		return prop;
+	}
+	
+	@Test
+	public static void login() throws IOException {
+		lp=new LoginPageRepo_T1(page);
+		lp.doLogin(initProp().getProperty("userName"), initProp().getProperty("password"));
+		
+	
 	}
 }

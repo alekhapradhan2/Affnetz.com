@@ -1,104 +1,189 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="8" passed="7" failed="1" skipped="0">
+<testng-results ignored="0" total="28" passed="28" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-03-18T15:50:53 IST" name="affnetz.com" finished-at="2024-03-18T15:52:15 IST" duration-ms="81833">
+  <suite started-at="2024-03-21T16:41:02 IST" name="Donation" finished-at="2024-03-21T16:46:40 IST" duration-ms="337897">
     <groups>
+      <group name="Campaign">
+        <method signature="PublicDonationTest_T1.goToPublicCampaignPage()[pri:18, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="goToPublicCampaignPage" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.clickOnCampaign()[pri:19, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="clickOnCampaign" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.clickOnCampDonateButton()[pri:20, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="clickOnCampDonateButton" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.fillAllDonorDetails_Campaign()[pri:21, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="fillAllDonorDetails_Campaign" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.setCardDetils_Campaign()[pri:22, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="setCardDetils_Campaign" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.submitAllDetails_Campaign()[pri:23, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="submitAllDetails_Campaign" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isDonationDone_Campaign()[pri:24, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isDonationDone_Campaign" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isReciptDownload_Campaign()[pri:25, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isReciptDownload_Campaign" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isPublicCampaignDonorDetailsIsStoredInDonorReport()[pri:26, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isPublicCampaignDonorDetailsIsStoredInDonorReport" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isDonorDetailsIsShowingInThatParticularCampaignDonatiosSection()[pri:27, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isDonorDetailsIsShowingInThatParticularCampaignDonatiosSection" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+      </group> <!-- Campaign -->
+      <group name="Tribute">
+        <method signature="PublicDonationTest_T1.goToPublicTributePage()[pri:8, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="goToPublicTributePage" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.clickOneTribute()[pri:9, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="clickOneTribute" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.clickOnDonateButton()[pri:10, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="clickOnDonateButton" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.fillAllDonorDetails_Tribute()[pri:11, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="fillAllDonorDetails_Tribute" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.setCardDetils_Tribute()[pri:12, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="setCardDetils_Tribute" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.submitAllDetails_Tribute()[pri:13, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="submitAllDetails_Tribute" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isDonationDone_Tribute()[pri:14, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isDonationDone_Tribute" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isReciptDownload_Tribute()[pri:15, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isReciptDownload_Tribute" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isPublicTributeDonorDetaiShowToSuperAdmin()[pri:16, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isPublicTributeDonorDetaiShowToSuperAdmin" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isDonorDetailShowInThatParticularTributeDonationSection()[pri:17, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isDonorDetailShowInThatParticularTributeDonationSection" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+      </group> <!-- Tribute -->
       <group name="Donation">
-        <method signature="PublicDonationTest_T1.launchBrowser()[pri:0, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" name="launchBrowser" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
-        <method signature="PublicDonationTest_T1.isDonationPage()[pri:1, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" name="isDonationPage" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
-        <method signature="PublicDonationTest_T1.fillAllDonorDetails()[pri:2, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" name="fillAllDonorDetails" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
-        <method signature="PublicDonationTest_T1.setCardDetils()[pri:3, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" name="setCardDetils" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
-        <method signature="PublicDonationTest_T1.submitAllDetails()[pri:4, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" name="submitAllDetails" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
-        <method signature="PublicDonationTest_T1.isDonationDone()[pri:5, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" name="isDonationDone" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
-        <method signature="PublicDonationTest_T1.isReciptDownload()[pri:6, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" name="isReciptDownload" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
-        <method signature="PublicDonationTest_T1.isSuperAdminSeeTheDonorDetails()[pri:7, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" name="isSuperAdminSeeTheDonorDetails" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.launchBrowser()[pri:0, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="launchBrowser" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isDonationPage()[pri:1, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isDonationPage" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.fillAllDonorDetails()[pri:2, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="fillAllDonorDetails" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.setCardDetils()[pri:3, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="setCardDetils" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.submitAllDetails()[pri:4, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="submitAllDetails" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isDonationDone()[pri:5, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isDonationDone" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isReciptDownload()[pri:6, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isReciptDownload" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isSuperAdminSeeTheDonorDetails()[pri:7, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isSuperAdminSeeTheDonorDetails" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.goToPublicTributePage()[pri:8, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="goToPublicTributePage" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.clickOneTribute()[pri:9, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="clickOneTribute" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.clickOnDonateButton()[pri:10, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="clickOnDonateButton" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.fillAllDonorDetails_Tribute()[pri:11, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="fillAllDonorDetails_Tribute" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.setCardDetils_Tribute()[pri:12, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="setCardDetils_Tribute" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.submitAllDetails_Tribute()[pri:13, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="submitAllDetails_Tribute" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isDonationDone_Tribute()[pri:14, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isDonationDone_Tribute" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isReciptDownload_Tribute()[pri:15, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isReciptDownload_Tribute" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isPublicTributeDonorDetaiShowToSuperAdmin()[pri:16, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isPublicTributeDonorDetaiShowToSuperAdmin" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isDonorDetailShowInThatParticularTributeDonationSection()[pri:17, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isDonorDetailShowInThatParticularTributeDonationSection" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.goToPublicCampaignPage()[pri:18, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="goToPublicCampaignPage" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.clickOnCampaign()[pri:19, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="clickOnCampaign" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.clickOnCampDonateButton()[pri:20, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="clickOnCampDonateButton" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.fillAllDonorDetails_Campaign()[pri:21, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="fillAllDonorDetails_Campaign" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.setCardDetils_Campaign()[pri:22, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="setCardDetils_Campaign" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.submitAllDetails_Campaign()[pri:23, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="submitAllDetails_Campaign" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isDonationDone_Campaign()[pri:24, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isDonationDone_Campaign" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isReciptDownload_Campaign()[pri:25, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isReciptDownload_Campaign" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isPublicCampaignDonorDetailsIsStoredInDonorReport()[pri:26, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isPublicCampaignDonorDetailsIsStoredInDonorReport" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isDonorDetailsIsShowingInThatParticularCampaignDonatiosSection()[pri:27, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isDonorDetailsIsShowingInThatParticularCampaignDonatiosSection" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
       </group> <!-- Donation -->
       <group name="DirectDonation">
-        <method signature="PublicDonationTest_T1.launchBrowser()[pri:0, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" name="launchBrowser" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
-        <method signature="PublicDonationTest_T1.isDonationPage()[pri:1, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" name="isDonationPage" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
-        <method signature="PublicDonationTest_T1.fillAllDonorDetails()[pri:2, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" name="fillAllDonorDetails" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
-        <method signature="PublicDonationTest_T1.setCardDetils()[pri:3, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" name="setCardDetils" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
-        <method signature="PublicDonationTest_T1.submitAllDetails()[pri:4, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" name="submitAllDetails" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
-        <method signature="PublicDonationTest_T1.isDonationDone()[pri:5, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" name="isDonationDone" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
-        <method signature="PublicDonationTest_T1.isReciptDownload()[pri:6, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" name="isReciptDownload" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
-        <method signature="PublicDonationTest_T1.isSuperAdminSeeTheDonorDetails()[pri:7, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" name="isSuperAdminSeeTheDonorDetails" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.launchBrowser()[pri:0, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="launchBrowser" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isDonationPage()[pri:1, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isDonationPage" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.fillAllDonorDetails()[pri:2, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="fillAllDonorDetails" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.setCardDetils()[pri:3, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="setCardDetils" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.submitAllDetails()[pri:4, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="submitAllDetails" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isDonationDone()[pri:5, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isDonationDone" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isReciptDownload()[pri:6, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isReciptDownload" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
+        <method signature="PublicDonationTest_T1.isSuperAdminSeeTheDonorDetails()[pri:7, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" name="isSuperAdminSeeTheDonorDetails" class="com.affnetz.qa.test.PublicDonationTest_T1"/>
       </group> <!-- DirectDonation -->
     </groups>
-    <test started-at="2024-03-18T15:50:53 IST" name="Public Donation" finished-at="2024-03-18T15:52:15 IST" duration-ms="81833">
+    <test started-at="2024-03-21T16:41:02 IST" name="Public Donation" finished-at="2024-03-21T16:46:40 IST" duration-ms="337897">
       <class name="com.affnetz.qa.test.PublicDonationTest_T1">
-        <test-method signature="launchBrowser()[pri:0, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" started-at="2024-03-18T15:50:53 IST" name="launchBrowser" finished-at="2024-03-18T15:51:15 IST" duration-ms="22553" status="PASS">
+        <test-method signature="launchBrowser()[pri:0, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:41:02 IST" name="launchBrowser" finished-at="2024-03-21T16:41:24 IST" duration-ms="21636" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method signature="isDonationPage()[pri:1, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" started-at="2024-03-18T15:51:15 IST" name="isDonationPage" finished-at="2024-03-18T15:51:15 IST" duration-ms="106" status="PASS">
+        <test-method signature="isDonationPage()[pri:1, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:41:24 IST" name="isDonationPage" finished-at="2024-03-21T16:41:24 IST" duration-ms="141" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- isDonationPage -->
-        <test-method signature="fillAllDonorDetails()[pri:2, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" started-at="2024-03-18T15:51:15 IST" name="fillAllDonorDetails" finished-at="2024-03-18T15:51:22 IST" depends-on-methods="com.affnetz.qa.test.PublicDonationTest_T1.isDonationPage" duration-ms="6203" status="PASS">
+        <test-method signature="fillAllDonorDetails()[pri:2, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:41:24 IST" name="fillAllDonorDetails" finished-at="2024-03-21T16:41:33 IST" depends-on-methods="com.affnetz.qa.test.PublicDonationTest_T1.isDonationPage" duration-ms="8978" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- fillAllDonorDetails -->
-        <test-method signature="setCardDetils()[pri:3, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" started-at="2024-03-18T15:51:22 IST" name="setCardDetils" finished-at="2024-03-18T15:51:22 IST" depends-on-methods="com.affnetz.qa.test.PublicDonationTest_T1.fillAllDonorDetails" duration-ms="746" status="PASS">
+        <test-method signature="setCardDetils()[pri:3, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:41:33 IST" name="setCardDetils" finished-at="2024-03-21T16:41:33 IST" depends-on-methods="com.affnetz.qa.test.PublicDonationTest_T1.fillAllDonorDetails" duration-ms="517" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setCardDetils -->
-        <test-method signature="submitAllDetails()[pri:4, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" started-at="2024-03-18T15:51:22 IST" name="submitAllDetails" finished-at="2024-03-18T15:51:25 IST" depends-on-methods="com.affnetz.qa.test.PublicDonationTest_T1.setCardDetils" duration-ms="2446" status="PASS">
+        <test-method signature="submitAllDetails()[pri:4, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:41:33 IST" name="submitAllDetails" finished-at="2024-03-21T16:41:36 IST" depends-on-methods="com.affnetz.qa.test.PublicDonationTest_T1.setCardDetils" duration-ms="2340" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- submitAllDetails -->
-        <test-method signature="isDonationDone()[pri:5, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" started-at="2024-03-18T15:51:25 IST" name="isDonationDone" finished-at="2024-03-18T15:51:36 IST" depends-on-methods="com.affnetz.qa.test.PublicDonationTest_T1.submitAllDetails" duration-ms="10794" status="PASS">
+        <test-method signature="isDonationDone()[pri:5, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:41:36 IST" name="isDonationDone" finished-at="2024-03-21T16:41:51 IST" depends-on-methods="com.affnetz.qa.test.PublicDonationTest_T1.submitAllDetails" duration-ms="15193" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- isDonationDone -->
-        <test-method signature="isReciptDownload()[pri:6, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" started-at="2024-03-18T15:51:36 IST" name="isReciptDownload" finished-at="2024-03-18T15:51:39 IST" depends-on-methods="com.affnetz.qa.test.PublicDonationTest_T1.isDonationDone" duration-ms="2845" status="FAIL">
-          <exception class="java.lang.NullPointerException">
-            <message>
-              <![CDATA[Cannot invoke "org.testng.ITestResult.getMethod()" because "result" is null]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.testng.ITestResult.getMethod()" because "result" is null
-at com.affnetz.qa.factory.Listener_T1.onTestSuccess(Listener_T1.java:80)
-at com.affnetz.qa.test.PublicDonationTest_T1.isReciptDownload(PublicDonationTest_T1.java:106)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:848)
-at org.testng.TestRunner.run(TestRunner.java:621)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
-at org.testng.TestNG.runSuites(TestNG.java:1114)
-at org.testng.TestNG.run(TestNG.java:1082)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
+        <test-method signature="isReciptDownload()[pri:6, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:41:51 IST" name="isReciptDownload" finished-at="2024-03-21T16:41:54 IST" depends-on-methods="com.affnetz.qa.test.PublicDonationTest_T1.isDonationDone" duration-ms="3172" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- isReciptDownload -->
-        <test-method signature="isSuperAdminSeeTheDonorDetails()[pri:7, instance:com.affnetz.qa.test.PublicDonationTest_T1@2fd953a6]" started-at="2024-03-18T15:51:39 IST" name="isSuperAdminSeeTheDonorDetails" finished-at="2024-03-18T15:52:15 IST" depends-on-methods="com.affnetz.qa.test.PublicDonationTest_T1.isDonationDone" duration-ms="35806" status="PASS">
+        <test-method signature="isSuperAdminSeeTheDonorDetails()[pri:7, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:41:54 IST" name="isSuperAdminSeeTheDonorDetails" finished-at="2024-03-21T16:42:34 IST" depends-on-methods="com.affnetz.qa.test.PublicDonationTest_T1.isDonationDone" duration-ms="39558" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- isSuperAdminSeeTheDonorDetails -->
+        <test-method signature="goToPublicTributePage()[pri:8, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:42:36 IST" name="goToPublicTributePage" finished-at="2024-03-21T16:42:56 IST" duration-ms="20126" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- goToPublicTributePage -->
+        <test-method signature="clickOneTribute()[pri:9, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:42:56 IST" name="clickOneTribute" finished-at="2024-03-21T16:43:06 IST" duration-ms="9468" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- clickOneTribute -->
+        <test-method signature="clickOnDonateButton()[pri:10, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:43:06 IST" name="clickOnDonateButton" finished-at="2024-03-21T16:43:10 IST" duration-ms="3919" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- clickOnDonateButton -->
+        <test-method signature="fillAllDonorDetails_Tribute()[pri:11, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:43:10 IST" name="fillAllDonorDetails_Tribute" finished-at="2024-03-21T16:43:15 IST" duration-ms="5269" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillAllDonorDetails_Tribute -->
+        <test-method signature="setCardDetils_Tribute()[pri:12, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:43:15 IST" name="setCardDetils_Tribute" finished-at="2024-03-21T16:43:16 IST" duration-ms="701" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setCardDetils_Tribute -->
+        <test-method signature="submitAllDetails_Tribute()[pri:13, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:43:16 IST" name="submitAllDetails_Tribute" finished-at="2024-03-21T16:43:18 IST" duration-ms="2480" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- submitAllDetails_Tribute -->
+        <test-method signature="isDonationDone_Tribute()[pri:14, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:43:18 IST" name="isDonationDone_Tribute" finished-at="2024-03-21T16:43:30 IST" depends-on-methods="com.affnetz.qa.test.PublicDonationTest_T1.submitAllDetails_Tribute" duration-ms="11962" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- isDonationDone_Tribute -->
+        <test-method signature="isReciptDownload_Tribute()[pri:15, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:43:30 IST" name="isReciptDownload_Tribute" finished-at="2024-03-21T16:43:36 IST" depends-on-methods="com.affnetz.qa.test.PublicDonationTest_T1.isDonationDone_Tribute" duration-ms="5687" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- isReciptDownload_Tribute -->
+        <test-method signature="isPublicTributeDonorDetaiShowToSuperAdmin()[pri:16, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:43:36 IST" name="isPublicTributeDonorDetaiShowToSuperAdmin" finished-at="2024-03-21T16:44:16 IST" depends-on-methods="com.affnetz.qa.test.PublicDonationTest_T1.isDonationDone_Tribute" duration-ms="40691" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- isPublicTributeDonorDetaiShowToSuperAdmin -->
+        <test-method signature="isDonorDetailShowInThatParticularTributeDonationSection()[pri:17, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:44:17 IST" name="isDonorDetailShowInThatParticularTributeDonationSection" finished-at="2024-03-21T16:44:47 IST" depends-on-methods="com.affnetz.qa.test.PublicDonationTest_T1.isDonationDone_Tribute" duration-ms="30783" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- isDonorDetailShowInThatParticularTributeDonationSection -->
+        <test-method signature="goToPublicCampaignPage()[pri:18, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:44:47 IST" name="goToPublicCampaignPage" finished-at="2024-03-21T16:45:02 IST" duration-ms="14544" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- goToPublicCampaignPage -->
+        <test-method signature="clickOnCampaign()[pri:19, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:45:02 IST" name="clickOnCampaign" finished-at="2024-03-21T16:45:10 IST" duration-ms="8272" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- clickOnCampaign -->
+        <test-method signature="clickOnCampDonateButton()[pri:20, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:45:10 IST" name="clickOnCampDonateButton" finished-at="2024-03-21T16:45:13 IST" duration-ms="2929" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- clickOnCampDonateButton -->
+        <test-method signature="fillAllDonorDetails_Campaign()[pri:21, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:45:13 IST" name="fillAllDonorDetails_Campaign" finished-at="2024-03-21T16:45:22 IST" duration-ms="8687" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillAllDonorDetails_Campaign -->
+        <test-method signature="setCardDetils_Campaign()[pri:22, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:45:22 IST" name="setCardDetils_Campaign" finished-at="2024-03-21T16:45:23 IST" duration-ms="671" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setCardDetils_Campaign -->
+        <test-method signature="submitAllDetails_Campaign()[pri:23, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:45:23 IST" name="submitAllDetails_Campaign" finished-at="2024-03-21T16:45:25 IST" duration-ms="2194" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- submitAllDetails_Campaign -->
+        <test-method signature="isDonationDone_Campaign()[pri:24, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:45:25 IST" name="isDonationDone_Campaign" finished-at="2024-03-21T16:45:39 IST" duration-ms="14396" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- isDonationDone_Campaign -->
+        <test-method signature="isReciptDownload_Campaign()[pri:25, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:45:39 IST" name="isReciptDownload_Campaign" finished-at="2024-03-21T16:45:45 IST" duration-ms="5717" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- isReciptDownload_Campaign -->
+        <test-method signature="isPublicCampaignDonorDetailsIsStoredInDonorReport()[pri:26, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:45:45 IST" name="isPublicCampaignDonorDetailsIsStoredInDonorReport" finished-at="2024-03-21T16:46:24 IST" duration-ms="38847" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- isPublicCampaignDonorDetailsIsStoredInDonorReport -->
+        <test-method signature="isDonorDetailsIsShowingInThatParticularCampaignDonatiosSection()[pri:27, instance:com.affnetz.qa.test.PublicDonationTest_T1@7b420819]" started-at="2024-03-21T16:46:24 IST" name="isDonorDetailsIsShowingInThatParticularCampaignDonatiosSection" finished-at="2024-03-21T16:46:40 IST" duration-ms="16053" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- isDonorDetailsIsShowingInThatParticularCampaignDonatiosSection -->
       </class> <!-- com.affnetz.qa.test.PublicDonationTest_T1 -->
     </test> <!-- Public Donation -->
-  </suite> <!-- affnetz.com -->
+  </suite> <!-- Donation -->
 </testng-results>

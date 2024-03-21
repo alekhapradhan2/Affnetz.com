@@ -7,18 +7,13 @@
   <test thread-count="5" name="Public Donation(failed)">
     <groups>
       <run>
-        <include name="DirectDonation"/>
+        <include name="Donation"/>
       </run>
     </groups>
     <classes>
       <class name="com.affnetz.qa.test.PublicDonationTest_T1">
         <methods>
-          <include name="setCardDetils"/>
-          <include name="isReciptDownload"/>
-          <include name="isDonationPage"/>
-          <include name="isDonationDone"/>
-          <include name="submitAllDetails"/>
-          <include name="fillAllDonorDetails"/>
+          <include name="isPublicTributeDonorDetaiShowToSuperAdmin"/>
         </methods>
       </class> <!-- com.affnetz.qa.test.PublicDonationTest_T1 -->
     </classes>

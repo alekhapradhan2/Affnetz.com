@@ -1,39 +1,37 @@
-package com.qa.affnetz.pages;
+package com.qa.affnetz.Publicapages;
 
-import com.microsoft.playwright.FrameLocator;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-import java.nio.file.Paths;
-
+import com.microsoft.playwright.FrameLocator;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-public class PublicDonationRepo_T1 {
+public class PublicTributeDonationRepo_T1 {
 	
-	public Page page;
+public Page page;
 	
 	
-	private String first_Name="#input-11";
+	private String first_Name="#input-8";
 	
-	private String last_Name="#input-14";
+	private String last_Name="#input-11";
 	
-	private String phone_no="#input-17";
+	private String phone_no="#input-14";
 	
-	private String email_Id="#input-20";
+	private String email_Id="#input-17";
 	
-	private String donation_filed="#input-28";
+	private String donation_filed="#input-24";
 	
-	private String address1="#input-40";
+	private String address1="#input-41";
 	
-	private String address2="#input-43";
+	private String address2="#input-44";
 	
-	private String cityName="#input-46";
+	private String cityName="#input-47";
 	
-	private String stateClick="#input-49";
+	private String stateClick="#input-50";
 	
 	private String allStateName="xpath=//div[contains(@id,'list-item-')]";
 	
-	private String zipCode="#input-59";
+	private String zipCode="#input-60";
 
 	private String PaymentFrame="xpath=//iframe[contains(@name,'privateStripeFrame')]";
 	
@@ -49,10 +47,12 @@ public class PublicDonationRepo_T1 {
 	
 	private String recepitDownload="xpath=//span[text()='Download Receipt']";
 	
+	private String tributeNameIndonationForm="xpath=//h1";
+	
 	
 	
 	//Cunstroctor
-	public PublicDonationRepo_T1(Page page)
+	public PublicTributeDonationRepo_T1(Page page)
 	{
 		this.page=page;
 	}
@@ -81,13 +81,14 @@ public class PublicDonationRepo_T1 {
 		page.fill(donation_filed, amt);
 	}
 	
-	public void setAddress(String add1,String add2,String city,String state,String zip)
+	public void setAddress(String add1,String add2,String city,String state,String zip) throws InterruptedException
 	{
 		page.fill(address1, add1);
 		page.fill(address2, add2);
 		page.fill(cityName, city);
 		page.click(stateClick);
 		Locator stateName=page.locator(allStateName);
+		Thread.sleep(1000);
 		for(int i=0;i<stateName.count();i++)
 		{
 			String name=stateName.nth(i).textContent();
@@ -124,10 +125,11 @@ public class PublicDonationRepo_T1 {
 		assertThat(receipt).isVisible();
 	}
 	
-	public boolean downloadReceipt() {
+	public boolean downloadReceipt() throws InterruptedException {
 		Locator receipt=page.locator(recepitDownload).first();
 		receipt.waitFor();
 		receipt.click();
+		Thread.sleep(2000);
 		boolean flag=false;
 		String url=page.url();
 		if(url.contains("invoice"))
@@ -137,4 +139,12 @@ public class PublicDonationRepo_T1 {
 		
 		return flag;
 	}
+	
+	public String getTributeName() {
+		Locator name=page.locator(tributeNameIndonationForm).first();
+		name.waitFor();
+		String tName=name.textContent();
+		return tName;
+	}
+
 }

@@ -1,4 +1,4 @@
-package com.qa.affnetz.pages;
+package com.qa.affnetz.InternalPages;
 
 import com.microsoft.playwright.Page;
 

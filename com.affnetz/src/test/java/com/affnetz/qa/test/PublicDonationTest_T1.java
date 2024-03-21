@@ -4,25 +4,24 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
+import java.io.IOException;
 import java.util.Random;
 
 import org.testng.ITestResult;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.affnetz.qa.factory.BaseT1;
-import com.affnetz.qa.factory.Listener_T1;
 import com.affnetz.qa.factory.PlayWrightFactory_T1;
-import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Playwright;
-import com.qa.affnetz.pages.DashboardRepo_T1;
-import com.qa.affnetz.pages.LoginPageRepo_T1;
-import com.qa.affnetz.pages.PublicDonationRepo_T1;
-import com.qa.affnetz.pages.PublicTributeDonationRepo_T1;
-import com.qa.affnetz.pages.PublicTributeRepo_T1;
-import com.qa.affnetz.pages.TributeDonationReportRepo_T1;
+import com.qa.affnetz.InternalPages.DashboardRepo_T1;
+import com.qa.affnetz.InternalPages.PeerToPeerFundraisingRepo_T1;
+import com.qa.affnetz.InternalPages.TributeDonationReportRepo_T1;
+import com.qa.affnetz.InternalPages.TributeRepo_T1;
+import com.qa.affnetz.Publicapages.LoginPageRepo_T1;
+import com.qa.affnetz.Publicapages.PublicCampaignRepo_T1;
+import com.qa.affnetz.Publicapages.PublicDonationRepo_T1;
+import com.qa.affnetz.Publicapages.PublicTributeDonationRepo_T1;
+import com.qa.affnetz.Publicapages.PublicTributeRepo_T1;
+
 
 public class PublicDonationTest_T1 {
 	
@@ -34,17 +33,26 @@ public class PublicDonationTest_T1 {
 	PublicTributeDonationRepo_T1 pdr;
 	TributeDonationReportRepo_T1 TributeDonationRepo;
 	ITestResult result;
+	TributeRepo_T1 tribute;
+	PublicCampaignRepo_T1 pc;
+	PeerToPeerFundraisingRepo_T1 fund;
 	
 	
-	String fname,lname,ph,mailid,tributeName;
+	String fname,lname,ph,amount,mailid,tributeName,TributeDonorFisrtName,TributeDonorLastName,TributeDonorMail,tributeAmt;
+	String campName,campFirstName,campLastName,CampAmt,CampMail;
 	Random rm=new Random();
 	int x=rm.nextInt(999);
+	Random rm1=new Random();
+	int y=rm1.nextInt(999);
+	Random rm2=new Random();
+	int w=rm2.nextInt(999);
 	
 		
-	/**Public donation with direct link */
+	/**Public donation with direct link 
+	 * @throws IOException */
 	
 	@Test(priority =0,groups = {"DirectDonation","Donation"})
-	public void launchBrowser() {
+	public void launchBrowser() throws IOException {
 		page=PlayWrightFactory_T1.intitBrowser("chromium", "donate");
 	}
 	
@@ -54,17 +62,19 @@ public class PublicDonationTest_T1 {
 		assertThat(page).hasURL("https://t1.affnetz.org/donate");
 	}
 	
-	/**All the donor details fill */
+	/**All the donor details fill 
+	 * @throws InterruptedException */
 	
 	@Test(priority = 2,dependsOnMethods = "isDonationPage",groups = {"DirectDonation","Donation"})
-	public void fillAllDonorDetails() {
+	public void fillAllDonorDetails() throws InterruptedException {
 		pd=new PublicDonationRepo_T1(page);
-		 fname="Meth"+x+"ew";
-		 lname="Jac"+x+"k";
-		 ph="6371772552";
-		 mailid="engineering+ap"+x+"@affnetz.com";
+		fname="Meth"+x+"ew";
+		lname="Jac"+x+"k";
+		ph="6371772552";
+		amount=""+x+"";
+		mailid="engineering+ap"+x+"@affnetz.com";
 		pd.setPesonalDetails(fname, lname, ph, mailid);
-		pd.setDonationAmount("45");
+		pd.setDonationAmount(amount);
 		pd.setAddress("newadd1", "newadd2", "newCity", "Alaska", "88888");
 	}
 	
@@ -86,7 +96,7 @@ public class PublicDonationTest_T1 {
 		pd.clickOnDonate();
 	}
 	
-	/**It will check is donation is done or no */
+	/**It will check is donation is done or not */
 	@Test(priority = 5,dependsOnMethods = "submitAllDetails",groups = {"DirectDonation","Donation"})
 	public void isDonationDone() {
 		pd=new PublicDonationRepo_T1(page);
@@ -94,25 +104,27 @@ public class PublicDonationTest_T1 {
 	}
 	
 	
-	/**It will check user able to download the receipt after donation or not */
+	/**It will check user able to download the receipt after donation or not
+	 * This method will only execute if the donation is done if donation got failed then this method will be skipped */
 	
 	@Test(priority = 6,dependsOnMethods = "isDonationDone",groups = {"DirectDonation","Donation"})
 	public void isReciptDownload() throws InterruptedException {
-		Thread.sleep(2000);
 		pd=new PublicDonationRepo_T1(page);
 		boolean flag=pd.downloadReceipt();
 		assertTrue(flag);
 	}
 	
 	
-	/**It will check all the donor details is showing to super admin in montly donor list or not */
+	/**It will check all the donor details is showing to super admin in montly donor list or not
+	 * This method will only execute if the donation is done if donation got failed then this method will be skipped 
+	 * @throws IOException */
 	
 	@Test(priority = 7,dependsOnMethods = "isDonationDone",groups = {"DirectDonation","Donation"})
-	public void isSuperAdminSeeTheDonorDetails() throws InterruptedException {
+	public void isSuperAdminSeeTheDonorDetails() throws InterruptedException, IOException {
 		
 		page=PlayWrightFactory_T1.intitBrowser("chromium", "login");
 		lp=new LoginPageRepo_T1(page);
-		lp.doLogin("t1admin", "%^&$T1Affnetz#$");
+		PlayWrightFactory_T1.login();
 		dr=new DashboardRepo_T1(page);
 		dr.clickOnMonthDonorLink();
 		dr.searchDonorDetaills(fname+" "+lname);
@@ -122,9 +134,12 @@ public class PublicDonationTest_T1 {
 		
 	}
 	
+	/** This method will open the public tribute page 
+	 * and also validate the tribute page opened or not
+	 * @throws IOException */
 	
 	@Test(priority = 8,groups = {"Tribute","Donation"})
-	public void goToPublicTributePage() {
+	public void goToPublicTributePage() throws IOException {
 		page=PlayWrightFactory_T1.intitBrowser("chromium","login");
 //		page.navigate("https://t1.affnetz.org/login");
 		lp=new LoginPageRepo_T1(page);
@@ -132,6 +147,8 @@ public class PublicDonationTest_T1 {
 		assertThat(page).hasURL("https://t1.affnetz.org/tribute");
 	}
 	
+	/** This method will click on one public tribute
+	 *  and validate the name is marching or not*/
 	
 	@Test(priority = 9,groups = {"Tribute","Donation"})
 	public void clickOneTribute() {
@@ -144,6 +161,9 @@ public class PublicDonationTest_T1 {
 		
 	}
 	
+	/** This method will click on donate button in selected tribute and 
+	 * check the tribute name is matching with the 
+	 * name showing in donation page or not */
 	
 	@Test(priority = 10,groups = {"Tribute","Donation"})
 	public void clickOnDonateButton() {
@@ -153,28 +173,31 @@ public class PublicDonationTest_T1 {
 		assertEquals(tributeName, name);
 	}
 	
+	/** This method will fill the all donor details 
+	 * @throws InterruptedException */
 	
 	@Test(priority = 11,groups = {"Tribute","Donation"})
-	public void fillAllDonorDetails_Tribute()
+	public void fillAllDonorDetails_Tribute() throws InterruptedException
 	{
 		pdr=new PublicTributeDonationRepo_T1(page);
-		fname="Meth"+x+"ew";
-		lname="Jac"+x+"k";
+		TributeDonorFisrtName="Nami"+y+"ew";
+		TributeDonorLastName="Hol"+y+"k";
 		ph="6371772552";
-		mailid="engineering+ap"+x+"@affnetz.com";
-		pdr.setPesonalDetails(fname, lname, ph, mailid);
-		pdr.setDonationAmount("45");
+		tributeAmt=""+y+"";
+		TributeDonorMail="engineering+ap"+y+"@affnetz.com";
+		pdr.setPesonalDetails(TributeDonorFisrtName,TributeDonorLastName, ph, TributeDonorMail);
+		pdr.setDonationAmount(tributeAmt);
 		pdr.setAddress("newadd1", "newadd2", "newCity", "Alaska", "88888");
 	}
 	
-	
+	/** This method will fill the card details of donor */
 	@Test(priority = 12,groups = {"Tribute","Donation"})
 	public void setCardDetils_Tribute() {
 		pdr=new PublicTributeDonationRepo_T1(page);
 		pdr.setCardDetails("4242424242424242", "4242","424","88888");
 	}
 	
-	
+	/** This method will click on donateButton on donation form and submit the details */
 	@Test(priority = 13,groups = {"Tribute","Donation"})
 	public void submitAllDetails_Tribute() throws InterruptedException {
 		Thread.sleep(2000);
@@ -182,13 +205,15 @@ public class PublicDonationTest_T1 {
 		pdr.clickOnDonate();
 	}
 	
-	
+	/** This method will check is donation form is submited or not */
 	@Test(priority = 14,groups = {"Tribute","Donation"},dependsOnMethods = "submitAllDetails_Tribute")
 	public void isDonationDone_Tribute() {
 		pdr=new PublicTributeDonationRepo_T1(page);
 		pdr.isFormSubmit();
 	}
 	
+	/** This method will check is donation receipt is downloaded or not.
+	 * This method will only execute if the donation is done if donation got failed then this method will be skipped*/
 	
 	@Test(priority = 15,groups = {"Tribute","Donation"},dependsOnMethods ="isDonationDone_Tribute" )
 	public void isReciptDownload_Tribute() throws InterruptedException {
@@ -198,23 +223,135 @@ public class PublicDonationTest_T1 {
 		assertTrue(flag);
 	}
 	
-	@Test(priority = 16,groups = {"Tribute","Donation"})
 	
-	public void isPublicTributeDonorDetaiShowToSuperAdmin() throws InterruptedException {
+	/** This method will check after donation all the donor details should shown to super admin in tribute donation report.
+	 * This method will only execute if the donation is done if donation got failed then this method will be skipped 
+	 * @throws IOException */
+	
+	@Test(priority = 16,groups = {"Tribute","Donation"},dependsOnMethods = "isDonationDone_Tribute")
+	public void isPublicTributeDonorDetaiShowToSuperAdmin() throws InterruptedException, IOException {
 		page=PlayWrightFactory_T1.intitBrowser("chromium", "login");
 		lp=new LoginPageRepo_T1(page);
-		lp.doLogin("t1admin", "%^&$T1Affnetz#$");
-		
+		PlayWrightFactory_T1.login();
 		dr=new DashboardRepo_T1(page);
 		dr.clickOnReport();
 		dr.clickOnTributeDonationReport();
 		TributeDonationRepo=new TributeDonationReportRepo_T1(page);
-		boolean flag=TributeDonationRepo.isTributeDonorDetailsShowing(fname+" "+lname, tributeName);
+		boolean flag=TributeDonationRepo.isTributeDonorDetailsShowing(TributeDonorFisrtName+" "+TributeDonorLastName, tributeName);
 		assertTrue(flag);
-		
-		
+	}
+	
+	/** This method will check after donation all the donor details should store in that particular tribute in donation section
+	 * This method will only execute if the donation is done if donation got failed then this method will be skipped */
+	@Test(priority = 17,groups = {"Tribute","Donation"},dependsOnMethods = "isDonationDone_Tribute")
+	public void isDonorDetailShowInThatParticularTributeDonationSection() throws InterruptedException {
+		dr=new DashboardRepo_T1(page);
+		dr.clickOnTributeLink();
+		assertThat(page).hasURL("https://t1.affnetz.org/tribute");
+		tribute=new TributeRepo_T1(page);
+		tribute.searchTributeName(tributeName);
+		assertEquals(tribute.getTributeName(), tributeName);
+		tribute.clickOnSearchedTribute();
+		boolean flag=tribute.isDonorDetailsShowing(TributeDonorFisrtName, TributeDonorMail, tributeAmt);
+		assertTrue(flag);	
+	}
+	
+	
+	@Test(priority = 18,groups = {"Campaign","Donation"})
+	public void goToPublicCampaignPage() throws IOException {
+		page=PlayWrightFactory_T1.intitBrowser("chrome","login");
+		lp=new LoginPageRepo_T1(page);
+		lp.clickfundRaising();
+		assertThat(page).hasURL("https://t1.affnetz.org/campaigns");
+	}
+	
+	@Test(priority = 19,groups = {"Campaign","Donation"})
+	public void clickOnCampaign() {
+		pc=new PublicCampaignRepo_T1(page);
+		campName=pc.getCampaignName();
+		System.out.println(campName);
+		pc.clickOnCampaign();
+		String title=pc.getCampaignTitle();
+		System.out.println(title);
+		assertEquals(campName, title);
 		
 	}
+	
+	@Test(priority = 20,groups = {"Campaign","Donation"})
+	public void clickOnCampDonateButton() {
+		pc=new PublicCampaignRepo_T1(page);
+		pc.clickOnCampDonate();
+	}
+	
+	@Test(priority = 21,groups = {"Campaign","Donation"})
+	public void fillAllDonorDetails_Campaign() throws InterruptedException {
+		pd=new PublicDonationRepo_T1(page);
+		campFirstName="Andr"+w+"ew";
+		campLastName="Cheri"+w+"k";
+		ph="6371772552";
+		CampAmt=""+w+"";
+		CampMail="engineering+cp"+w+"@affnetz.com";
+		pd.setPesonalDetails(campFirstName, campLastName, ph, CampMail);
+		pd.setDonationAmount(CampAmt);
+		pd.setAddress("newadd1", "newadd2", "newCity", "Alaska", "88888");
+	}
+	
+	@Test(priority = 22,groups = {"Campaign","Donation"})
+	public void setCardDetils_Campaign() {
+		pd=new PublicDonationRepo_T1(page);
+		pd.setCardDetails("4242424242424242", "4242","424","88888");
+	}
+	
+	@Test(priority = 23,groups = {"Campaign","Donation"})
+	public void submitAllDetails_Campaign() throws InterruptedException {
+		Thread.sleep(2000);
+		pd=new PublicDonationRepo_T1(page);
+		pd.clickOnDonate();
+	}
+	
+	@Test(priority = 24,groups = {"Campaign","Donation"})
+	public void isDonationDone_Campaign() {
+		pd=new PublicDonationRepo_T1(page);
+		pd.isFormSubmit();
+	}
+	@Test(priority = 25,groups = {"Campaign","Donation"})
+	public void isReciptDownload_Campaign() throws InterruptedException {
+		Thread.sleep(2000);
+		pdr=new PublicTributeDonationRepo_T1(page);
+		boolean flag=pdr.downloadReceipt();
+		assertTrue(flag);
+	}
+	@Test(priority = 26,groups = {"Campaign","Donation"})
+	public void isPublicCampaignDonorDetailsIsStoredInDonorReport() throws InterruptedException, IOException {
+		
+		page=PlayWrightFactory_T1.intitBrowser("chrome","login");
+		lp=new LoginPageRepo_T1(page);
+		PlayWrightFactory_T1.login();
+		dr=new DashboardRepo_T1(page);
+		dr.clickOnDonorReportLink();
+		String DonorName=campFirstName+" "+campLastName;
+		boolean flag=dr.isDonorDetailsShownInDonorReport(DonorName, CampMail, CampAmt);
+		assertTrue(flag);
+		
+	}
+	
+	@Test(priority = 27,groups = {"Campaign","Donation"})
+	public void isDonorDetailsIsShowingInThatParticularCampaignDonatiosSection() throws InterruptedException {
+		dr=new DashboardRepo_T1(page);
+		dr.clickOnPeerToPeerFundarasing();
+		fund=new PeerToPeerFundraisingRepo_T1(page);
+		fund.searchCampaign(campName);
+		fund.clickOnSearchButton();
+		String campaignName=fund.getSearchedCampName();
+		assertEquals(campaignName,campName);
+		fund.clickOnSearchedCamp();
+		fund.goToDonationsSection();
+		boolean flag=fund.isDonorDetailsShowingInThisPartocularCampaing(campFirstName, CampMail, CampAmt);
+		assertTrue(flag);
+	}
+	
+	
+	
 	
 	
 	

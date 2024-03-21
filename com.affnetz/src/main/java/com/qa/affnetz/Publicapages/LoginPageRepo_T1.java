@@ -1,4 +1,4 @@
-package com.qa.affnetz.pages;
+package com.qa.affnetz.Publicapages;
 
 import com.microsoft.playwright.Page;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -29,7 +29,7 @@ public class LoginPageRepo_T1 {
 	
 	private String eventsLink="xpath=//span[text()='Events']";
 	
-	private String fundRaisingLink="xpath=span[text()='Peer-to-Peer Fundraising']";
+	private String fundRaisingLink="xpath=//span[text()='Peer-to-Peer Fundraising']";
 	
 	private String volunteerLink="xpath=//span[text()='Volunteer']";
 	

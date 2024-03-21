@@ -81,6 +81,7 @@ public class Listener_T1 implements ITestListener {
 		test.get().pass("T1_Test passed");
 //		test.get().pass(result.getThrowable(),MediaEntityBuilder.createScreenCaptureFromPath(PlayWrightFactory_T1.takeScreenshot()).build());
 		test.get().getModel().setEndTime(getTime(result.getEndMillis()));
+		test.get().getModel().getDescription();
 		
 		
 	}
@@ -90,6 +91,7 @@ public class Listener_T1 implements ITestListener {
 		System.out.println(result.getMethod().getMethodName()+" failed");
 		test.get().fail(result.getThrowable(),MediaEntityBuilder.createScreenCaptureFromPath(PlayWrightFactory_T1.takeScreenshot()).build());
 		test.get().getModel().setEndTime(getTime(result.getEndMillis()));
+		test.get().getModel().getDescription();
 
 	}
 	

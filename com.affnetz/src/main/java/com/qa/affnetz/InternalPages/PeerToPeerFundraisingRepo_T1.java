@@ -17,6 +17,22 @@ public class PeerToPeerFundraisingRepo_T1 {
 	
 	private String donorDetailsTable=".v-data-table__wrapper tr";
 	
+	private String teamSection="//div[text()='Teams']";
+	
+	private String teamBlocks="//div[@class='af-p-6 af-bg-white']";
+	
+	private String teamName="//h1";
+	
+	private String teamTitle="//h2";
+	
+	private String clickTeam="//a[contains(text(),'View Team')]";
+	
+	
+	
+
+	
+	
+	
 	public PeerToPeerFundraisingRepo_T1(Page page)
 	{
 		this.page=page;
@@ -70,5 +86,46 @@ public class PeerToPeerFundraisingRepo_T1 {
 		
 		return flag;
 	}
+	
+	public void goToTeamSection() {
+		page.click(teamSection);
+	}
+	
+	public String getTeamName() {
+		Locator name=page.locator(teamName);
+		name.waitFor();
+		String teamName=name.textContent().trim();
+		return teamName;
+	}
+	
+	public String getTeamTitle() {
+		Locator name=page.locator(teamTitle);
+		name.waitFor();
+		String teamTitle=name.textContent().trim();
+		return teamTitle;
+	}
+	
+	public String getAllTeamBlocks() {
+		return teamBlocks;
+	}
+	
+	public void clickRightTeam(String teamname) {
+		Locator s=page.locator(teamBlocks);
+		for(int i=0;i<s.count();i++)
+		{
+			String name=s.nth(i).locator(teamName).textContent().trim();
+			
+			if(name.equals(teamname))
+			{
+				
+				s.nth(i).locator(clickTeam).click();
+				break;
+			}
+		}
+	
+		
+	}
+	
+	
 
 }

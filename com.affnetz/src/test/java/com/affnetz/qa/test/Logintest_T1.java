@@ -24,8 +24,7 @@ public class Logintest_T1{
 	@BeforeTest
 	public void setUp() throws IOException
 	{
-//		pf=new playWrightFactory();
-		page=PlayWrightFactory_T1.intitBrowser("chromium","login");
+		page=PlayWrightFactory_T1.intitBrowser("login");
 		lp=new LoginPageRepo_T1(page);
 	}
 	

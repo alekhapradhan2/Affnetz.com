@@ -1,7 +1,4 @@
 package com.affnetz.qa.factory;
-
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -27,11 +24,13 @@ public class PlayWrightFactory_T1 {
 	static LoginPageRepo_T1 lp;
 	static Properties prop;
 	
-	public static Page intitBrowser(String browserName,String whichPage) throws IOException
+	public static Page intitBrowser(String whichPage) throws IOException
 	{
+		
 		playwright=Playwright.create();
+		
 
-		switch (browserName.toLowerCase()) {
+		switch (initProp().getProperty("browser").toLowerCase()) {
 		case "chromium":
 			 browser=playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
 			break;

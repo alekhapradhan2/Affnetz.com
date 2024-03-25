@@ -13,6 +13,16 @@ public class PublicCampaignRepo_T1 {
 	
 	private String campaignDonateButton="//span[contains(text(),'Donate')]";
 	
+	private String teamSection="//div[text()='Teams']";
+	
+	private String teamName="//h1";
+	
+	private String teamTitle="//h2";
+	
+	private String clickTeam="//a[contains(text(),'View Team')]";
+	
+	private String teamDonateButton="//span[contains(text(),' Donate')]";
+	
 	
 	public PublicCampaignRepo_T1(Page page)
 	{
@@ -42,5 +52,31 @@ public class PublicCampaignRepo_T1 {
 	
 	public void clickOnCampDonate() {
 		page.locator(campaignDonateButton).first().click();
+	}
+	
+	public void goToTeamSection() {
+		page.click(teamSection);
+	}
+	
+	public String getTeamName() {
+		Locator name=page.locator(teamName).first();
+		name.waitFor();
+		String teamName=name.textContent();
+		return teamName;
+	}
+	
+	public String getTeamTitle() {
+		Locator name=page.locator(teamTitle).first();
+		name.waitFor();
+		String teamTitle=name.textContent();
+		return teamTitle;
+	}
+	
+	public void clickOnTeam() {
+		page.click(clickTeam);
+	}
+	
+	public void teamDonate() {
+		page.click(teamDonateButton);
 	}
 }

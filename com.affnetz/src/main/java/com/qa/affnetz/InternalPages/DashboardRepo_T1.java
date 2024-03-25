@@ -2,6 +2,8 @@ package com.qa.affnetz.InternalPages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.Page.WaitForCloseOptions;
+
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.testng.Assert.assertEquals;
 
@@ -95,11 +97,15 @@ public class DashboardRepo_T1 {
 	}
 	
 	public void clickOnReport() {
-		page.click(Report);
+		Locator link=page.locator(Report);
+		link.waitFor();
+		link.click();
 	}
 	
 	public void clickOnTributeDonationReport() {
-		page.click(tributeDonationReport);
+		Locator link=page.locator(tributeDonationReport);
+		link.waitFor();
+		link.click();
 	}
 	
 	public void clickOnTributeLink() {
@@ -107,7 +113,9 @@ public class DashboardRepo_T1 {
 	}
 	
 	public void clickOnDonorReportLink() {
-		page.click(donorReportLink);
+		Locator link=page.locator(donorReportLink);
+		link.waitFor();
+		link.click();
 	}
 	
 	public void clickOnPeerToPeerFundarasing() {

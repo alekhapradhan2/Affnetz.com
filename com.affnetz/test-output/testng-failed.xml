@@ -3,6 +3,7 @@
 <suite name="Failed suite [Donation]" guice-stage="DEVELOPMENT">
   <listeners>
     <listener class-name="com.affnetz.qa.factory.Listener_T1"/>
+    <listener class-name="com.affnetz.qa.factory.Listener_T1"/>
   </listeners>
   <test thread-count="5" name="Public Donation(failed)">
     <groups>
@@ -14,16 +15,10 @@
       <class name="com.affnetz.qa.test.PublicDonationTest_T1">
         <methods>
           <include name="submitAllDetails_Tribute"/>
-          <include name="setCardDetils"/>
-          <include name="isReciptDownload_Tribute"/>
-          <include name="isDonationPage"/>
-          <include name="isReciptDownload"/>
+          <include name="isPublicCampaignDonorDetailsIsStoredInDonorReport"/>
           <include name="isDonationDone_Tribute"/>
-          <include name="isDonationDone"/>
-          <include name="submitAllDetails"/>
-          <include name="isReciptDownload_Campaign"/>
           <include name="isPublicTributeDonorDetaiShowToSuperAdmin"/>
-          <include name="fillAllDonorDetails"/>
+          <include name="isDonationDone_Campaign"/>
         </methods>
       </class> <!-- com.affnetz.qa.test.PublicDonationTest_T1 -->
     </classes>

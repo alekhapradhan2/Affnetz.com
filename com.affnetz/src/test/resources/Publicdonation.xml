@@ -3,14 +3,14 @@
 <suite name="Donation">	
 	
 	<listeners>
-		<listener class-name="com.affnetz.qa.factory.Listener_T1"></listener>
+		<listener class-name="com.affnetz.qa.factory.Listener"></listener>
 	</listeners>	
 	<test name="Public Donation">
 		<groups>
 			<run><include name="Donation"></include></run>
 		</groups>
 		<classes>
-			<class name="com.affnetz.qa.test.PublicDonationTest_T1"></class>
+			<class name="com.affnetz.qa.test.PublicDonationTest"></class>
 		</classes>
 	</test> 
 	

@@ -4,28 +4,28 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.affnetz.qa.factory.PlayWrightFactory_T1;
+import com.affnetz.qa.factory.PlayWrightFactory;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.Page;
-import com.qa.affnetz.Publicapages.LoginPageRepo_T1;
+import com.qa.affnetz.Publicapages.LoginPageRepo;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import java.io.IOException;
 
 
-public class Logintest_T1{
+public class Logintest{
 	
 	
 	Page page;
 	Browser browser;
-	LoginPageRepo_T1 lp;
+	LoginPageRepo lp;
 	
 	@BeforeTest
 	public void setUp() throws IOException
 	{
-		page=PlayWrightFactory_T1.intitBrowser("login");
-		lp=new LoginPageRepo_T1(page);
+		page=PlayWrightFactory.intitBrowser("login");
+		lp=new LoginPageRepo(page);
 	}
 	
 	@Test(priority =0,testName = "isLoginPageOpen")
@@ -37,14 +37,14 @@ public class Logintest_T1{
 	@Test(priority =1,testName = "Enter Cradentilas", dependsOnMethods = "checkLoginPage")
 	public void doLoginWithValidCradential() throws IOException
 	{
-		lp=new LoginPageRepo_T1(page);
-		PlayWrightFactory_T1.login();
+		lp=new LoginPageRepo(page);
+		PlayWrightFactory.login();
 		lp.isLogin();
 	}
 	
 	@Test(priority = 2,testName="Do Logout",dependsOnMethods = "doLoginWithValidCradential")
 	public void dologout() throws InterruptedException {
-		lp=new LoginPageRepo_T1(page);
+		lp=new LoginPageRepo(page);
 		lp.doLogout();
 		lp.isLogout();
 	}
@@ -64,7 +64,7 @@ public class Logintest_T1{
 	@Test(priority = 3,testName = "Invalid Login",dataProvider = "invalidData")
 	public void doLoginWithInvalidCradentilas(String uname,String pwd)
 	{
-		lp=new LoginPageRepo_T1(page);
+		lp=new LoginPageRepo(page);
 		lp.doLogin(uname, pwd);
 		lp.isErrMsgShowing();
 		

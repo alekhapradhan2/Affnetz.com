@@ -1,9 +1,11 @@
 package com.qa.affnetz.InternalPages;
 
+import static org.testng.Assert.assertEquals;
+
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-public class PeerToPeerFundraisingRepo_T1 {
+public class PeerToPeerFundraisingRepo {
 	
 	Page page;
 	
@@ -33,7 +35,7 @@ public class PeerToPeerFundraisingRepo_T1 {
 	
 	
 	
-	public PeerToPeerFundraisingRepo_T1(Page page)
+	public PeerToPeerFundraisingRepo(Page page)
 	{
 		this.page=page;
 	}
@@ -66,9 +68,11 @@ public class PeerToPeerFundraisingRepo_T1 {
 		name.click();
 	}
 	
-	public boolean isDonorDetailsShowingInThisPartocularCampaing(String fName,String mailid,String amount) throws InterruptedException {
+	public void isDonorDetailsShowingInThisPartocularCampaing(String fName,String mailid,String amount) throws InterruptedException {
 		Thread.sleep(2000);
 		boolean flag=false;
+		String donorName=null;
+		String donorMail=null;
 		Locator rows=page.locator(donorDetailsTable);
 		for(int i=1;i<rows.count();i++)
 		{
@@ -79,12 +83,13 @@ public class PeerToPeerFundraisingRepo_T1 {
 			System.out.println(fname+" "+mail+" "+amt);
 			if(fname.equals(fName)&& mail.equals(mailid)&& amt.contains(amount))
 			{
-				flag=true;
-				break;
+				donorName=fname;
+				donorMail=mail;
 			}
 		}
 		
-		return flag;
+		assertEquals(donorName, fName);
+		assertEquals(donorMail, mailid);
 	}
 	
 	public void goToTeamSection() {

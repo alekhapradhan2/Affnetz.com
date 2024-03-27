@@ -7,7 +7,7 @@ import static org.testng.Assert.assertTrue;
 import com.microsoft.playwright.Locator;
 
 
-public class LoginPageRepo_T1 {
+public class LoginPageRepo {
 	public Page page;
 	
 	//WebElements
@@ -46,7 +46,7 @@ public class LoginPageRepo_T1 {
 	
 	//Cunstructor
 	
-	public LoginPageRepo_T1(Page page)
+	public LoginPageRepo(Page page)
 	{
 		this.page=page;
 	}

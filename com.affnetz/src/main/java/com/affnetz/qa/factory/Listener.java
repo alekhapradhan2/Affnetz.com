@@ -15,7 +15,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
-public class Listener_T1 implements ITestListener {
+public class Listener implements ITestListener {
 	private static final String outpur_folder="./build/";
 	private static final String file_name="T1_testExecution.png";
 	private static ExtentReports extent=init();
@@ -89,7 +89,7 @@ public class Listener_T1 implements ITestListener {
 	public synchronized void onTestFailure(ITestResult result)
 	{
 		System.out.println(result.getMethod().getMethodName()+" failed");
-		test.get().fail(result.getThrowable(),MediaEntityBuilder.createScreenCaptureFromPath(PlayWrightFactory_T1.takeScreenshot()).build());
+		test.get().fail(result.getThrowable(),MediaEntityBuilder.createScreenCaptureFromPath(PlayWrightFactory.takeScreenshot()).build());
 		test.get().getModel().setEndTime(getTime(result.getEndMillis()));
 		test.get().getModel().getDescription();
 
@@ -98,7 +98,7 @@ public class Listener_T1 implements ITestListener {
 	public synchronized void onTestSkipped(ITestResult result)
 	{
 		System.out.println(result.getMethod().getMethodName()+" skipped");
-		test.get().skip(result.getThrowable(),MediaEntityBuilder.createScreenCaptureFromPath(PlayWrightFactory_T1.takeScreenshot()).build());
+		test.get().skip(result.getThrowable(),MediaEntityBuilder.createScreenCaptureFromPath(PlayWrightFactory.takeScreenshot()).build());
 		test.get().getModel().setEndTime(getTime(result.getEndMillis()));
 	}
 	

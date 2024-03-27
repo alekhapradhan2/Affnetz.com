@@ -3,7 +3,7 @@ package com.qa.affnetz.Publicapages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-public class PublicTributeRepo_T1 {
+public class PublicTributeRepo {
 	
 	Page page;
 	
@@ -15,7 +15,7 @@ public class PublicTributeRepo_T1 {
 	
 	private String tributeDonateButton="xpath=//span[contains(text(),'Donate')]";
 	
-	public PublicTributeRepo_T1(Page page)
+	public PublicTributeRepo(Page page)
 	{
 		this.page=page;
 	}

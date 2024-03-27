@@ -7,7 +7,7 @@ import com.microsoft.playwright.Page.WaitForCloseOptions;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.testng.Assert.assertEquals;
 
-public class DashboardRepo_T1 {
+public class DashboardRepo {
 	
 	Page page;
 	
@@ -29,9 +29,14 @@ public class DashboardRepo_T1 {
 	
 	private String peerToPeerFundaraisingLink="xpath=//div[text()='Peer-to-Peer Fundraising']";
 	
+	private String dashboardLink="//div[text()='Dashboard']";
+	
+	private String stakeHoldersLink="//div[text()='Stakeholders']";
 	
 	
-	public DashboardRepo_T1(Page page)
+	
+	
+	public DashboardRepo(Page page)
 	{
 		this.page=page;
 	}
@@ -74,7 +79,7 @@ public class DashboardRepo_T1 {
 		
 	}
 	
-	public boolean isDonorDetailsShownInDonorReport(String campName, String campMail,String campAmt) throws InterruptedException {
+	public boolean isDonorDetailsShownInDonorReport(String DonorName, String DonorMail,String DonorAmt) throws InterruptedException {
 		Locator row=page.locator(DonorReportTable);
 		Thread.sleep(3000);
 		boolean flag=false;
@@ -87,7 +92,7 @@ public class DashboardRepo_T1 {
 			String amt=col.nth(7).textContent().trim();
 			System.out.println(name+" "+mail+" "+amt);
 			
-			if(name.equals(campName) && campMail.contains(mail) && amt.contains(campAmt))
+			if(name.equals(DonorName) && DonorMail.contains(mail) && amt.contains(DonorAmt))
 			{
 				flag=true;
 				break;
@@ -120,6 +125,14 @@ public class DashboardRepo_T1 {
 	
 	public void clickOnPeerToPeerFundarasing() {
 		page.click(peerToPeerFundaraisingLink);
+	}
+	
+	public void goToDashBoard() {
+		page.click(dashboardLink);
+	}
+	
+	public void goToStakeHolders() {
+		page.click(stakeHoldersLink);
 	}
 	
 	

@@ -12,17 +12,19 @@ import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.options.WaitUntilState;
-import com.qa.affnetz.Publicapages.LoginPageRepo_T1;
+import com.qa.affnetz.Publicapages.LoginPageRepo;
 
-public class PlayWrightFactory_T1 {
+public class PlayWrightFactory {
 
 	static Playwright playwright;
 	static Browser browser;
 	static BrowserContext browserContext;
 	static Page page;
 	
-	static LoginPageRepo_T1 lp;
+	static LoginPageRepo lp;
 	static Properties prop;
+	
+	static boolean flag=false;
 	
 	public static Page intitBrowser(String whichPage) throws IOException
 	{
@@ -32,16 +34,16 @@ public class PlayWrightFactory_T1 {
 
 		switch (initProp().getProperty("browser").toLowerCase()) {
 		case "chromium":
-			 browser=playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+			 browser=playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(flag));
 			break;
 		case "chrome":
-			 browser=playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(false));
+			 browser=playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(flag));
 			break;
 		case "firefox":
-			browser=playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(false));
+			browser=playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(flag));
 			break;
 		case "sofari":
-			browser=playwright.webkit().launch(new BrowserType.LaunchOptions().setHeadless(false));
+			browser=playwright.webkit().launch(new BrowserType.LaunchOptions().setHeadless(flag));
 			break;
 
 		default:
@@ -67,11 +69,6 @@ public class PlayWrightFactory_T1 {
 		return page;	
 	}
 	
-	public static void closeBrowser() {
-		page.close();
-		browser.close();
-		playwright.close();
-	}
 	
 	public static String takeScreenshot()
 	{
@@ -91,7 +88,7 @@ public class PlayWrightFactory_T1 {
 	
 	@Test
 	public static void login() throws IOException {
-		lp=new LoginPageRepo_T1(page);
+		lp=new LoginPageRepo(page);
 		lp.doLogin(initProp().getProperty("userName"), initProp().getProperty("password"));
 		
 	

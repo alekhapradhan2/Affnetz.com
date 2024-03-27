@@ -1,9 +1,11 @@
 package com.qa.affnetz.InternalPages;
 
+import static org.testng.Assert.assertEquals;
+
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-public class TributeRepo_T1 {
+public class TributeRepo {
 	
 	Page page;
 	
@@ -15,7 +17,7 @@ public class TributeRepo_T1 {
 	
 	private String donorDetailsTable=".v-data-table__wrapper tr";
 	
-	public TributeRepo_T1(Page page) {
+	public TributeRepo(Page page) {
 		this.page=page;
 	}
 	
@@ -39,25 +41,30 @@ public class TributeRepo_T1 {
 		click.click();
 	}
 	
-	public boolean isDonorDetailsShowing(String fname,String email,String amount) throws InterruptedException {
+	public void isDonorDetailsShowing(String fname,String email,String amount) throws InterruptedException {
 		Thread.sleep(2000);
 		Locator tableRow=page.locator(donorDetailsTable);
 		boolean flag=false;
+		String Donorname = null;
+		String Donormail = null;
 		for(int i=1;i<tableRow.count();i++)
 		{
 			Locator col=tableRow.nth(i).locator("//td");
 			String name=col.nth(0).textContent().trim();
-			String mail=col.nth(2).textContent().trim();
-			String amt=col.nth(6).textContent().trim();
+			String  mail=col.nth(2).textContent().trim();
+			String  amt=col.nth(6).textContent().trim();
 			
 			if(name.equalsIgnoreCase(fname)&& mail.equalsIgnoreCase(email)&& amt.contains(amount))
 			{
-				flag=true;
-				break;
+				Donorname=name;
+				Donormail=mail;
 			}
+
 			
 		}
-		return flag;
+		assertEquals(Donorname, fname);
+		assertEquals(Donormail, email);
+		
 	}
 	
 	public void show()

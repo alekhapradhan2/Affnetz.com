@@ -3,7 +3,7 @@ package com.qa.affnetz.Publicapages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-public class PublicCampaignRepo_T1 {
+public class PublicCampaignRepo {
 	
 	Page page;
 	
@@ -24,7 +24,7 @@ public class PublicCampaignRepo_T1 {
 	private String teamDonateButton="//span[contains(text(),' Donate')]";
 	
 	
-	public PublicCampaignRepo_T1(Page page)
+	public PublicCampaignRepo(Page page)
 	{
 		this.page=page;
 	}

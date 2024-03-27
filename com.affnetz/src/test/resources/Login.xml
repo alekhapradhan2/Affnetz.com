@@ -3,12 +3,12 @@
 <suite name="Login">
 	
 	<listeners>
-		<listener class-name="com.affnetz.qa.factory.Listener_T1"></listener>
+		<listener class-name="com.affnetz.qa.factory.Listener"></listener>
 	</listeners>
 	
 	<test name="LoginFunction">
 		<classes>
-			<class name="com.affnetz.qa.test.Logintest_T1"></class>
+			<class name="com.affnetz.qa.test.Logintest"></class>
 		</classes>
 	</test> 
 	

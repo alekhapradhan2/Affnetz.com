@@ -3,14 +3,14 @@ package com.qa.affnetz.InternalPages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-public class TributeDonationReportRepo_T1 {
+public class TributeDonationReportRepo {
 	
 	Page page;
 	
 	private String tablerow=".v-data-table__wrapper tr";
 	
 	
-	public TributeDonationReportRepo_T1(Page page)
+	public TributeDonationReportRepo(Page page)
 	{
 		this.page=page;
 	}

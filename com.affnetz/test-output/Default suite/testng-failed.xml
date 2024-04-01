@@ -3,17 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.affnetz.qa.test.PublicDonationTest_T1">
+      <class name="com.affnetz.qa.test.ManualDonation">
         <methods>
-          <include name="isSuperAdminSeeTheDonorDetails"/>
-          <include name="setCardDetils"/>
-          <include name="isDonationPage"/>
-          <include name="isDonationDone"/>
-          <include name="submitAllDetails"/>
-          <include name="setUp"/>
-          <include name="fillAllDonorDetails"/>
+          <include name="checkThatInThatUserProfileThisDonationIsShowingOrNot"/>
         </methods>
-      </class> <!-- com.affnetz.qa.test.PublicDonationTest_T1 -->
+      </class> <!-- com.affnetz.qa.test.ManualDonation -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

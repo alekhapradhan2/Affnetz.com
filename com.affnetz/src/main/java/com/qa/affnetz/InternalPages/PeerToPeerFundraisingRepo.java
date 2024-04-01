@@ -13,7 +13,11 @@ public class PeerToPeerFundraisingRepo {
 	
 	private String campSearchButton="//span[contains(text(),'Search')]";
 	
+	private String campname="//h2";
+	
 	private String searchedCampName=".af-pt-2  h2";
+	
+	private String donateButton="//span[contains(text(),'Donate')]";
 	
 	private String donationsSection="//div[text()='Donations']";
 	
@@ -29,6 +33,7 @@ public class PeerToPeerFundraisingRepo {
 	
 	private String clickTeam="//a[contains(text(),'View Team')]";
 	
+	private String teamDonateButton="//span[contains(text(),' Donate')]";
 	
 	
 
@@ -38,6 +43,19 @@ public class PeerToPeerFundraisingRepo {
 	public PeerToPeerFundraisingRepo(Page page)
 	{
 		this.page=page;
+	}
+	
+	public String getCampaignName() {
+		Locator name=page.locator(campname).first();
+		name.waitFor();
+		String CampaignName=name.textContent().trim();
+		return CampaignName;
+	}
+	
+	public void clickOnOneCampaign() {
+		Locator name=page.locator(campname).first();
+		name.waitFor();
+		name.click();
 	}
 	
 	public void searchCampaign(String campName)
@@ -68,6 +86,18 @@ public class PeerToPeerFundraisingRepo {
 		name.click();
 	}
 	
+	public void goToDonationPage() {
+		page.click(donateButton);
+	}
+	
+	public void clickOnTeam() {
+		page.click(clickTeam);
+	}
+	
+	public void teamDonate() {
+		page.click(teamDonateButton);
+	}
+	
 	public void isDonorDetailsShowingInThisPartocularCampaing(String fName,String mailid,String amount) throws InterruptedException {
 		Thread.sleep(2000);
 		boolean flag=false;
@@ -85,6 +115,7 @@ public class PeerToPeerFundraisingRepo {
 			{
 				donorName=fname;
 				donorMail=mail;
+				break;
 			}
 		}
 		
@@ -97,14 +128,14 @@ public class PeerToPeerFundraisingRepo {
 	}
 	
 	public String getTeamName() {
-		Locator name=page.locator(teamName);
+		Locator name=page.locator(teamName).first();
 		name.waitFor();
 		String teamName=name.textContent().trim();
 		return teamName;
 	}
 	
 	public String getTeamTitle() {
-		Locator name=page.locator(teamTitle);
+		Locator name=page.locator(teamTitle).first();
 		name.waitFor();
 		String teamTitle=name.textContent().trim();
 		return teamTitle;

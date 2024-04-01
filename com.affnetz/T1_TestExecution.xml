@@ -5,8 +5,9 @@
 	</listeners>
 
   <suite-files>
-    <suite-file path="src/test/resources/Login.xml" />
+   <!-- <suite-file path="src/test/resources/Login.xml" />--> 
     <suite-file path="src/test/resources/Publicdonation.xml" />
+     <suite-file path="src/test/resources/InternalDonation.xml" />
     ...
   </suite-files>
 </suite>

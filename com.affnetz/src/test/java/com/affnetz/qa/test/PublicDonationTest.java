@@ -14,6 +14,7 @@ import com.affnetz.qa.factory.PlayWrightFactory;
 import com.microsoft.playwright.Page;
 import com.qa.affnetz.InternalPages.DashboardRepo;
 import com.qa.affnetz.InternalPages.PeerToPeerFundraisingRepo;
+import com.qa.affnetz.InternalPages.SettingPageRepo;
 import com.qa.affnetz.InternalPages.TributeDonationReportRepo;
 import com.qa.affnetz.InternalPages.TributeRepo;
 import com.qa.affnetz.Publicapages.LoginPageRepo;
@@ -40,26 +41,14 @@ public class PublicDonationTest {
 	TributeRepo tribute;
 	PublicCampaignRepo pc;
 	PeerToPeerFundraisingRepo fund;
-	
-	
-	String fname,lname,ph,amount,mailid;
-	String tributeName,TributeDonorFisrtName,TributeDonorLastName,TributeDonorMail,tributeAmt;
-	String campName,campFirstName,campLastName,CampAmt,CampMail;
-	String teamName,teamFirstName,teamLastName,teamAmt,teamMail;
-	Random rm=new Random();
-	int x=rm.nextInt(999);
-	Random rm1=new Random();
-	int y=rm1.nextInt(999);
-	Random rm2=new Random();
-	int w=rm2.nextInt(999);
-	Random rm3=new Random();
-	int z=rm3.nextInt(999); 
-	
+	SettingPageRepo settRepo;
+
 	
 	//-----------------------------------------DIRECT DONATION---------------------------------------------------------//
 	
 	/**Public donation with direct link 
 	 * @throws IOException */
+	
 	
 	@Test(priority =0,groups = {"DirectDonation","Donation"})
 	public void launchBrowser() throws IOException {
@@ -77,6 +66,10 @@ public class PublicDonationTest {
 	/**All the donor details fill 
 	 * @throws InterruptedException */
 	
+	
+	String fname,lname,ph,amount,mailid;
+	Random rm=new Random();
+	int x=rm.nextInt(999);
 	@Test(priority = 2,dependsOnMethods = "isDonationPage",groups = {"DirectDonation","Donation"})
 	public void fillAllDonorDetails() throws InterruptedException {
 		pd=new PublicDonationRepo(page);
@@ -144,10 +137,18 @@ public class PublicDonationTest {
 		dr=new DashboardRepo(page);
 		dr.clickOnMonthDonorLink();
 		dr.searchDonorDetaills(fname+" "+lname);
-		boolean flag=dr.isDonorDetailsShowing(fname+" "+lname);
+		dr.isDonorDetailsShowing(fname+" "+lname);
 		
-		assertTrue(flag);
-		
+	}
+	
+	@Test(priority = 8,groups = {"DirectDonation","Donation"})
+	public void isDonorShownInScreeningProcessForApproveTheuser() throws InterruptedException {
+		settRepo=new SettingPageRepo(page);
+		dr=new DashboardRepo(page);
+		dr.goToSettingPage();
+		settRepo.gotToScreeningProcessPage();
+		String name=fname+" "+lname;
+		settRepo.isDonorDetailsShownInScreeningProcess(name, mailid,"Donors");
 	}
 	
 	//--------------------------------------------TRIBUTE DONATION----------------------------------------------------------------
@@ -158,7 +159,7 @@ public class PublicDonationTest {
 	 * and also validate the tribute page opened or not
 	 * @throws IOException */
 	
-	@Test(priority = 8,groups = {"Tribute","Donation"})
+	@Test(priority = 9,groups = {"Tribute","Donation"})
 	public void goToPublicTributePage() throws IOException {
 		page=PlayWrightFactory.intitBrowser("login");
 //		page.navigate("https://t1.affnetz.org/login");
@@ -170,7 +171,10 @@ public class PublicDonationTest {
 	/** This method will click on one public tribute
 	 *  and validate the name is marching or not*/
 	
-	@Test(priority = 9,groups = {"Tribute","Donation"})
+	String tributeName,TributeDonorFisrtName,TributeDonorLastName,TributeDonorMail,tributeAmt;
+	Random rm1=new Random();
+	int y=rm1.nextInt(999);
+	@Test(priority = 10,groups = {"Tribute","Donation"})
 	public void clickOneTribute() {
 		pr=new PublicTributeRepo(page);
 		tributeName=pr.getTributeName();
@@ -187,7 +191,7 @@ public class PublicDonationTest {
 	 * check the tribute name is matching with the 
 	 * name showing in donation page or not */
 	
-	@Test(priority = 10,groups = {"Tribute","Donation"})
+	@Test(priority = 11,groups = {"Tribute","Donation"})
 	public void clickOnDonateButton() {
 		pr= new PublicTributeRepo(page);
 		pr.clickOnTributeDonateButton();
@@ -200,7 +204,7 @@ public class PublicDonationTest {
 	/** This method will fill the all donor details 
 	 * @throws InterruptedException */
 	
-	@Test(priority = 11,groups = {"Tribute","Donation"})
+	@Test(priority = 12,groups = {"Tribute","Donation"})
 	public void fillAllDonorDetails_Tribute() throws InterruptedException
 	{
 		pdr=new PublicTributeDonationRepo(page);
@@ -217,7 +221,7 @@ public class PublicDonationTest {
 	
 	
 	/** This method will fill the card details of donor */
-	@Test(priority = 12,groups = {"Tribute","Donation"})
+	@Test(priority = 13,groups = {"Tribute","Donation"})
 	public void setCardDetils_Tribute() {
 		pdr=new PublicTributeDonationRepo(page);
 		pdr.setCardDetails("4242424242424242", "4242","424","88888");
@@ -225,7 +229,7 @@ public class PublicDonationTest {
 	
 	
 	/** This method will click on donateButton on donation form and submit the details */
-	@Test(priority = 13,groups = {"Tribute","Donation"})
+	@Test(priority = 14,groups = {"Tribute","Donation"})
 	public void submitAllDetails_Tribute() throws InterruptedException {
 		Thread.sleep(2000);
 		pdr= new PublicTributeDonationRepo(page);
@@ -234,7 +238,7 @@ public class PublicDonationTest {
 	
 	
 	/** This method will check is donation form is submitted or not */
-	@Test(priority = 14,groups = {"Tribute","Donation"},dependsOnMethods = "submitAllDetails_Tribute")
+	@Test(priority = 15,groups = {"Tribute","Donation"},dependsOnMethods = "submitAllDetails_Tribute")
 	public void isDonationDone_Tribute() {
 		pdr=new PublicTributeDonationRepo(page);
 		pdr.isFormSubmit();
@@ -244,7 +248,7 @@ public class PublicDonationTest {
 	/** This method will check is donation receipt is downloaded or not.
 	 * This method will only execute if the donation is done if donation got failed then this method will be skipped*/
 	
-	@Test(priority = 15,groups = {"Tribute","Donation"},dependsOnMethods ="isDonationDone_Tribute" )
+	@Test(priority = 16,groups = {"Tribute","Donation"},dependsOnMethods ="isDonationDone_Tribute" )
 	public void isReciptDownload_Tribute() throws InterruptedException {
 		Thread.sleep(2000);
 		pd=new PublicDonationRepo(page);
@@ -257,7 +261,7 @@ public class PublicDonationTest {
 	 * This method will only execute if the donation is done if donation got failed then this method will be skipped 
 	 * @throws IOException */
 	
-	@Test(priority = 16,groups = {"Tribute","Donation"},dependsOnMethods = "isDonationDone_Tribute")
+	@Test(priority = 17,groups = {"Tribute","Donation"},dependsOnMethods = "isDonationDone_Tribute")
 	public void isPublicTributeDonorDetaiShowToSuperAdmin() throws InterruptedException, IOException {
 		page.goBack();
 		lp=new LoginPageRepo(page);
@@ -278,7 +282,7 @@ public class PublicDonationTest {
 	/** This method will login as a super admin and check after donation all the donor details
 	 *  should store in that particular tribute in donation section.
 	 * This method will only execute if the donation is done if donation got failed then this method will be skipped */
-	@Test(priority = 17,groups = {"Tribute","Donation"},dependsOnMethods = "isDonationDone_Tribute")
+	@Test(priority = 18,groups = {"Tribute","Donation"},dependsOnMethods = "isDonationDone_Tribute")
 	public void isDonorDetailShowInThatParticularTributeDonationSection() throws InterruptedException {
 		dr=new DashboardRepo(page);
 		dr.clickOnTributeLink();
@@ -289,6 +293,15 @@ public class PublicDonationTest {
 		tribute.clickOnSearchedTribute();
 		tribute.isDonorDetailsShowing(TributeDonorFisrtName, TributeDonorMail, tributeAmt);
 	}
+	@Test(priority = 19,groups = {"Tribute","Donation"},dependsOnMethods = "isDonationDone_Tribute")
+	public void isDonorShownInScreeningProcessForApproveTheuser_Tribute() throws InterruptedException {
+		settRepo=new SettingPageRepo(page);
+		dr=new DashboardRepo(page);
+		dr.goToSettingPage();
+		settRepo.gotToScreeningProcessPage();
+		String name=TributeDonorFisrtName+" "+TributeDonorLastName;
+		settRepo.isDonorDetailsShownInScreeningProcess(name, TributeDonorMail,"Donors");
+	}
 
 	//-------------------------------------------CAMPAIGN DONATION---------------------------------------------------------//
 	
@@ -296,7 +309,7 @@ public class PublicDonationTest {
 	 * and also validate the campaign page opened or not
 	 * @throws IOException */
 	
-	@Test(priority = 18,groups = {"Campaign","Donation"})
+	@Test(priority = 20,groups = {"Campaign","Donation"})
 	public void goToPublicCampaignPage() throws IOException {
 		page=PlayWrightFactory.intitBrowser("login");
 		lp=new LoginPageRepo(page);
@@ -305,11 +318,13 @@ public class PublicDonationTest {
 	}
 	
 	
-	
+	String campName,campFirstName,campLastName,CampAmt,CampMail;
+	Random rm2=new Random();
+	int w=rm2.nextInt(999);
 	/** This method will click on one public campaign
 	 *  and validate the name is marching or not*/
 	
-	@Test(priority = 19,groups = {"Campaign","Donation"})
+	@Test(priority = 21,groups = {"Campaign","Donation"})
 	public void clickOnCampaign() {
 		pc=new PublicCampaignRepo(page);
 		campName=pc.getCampaignName();
@@ -322,7 +337,7 @@ public class PublicDonationTest {
 	
 	/** This method will click on donate button in selected campaign*/
 	
-	@Test(priority = 20,groups = {"Campaign","Donation"})
+	@Test(priority = 22,groups = {"Campaign","Donation"})
 	public void clickOnCampDonateButton() {
 		pc=new PublicCampaignRepo(page);
 		pc.clickOnCampDonate();
@@ -332,7 +347,7 @@ public class PublicDonationTest {
 	
 	/** This method will fill the card details of donor */
 	
-	@Test(priority = 21,groups = {"Campaign","Donation"},dependsOnMethods = "clickOnCampDonateButton")
+	@Test(priority = 23,groups = {"Campaign","Donation"},dependsOnMethods = "clickOnCampDonateButton")
 	public void fillAllDonorDetails_Campaign() throws InterruptedException {
 		pd=new PublicDonationRepo(page);
 		campFirstName="Andr"+w+"ew";
@@ -349,7 +364,7 @@ public class PublicDonationTest {
 	
 	/** This method will fill the card details of donor */
 	
-	@Test(priority = 22,groups = {"Campaign","Donation"})
+	@Test(priority = 24,groups = {"Campaign","Donation"})
 	public void setCardDetils_Campaign() {
 		pd=new PublicDonationRepo(page);
 		pd.setCardDetails("4242424242424242", "4242","424","88888");
@@ -360,7 +375,7 @@ public class PublicDonationTest {
 	/** This method will click on donateButton on 
 	 * donation form and submit the details */
 	
-	@Test(priority = 23,groups = {"Campaign","Donation"})
+	@Test(priority = 25,groups = {"Campaign","Donation"})
 	public void submitAllDetails_Campaign() throws InterruptedException {
 		Thread.sleep(2000);
 		pd=new PublicDonationRepo(page);
@@ -371,7 +386,7 @@ public class PublicDonationTest {
 	
 	/** This method will check is donation form is submitted not */
 	
-	@Test(priority = 24,groups = {"Campaign","Donation"})
+	@Test(priority = 26,groups = {"Campaign","Donation"})
 	public void isDonationDone_Campaign() {
 		pd=new PublicDonationRepo(page);
 		pd.isFormSubmit();
@@ -380,7 +395,7 @@ public class PublicDonationTest {
 	
 	/** This method will check is receipt is download or not after donation */
 	
-	@Test(priority = 25,groups = {"Campaign","Donation"},dependsOnMethods = "isDonationDone_Campaign")
+	@Test(priority = 27,groups = {"Campaign","Donation"},dependsOnMethods = "isDonationDone_Campaign")
 	public void isReciptDownload_Campaign() throws InterruptedException {
 		Thread.sleep(2000);
 		pd=new PublicDonationRepo(page);
@@ -393,7 +408,7 @@ public class PublicDonationTest {
 	/** This method will login as a super admin and check is donor details is stored in donorReport or not
 	 * and super admin will able to show the donor details or not  */
 	
-	@Test(priority = 26,groups = {"Campaign","Donation"},dependsOnMethods = "isDonationDone_Campaign")
+	@Test(priority = 28,groups = {"Campaign","Donation"},dependsOnMethods = "isDonationDone_Campaign")
 	public void isPublicCampaignDonorDetailsIsStoredInDonorReport() throws InterruptedException, IOException {
 		
 		page.goBack();
@@ -415,7 +430,7 @@ public class PublicDonationTest {
 	 * and donor details will show in that campaign donation section */
 	
 	
-	@Test(priority = 27,groups = {"Campaign","Donation"},dependsOnMethods = "isDonationDone_Campaign")
+	@Test(priority = 29,groups = {"Campaign","Donation"},dependsOnMethods = "isDonationDone_Campaign")
 	public void isDonorDetailsIsShowingInThatParticularCampaignDonatiosSection() throws InterruptedException {
 		dr=new DashboardRepo(page);
 		dr.clickOnPeerToPeerFundarasing();
@@ -430,13 +445,26 @@ public class PublicDonationTest {
 		
 	}
 	
-//------------------------------------------------TEAM DONATION------------------------------------------------------------------//	
+	@Test(priority = 30,groups = {"Campaign","Donation"},dependsOnMethods = "isDonationDone_Campaign")
+	public void isDonorShownInScreeningProcessForApproveTheuser_Campaign() throws InterruptedException {
+		settRepo=new SettingPageRepo(page);
+		dr=new DashboardRepo(page);
+		dr.goToSettingPage();
+		settRepo.gotToScreeningProcessPage();
+		String name=campFirstName+" "+campLastName;
+		settRepo.isDonorDetailsShownInScreeningProcess(name, CampMail,"Donors");
+	}
+
 	
+//------------------------------------------------TEAM DONATION------------------------------------------------------------------//	
+	String teamName,teamFirstName,teamLastName,teamAmt,teamMail;
+	Random rm3=new Random();
+	int z=rm3.nextInt(999); 
 	/** This method will open the public campaign page 
 	 * and also validate the campaign page opened or not
 	 * @throws IOException */
 	
-	@Test(priority = 28,groups = {"Campaign","Donation","Team"})
+	@Test(priority = 31,groups = {"Campaign","Donation","Team"})
 	public void testPublicTeamCampaignDonation() throws IOException {
 		page=PlayWrightFactory.intitBrowser("login");
 		lp=new LoginPageRepo(page);
@@ -450,7 +478,7 @@ public class PublicDonationTest {
 	/** This method will click on one public campaign
 	 *  and validate the name is matching or not*/
 	
-	@Test(priority = 29,groups = {"Campaign","Donation","Team"})
+	@Test(priority = 32,groups = {"Campaign","Donation","Team"})
 	public void goToPublicCampaign() {
 		pc=new PublicCampaignRepo(page);
 		campName=pc.getCampaignName();
@@ -465,7 +493,7 @@ public class PublicDonationTest {
 	/** This method will click on one team
 	 *  and validate the name is marching or not*/
 	
-	@Test(priority = 30,groups = {"Campaign","Donation","Team"})
+	@Test(priority = 33,groups = {"Campaign","Donation","Team"})
 	public void goToCampaignTeam() {
 		pc=new PublicCampaignRepo(page);
 		pc.goToTeamSection();
@@ -479,7 +507,7 @@ public class PublicDonationTest {
 	
 	/** This Method will click on team donation button*/
 	
-	@Test(priority = 31,groups = {"Campaign","Donation","Team"})
+	@Test(priority = 34,groups = {"Campaign","Donation","Team"})
 	public void goToTeamDonationPage() {
 		pc=new PublicCampaignRepo(page);
 		pc.teamDonate();
@@ -489,7 +517,7 @@ public class PublicDonationTest {
 	
 	/** This method will fill the all donor details*/
 	
-	@Test(priority = 32,groups = {"Campaign","Donation","Team"})
+	@Test(priority = 35,groups = {"Campaign","Donation","Team"})
 	public void fillAllDonorDetails_Team() throws InterruptedException {
 		pd=new PublicDonationRepo(page);
 		teamFirstName="asteam"+w+"ew";
@@ -506,7 +534,7 @@ public class PublicDonationTest {
 	
 	/** This method will fill the card details*/
 	
-	@Test(priority = 33,groups = {"Campaign","Donation","Team"})
+	@Test(priority = 36,groups = {"Campaign","Donation","Team"})
 	public void setCardDetils_Team() {
 		pd=new PublicDonationRepo(page);
 		pd.setCardDetails("4242424242424242", "4242","424","88888");
@@ -517,7 +545,7 @@ public class PublicDonationTest {
 	/** This method will click on donateButton on 
 	 * donation form and submit the details */
 	
-	@Test(priority = 34,groups = {"Campaign","Donation","Team"})
+	@Test(priority = 37,groups = {"Campaign","Donation","Team"})
 	public void submitAllDetails_Team() throws InterruptedException {
 		Thread.sleep(2000);
 		pd=new PublicDonationRepo(page);
@@ -527,7 +555,7 @@ public class PublicDonationTest {
 	
 	/** This method will check is donation form is submitted not */
 	
-	@Test(priority = 35,groups = {"Campaign","Donation","Team"})
+	@Test(priority = 38,groups = {"Campaign","Donation","Team"})
 	public void isDonationDone_Team() {
 		pd=new PublicDonationRepo(page);
 		pd.isFormSubmit();
@@ -535,7 +563,7 @@ public class PublicDonationTest {
 	
 	/** This method will check is receipt is download or not after donation */
 	
-	@Test(priority = 36,groups = {"Campaign","Donation","Team"})
+	@Test(priority = 39,groups = {"Campaign","Donation","Team"})
 	public void isReciptDownload_Team() throws InterruptedException {
 		Thread.sleep(2000);
 		pd=new PublicDonationRepo(page);
@@ -546,7 +574,7 @@ public class PublicDonationTest {
 	
 	/** This method will login as a super admin and check is donor details is stored in donorReport or not
 	 * and super admin will able to show the donor details or not  */
-	@Test(priority = 37,groups = {"Campaign","Donation","Team"},dependsOnMethods = "isDonationDone_Team")
+	@Test(priority = 40,groups = {"Campaign","Donation","Team"},dependsOnMethods = "isDonationDone_Team")
 	public void isPublicCampaignTeamDonorDetailsIsStoredInDonorReport() throws InterruptedException, IOException {
 		
 		page.goBack();
@@ -566,7 +594,7 @@ public class PublicDonationTest {
 	/** This method will login as a super admin and check is donor details is stored in that particular campaign team donation section 
 	 * and super admin will able to show the donor details or not  */
 	
-	@Test(priority = 38,groups = {"Campaign","Donation","Team"},dependsOnMethods = "isDonationDone_Team")
+	@Test(priority = 41,groups = {"Campaign","Donation","Team"},dependsOnMethods = "isDonationDone_Team")
 	public void isDonorDetailsIsShowingInThatParticularCampaignTeamDonatiosSection() throws InterruptedException {
 		dr=new DashboardRepo(page);
 		dr.clickOnPeerToPeerFundarasing();
@@ -583,6 +611,15 @@ public class PublicDonationTest {
 		fund.goToDonationsSection();
 		fund.isDonorDetailsShowingInThisPartocularCampaing(teamFirstName, teamMail, teamAmt);
 		
+	}
+	@Test(priority = 42,groups = {"Campaign","Donation","Team"},dependsOnMethods = "isDonationDone_Team")
+	public void isDonorShownInScreeningProcessForApproveTheuser_Team() throws InterruptedException {
+		settRepo=new SettingPageRepo(page);
+		dr=new DashboardRepo(page);
+		dr.goToSettingPage();
+		settRepo.gotToScreeningProcessPage();
+		String name=teamFirstName+" "+teamLastName;
+		settRepo.isDonorDetailsShownInScreeningProcess(name, teamMail,"Donors");
 	}
 	
 	

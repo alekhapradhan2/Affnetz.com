@@ -33,6 +33,8 @@ public class DashboardRepo {
 	
 	private String stakeHoldersLink="//div[text()='Stakeholders']";
 	
+	private String settingsLink="//div[text()='Settings']";
+	
 	
 	
 	
@@ -56,26 +58,27 @@ public class DashboardRepo {
 		
 	}
 	
-	public boolean isDonorDetailsShowing(String Dname) throws InterruptedException
+	public void isDonorDetailsShowing(String Dname) throws InterruptedException
 	{
 		Thread.sleep(2000);
 		Locator row=page.locator("div.v-data-table__wrapper tr").nth(1);
 		row.waitFor();
-		boolean flag=false;
 		Locator col=row.locator("xpath=//td");
+		String donorName=null;
 		for(int i=0;i<col.count();i++)
 		{
 			String name=col.nth(0).textContent();
 			System.out.println(name);
 			if(name.equalsIgnoreCase(Dname))
 			{
-				flag=true;
+				donorName=name;
 				break;
 			}
 			
 		}
-	
-		return flag;
+		
+		assertEquals(donorName, Dname);
+
 		
 	}
 	
@@ -133,6 +136,10 @@ public class DashboardRepo {
 	
 	public void goToStakeHolders() {
 		page.click(stakeHoldersLink);
+	}
+	
+	public void goToSettingPage() {
+		page.click(settingsLink);
 	}
 	
 	

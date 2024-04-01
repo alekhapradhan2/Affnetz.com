@@ -24,8 +24,7 @@ public class PlayWrightFactory {
 	static LoginPageRepo lp;
 	static Properties prop;
 	
-	static boolean flag=false;
-	
+	static boolean flag=false;	
 	public static Page intitBrowser(String whichPage) throws IOException
 	{
 		

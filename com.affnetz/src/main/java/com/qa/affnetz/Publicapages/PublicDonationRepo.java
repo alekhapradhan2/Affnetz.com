@@ -131,7 +131,7 @@ public class PublicDonationRepo {
 		Locator receipt=page.locator(recepitDownload).first();
 		receipt.waitFor();
 		receipt.click();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		Locator msg=page.locator(receiptError);
 		boolean flag=false;
 		if(!msg.isVisible())

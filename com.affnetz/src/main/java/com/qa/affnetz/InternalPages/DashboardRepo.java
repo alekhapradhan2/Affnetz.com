@@ -35,6 +35,9 @@ public class DashboardRepo {
 	
 	private String settingsLink="//div[text()='Settings']";
 	
+	private String entitiesLink="//div[text()='Entities']";
+	
+	
 	
 	
 	
@@ -142,6 +145,9 @@ public class DashboardRepo {
 		page.click(settingsLink);
 	}
 	
+	public void goToEntityPage() {
+		page.click(entitiesLink);
+	}
 	
 
 }

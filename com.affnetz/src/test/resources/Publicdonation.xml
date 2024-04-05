@@ -7,7 +7,7 @@
 	</listeners>	
 	<test name="Public Donation">
 		<groups>
-			<run><include name="DirectDonation"></include></run>
+			<run><include name="Donation"></include></run>
 		</groups>
 		<classes>
 			<class name="com.affnetz.qa.test.PublicDonationTest"></class>

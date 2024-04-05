@@ -10,6 +10,7 @@ import com.microsoft.playwright.Page;
 import com.qa.affnetz.Publicapages.LoginPageRepo;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import static org.testng.Assert.assertTrue;
 
 import java.io.IOException;
 
@@ -40,11 +41,13 @@ public class Logintest{
 		lp=new LoginPageRepo(page);
 		PlayWrightFactory.login();
 		lp.isLogin();
+		
 	}
 	
 	@Test(priority = 2,testName="Do Logout",dependsOnMethods = "doLoginWithValidCradential")
 	public void dologout() throws InterruptedException {
 		lp=new LoginPageRepo(page);
+		page.reload();
 		lp.doLogout();
 		lp.isLogout();
 	}

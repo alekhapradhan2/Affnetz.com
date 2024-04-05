@@ -149,6 +149,7 @@ public class PublicDonationTest {
 		settRepo.gotToScreeningProcessPage();
 		String name=fname+" "+lname;
 		settRepo.isDonorDetailsShownInScreeningProcess(name, mailid,"Donors");
+
 	}
 	
 	//--------------------------------------------TRIBUTE DONATION----------------------------------------------------------------
@@ -161,11 +162,20 @@ public class PublicDonationTest {
 	
 	@Test(priority = 9,groups = {"Tribute","Donation"})
 	public void goToPublicTributePage() throws IOException {
-		page=PlayWrightFactory.intitBrowser("login");
-//		page.navigate("https://t1.affnetz.org/login");
-		lp=new LoginPageRepo(page);
-		lp.clickTribute();
-		assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("tributeUrl"));
+		try {
+			lp=new LoginPageRepo(page);
+			lp.doLogout();
+			lp.clickTribute();
+			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("tributeUrl"));
+		} catch (Exception e) {
+			page=PlayWrightFactory.intitBrowser("login");
+//			page.navigate("https://t1.affnetz.org/login");
+			lp=new LoginPageRepo(page);
+			lp.clickTribute();
+			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("tributeUrl"));
+		}
+		
+
 	}
 	
 	/** This method will click on one public tribute
@@ -301,6 +311,7 @@ public class PublicDonationTest {
 		settRepo.gotToScreeningProcessPage();
 		String name=TributeDonorFisrtName+" "+TributeDonorLastName;
 		settRepo.isDonorDetailsShownInScreeningProcess(name, TributeDonorMail,"Donors");
+;
 	}
 
 	//-------------------------------------------CAMPAIGN DONATION---------------------------------------------------------//
@@ -311,11 +322,20 @@ public class PublicDonationTest {
 	
 	@Test(priority = 20,groups = {"Campaign","Donation"})
 	public void goToPublicCampaignPage() throws IOException {
-		page=PlayWrightFactory.intitBrowser("login");
-		lp=new LoginPageRepo(page);
-		lp.clickfundRaising();
-		assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("campaignUrl"));
-	}
+		
+		try {
+			lp=new LoginPageRepo(page);
+			lp.doLogout();
+			lp.clickfundRaising();
+			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("campaignUrl"));
+		} catch (Exception e) {
+			page=PlayWrightFactory.intitBrowser("login");
+			lp=new LoginPageRepo(page);
+			lp.clickfundRaising();
+			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("campaignUrl"));
+		}
+		}
+		
 	
 	
 	String campName,campFirstName,campLastName,CampAmt,CampMail;
@@ -466,10 +486,19 @@ public class PublicDonationTest {
 	
 	@Test(priority = 31,groups = {"Campaign","Donation","Team"})
 	public void testPublicTeamCampaignDonation() throws IOException {
-		page=PlayWrightFactory.intitBrowser("login");
-		lp=new LoginPageRepo(page);
-		lp.clickfundRaising();
-		assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("campaignUrl"));
+		try {
+			
+			lp=new LoginPageRepo(page);
+			lp.doLogout();
+			lp.clickfundRaising();
+			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("campaignUrl"));
+		} catch (Exception e) {
+			page=PlayWrightFactory.intitBrowser("login");
+			lp=new LoginPageRepo(page);
+			lp.clickfundRaising();
+			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("campaignUrl"));
+		}
+		
 		
 	}
 	
@@ -620,6 +649,7 @@ public class PublicDonationTest {
 		settRepo.gotToScreeningProcessPage();
 		String name=teamFirstName+" "+teamLastName;
 		settRepo.isDonorDetailsShownInScreeningProcess(name, teamMail,"Donors");
+
 	}
 	
 	

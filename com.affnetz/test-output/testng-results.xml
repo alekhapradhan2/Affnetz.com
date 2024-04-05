@@ -1,25 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="18" passed="18" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-04-01T17:10:34 IST" name="Default suite" finished-at="2024-04-01T17:11:46 IST" duration-ms="71922">
+  <suite started-at="2024-04-05T12:54:10 IST" name="Manual Donation" finished-at="2024-04-05T12:57:30 IST" duration-ms="200017">
     <groups>
+      <group name="Manual Donation">
+        <method signature="ManualDonationTest.goToTributePage()[pri:16, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="goToTributePage" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.goToOneTribute()[pri:17, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="goToOneTribute" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.clickOnManualDonationPage()[pri:18, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="clickOnManualDonationPage" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.setTributeDonorAddress()[pri:19, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="setTributeDonorAddress" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.submitTheFromAndCheckDonoationisDoneOrNot_tribute()[pri:20, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="submitTheFromAndCheckDonoationisDoneOrNot_tribute" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.isReceiptDownload_tribute()[pri:22, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="isReceiptDownload_tribute" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.checkThatDonorDetailsIsStoreInTributeReportOrNor()[pri:23, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="checkThatDonorDetailsIsStoreInTributeReportOrNor" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.checkThatDonorDeatilShowInThatParticularTributePage()[pri:24, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="checkThatDonorDeatilShowInThatParticularTributePage" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.isThisTributeManualDonationIsShownInThatParticularDonorProfilePage()[pri:25, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="isThisTributeManualDonationIsShownInThatParticularDonorProfilePage" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.goToCampaignPage_Team()[pri:35, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="goToCampaignPage_Team" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.goToOneCampaignTeamSection()[pri:36, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="goToOneCampaignTeamSection" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.clickOnTeamManulDonationButton()[pri:37, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="clickOnTeamManulDonationButton" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.submitTheFromAndCheckDonoationisDoneOrNot_Team()[pri:39, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="submitTheFromAndCheckDonoationisDoneOrNot_Team" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.isReceiptDownload_Team()[pri:40, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="isReceiptDownload_Team" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.checkThisTeamManualDonoraDetailsIsStoreInDonationReportOrNor()[pri:41, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="checkThisTeamManualDonoraDetailsIsStoreInDonationReportOrNor" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.checkThisTeamManualDonorDetailsIsShowInThatParticularCampaignAndTeamOrNot()[pri:42, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="checkThisTeamManualDonorDetailsIsShowInThatParticularCampaignAndTeamOrNot" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.isThisTeamManualDonationIsShownInThatParticularDonorProfilePage()[pri:43, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="isThisTeamManualDonationIsShownInThatParticularDonorProfilePage" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.setAllDonorDetails_Team()[pri:38, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="setAllDonorDetails_Team" class="com.affnetz.qa.test.ManualDonationTest"/>
+      </group> <!-- Manual Donation -->
+      <group name="Tribute">
+        <method signature="ManualDonationTest.goToTributePage()[pri:16, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="goToTributePage" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.goToOneTribute()[pri:17, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="goToOneTribute" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.clickOnManualDonationPage()[pri:18, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="clickOnManualDonationPage" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.setTributeDonorAddress()[pri:19, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="setTributeDonorAddress" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.submitTheFromAndCheckDonoationisDoneOrNot_tribute()[pri:20, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="submitTheFromAndCheckDonoationisDoneOrNot_tribute" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.isReceiptDownload_tribute()[pri:22, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="isReceiptDownload_tribute" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.checkThatDonorDetailsIsStoreInTributeReportOrNor()[pri:23, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="checkThatDonorDetailsIsStoreInTributeReportOrNor" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.checkThatDonorDeatilShowInThatParticularTributePage()[pri:24, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="checkThatDonorDeatilShowInThatParticularTributePage" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.isThisTributeManualDonationIsShownInThatParticularDonorProfilePage()[pri:25, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="isThisTributeManualDonationIsShownInThatParticularDonorProfilePage" class="com.affnetz.qa.test.ManualDonationTest"/>
+      </group> <!-- Tribute -->
+      <group name="Team">
+        <method signature="ManualDonationTest.goToCampaignPage_Team()[pri:35, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="goToCampaignPage_Team" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.goToOneCampaignTeamSection()[pri:36, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="goToOneCampaignTeamSection" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.clickOnTeamManulDonationButton()[pri:37, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="clickOnTeamManulDonationButton" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.submitTheFromAndCheckDonoationisDoneOrNot_Team()[pri:39, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="submitTheFromAndCheckDonoationisDoneOrNot_Team" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.isReceiptDownload_Team()[pri:40, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="isReceiptDownload_Team" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.checkThisTeamManualDonoraDetailsIsStoreInDonationReportOrNor()[pri:41, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="checkThisTeamManualDonoraDetailsIsStoreInDonationReportOrNor" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.checkThisTeamManualDonorDetailsIsShowInThatParticularCampaignAndTeamOrNot()[pri:42, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="checkThisTeamManualDonorDetailsIsShowInThatParticularCampaignAndTeamOrNot" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.isThisTeamManualDonationIsShownInThatParticularDonorProfilePage()[pri:43, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="isThisTeamManualDonationIsShownInThatParticularDonorProfilePage" class="com.affnetz.qa.test.ManualDonationTest"/>
+        <method signature="ManualDonationTest.setAllDonorDetails_Team()[pri:38, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="setAllDonorDetails_Team" class="com.affnetz.qa.test.ManualDonationTest"/>
+      </group> <!-- Team -->
+      <group name="StakeHolder">
+        <method signature="ManualDonationTest.setTributeDonorAddress()[pri:19, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" name="setTributeDonorAddress" class="com.affnetz.qa.test.ManualDonationTest"/>
+      </group> <!-- StakeHolder -->
     </groups>
-    <test started-at="2024-04-01T17:10:34 IST" name="Default test" finished-at="2024-04-01T17:11:46 IST" duration-ms="71922">
-      <class name="com.affnetz.qa.test.ManualDonation">
-        <test-method signature="GoToStakeHolder()[pri:0, instance:com.affnetz.qa.test.ManualDonation@550dbc7a]" started-at="2024-04-01T17:10:34 IST" name="GoToStakeHolder" finished-at="2024-04-01T17:11:23 IST" duration-ms="48348" status="PASS">
+    <test started-at="2024-04-05T12:54:10 IST" name="Manual Donation" finished-at="2024-04-05T12:57:30 IST" duration-ms="200017">
+      <class name="com.affnetz.qa.test.ManualDonationTest">
+        <test-method signature="goToTributePage()[pri:16, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" started-at="2024-04-05T12:54:10 IST" name="goToTributePage" finished-at="2024-04-05T12:54:52 IST" duration-ms="41799" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- GoToStakeHolder -->
-        <test-method signature="goToOneUserProfil()[pri:1, instance:com.affnetz.qa.test.ManualDonation@550dbc7a]" started-at="2024-04-01T17:11:23 IST" name="goToOneUserProfil" finished-at="2024-04-01T17:11:30 IST" duration-ms="7341" status="PASS">
+        </test-method> <!-- goToTributePage -->
+        <test-method signature="goToOneTribute()[pri:17, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" started-at="2024-04-05T12:54:52 IST" name="goToOneTribute" finished-at="2024-04-05T12:54:56 IST" depends-on-methods="com.affnetz.qa.test.ManualDonationTest.goToTributePage" duration-ms="4281" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- goToOneUserProfil -->
-        <test-method signature="checkThatInThatUserProfileThisDonationIsShowingOrNot()[pri:7, instance:com.affnetz.qa.test.ManualDonation@550dbc7a]" started-at="2024-04-01T17:11:30 IST" name="checkThatInThatUserProfileThisDonationIsShowingOrNot" finished-at="2024-04-01T17:11:46 IST" duration-ms="16079" status="PASS">
+        </test-method> <!-- goToOneTribute -->
+        <test-method signature="clickOnManualDonationPage()[pri:18, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" started-at="2024-04-05T12:54:56 IST" name="clickOnManualDonationPage" finished-at="2024-04-05T12:55:01 IST" depends-on-methods="com.affnetz.qa.test.ManualDonationTest.goToOneTribute" duration-ms="4594" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- checkThatInThatUserProfileThisDonationIsShowingOrNot -->
-      </class> <!-- com.affnetz.qa.test.ManualDonation -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+        </test-method> <!-- clickOnManualDonationPage -->
+        <test-method signature="setTributeDonorAddress()[pri:19, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" started-at="2024-04-05T12:55:01 IST" name="setTributeDonorAddress" finished-at="2024-04-05T12:55:05 IST" duration-ms="4386" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setTributeDonorAddress -->
+        <test-method signature="submitTheFromAndCheckDonoationisDoneOrNot_tribute()[pri:20, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" started-at="2024-04-05T12:55:05 IST" name="submitTheFromAndCheckDonoationisDoneOrNot_tribute" finished-at="2024-04-05T12:55:12 IST" duration-ms="6310" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- submitTheFromAndCheckDonoationisDoneOrNot_tribute -->
+        <test-method signature="isReceiptDownload_tribute()[pri:22, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" started-at="2024-04-05T12:55:12 IST" name="isReceiptDownload_tribute" finished-at="2024-04-05T12:55:19 IST" duration-ms="7612" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- isReceiptDownload_tribute -->
+        <test-method signature="checkThatDonorDetailsIsStoreInTributeReportOrNor()[pri:23, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" started-at="2024-04-05T12:55:19 IST" name="checkThatDonorDetailsIsStoreInTributeReportOrNor" finished-at="2024-04-05T12:55:29 IST" depends-on-methods="com.affnetz.qa.test.ManualDonationTest.submitTheFromAndCheckDonoationisDoneOrNot_tribute" duration-ms="9629" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkThatDonorDetailsIsStoreInTributeReportOrNor -->
+        <test-method signature="checkThatDonorDeatilShowInThatParticularTributePage()[pri:24, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" started-at="2024-04-05T12:55:29 IST" name="checkThatDonorDeatilShowInThatParticularTributePage" finished-at="2024-04-05T12:55:44 IST" depends-on-methods="com.affnetz.qa.test.ManualDonationTest.submitTheFromAndCheckDonoationisDoneOrNot_tribute" duration-ms="14585" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkThatDonorDeatilShowInThatParticularTributePage -->
+        <test-method signature="isThisTributeManualDonationIsShownInThatParticularDonorProfilePage()[pri:25, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" started-at="2024-04-05T12:55:44 IST" name="isThisTributeManualDonationIsShownInThatParticularDonorProfilePage" finished-at="2024-04-05T12:56:04 IST" depends-on-methods="com.affnetz.qa.test.ManualDonationTest.submitTheFromAndCheckDonoationisDoneOrNot_tribute" duration-ms="19996" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- isThisTributeManualDonationIsShownInThatParticularDonorProfilePage -->
+        <test-method signature="goToCampaignPage_Team()[pri:35, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" started-at="2024-04-05T12:56:04 IST" name="goToCampaignPage_Team" finished-at="2024-04-05T12:56:07 IST" duration-ms="3351" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- goToCampaignPage_Team -->
+        <test-method signature="goToOneCampaignTeamSection()[pri:36, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" started-at="2024-04-05T12:56:07 IST" name="goToOneCampaignTeamSection" finished-at="2024-04-05T12:56:17 IST" duration-ms="10300" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- goToOneCampaignTeamSection -->
+        <test-method signature="clickOnTeamManulDonationButton()[pri:37, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" started-at="2024-04-05T12:56:17 IST" name="clickOnTeamManulDonationButton" finished-at="2024-04-05T12:56:25 IST" duration-ms="7967" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- clickOnTeamManulDonationButton -->
+        <test-method signature="setAllDonorDetails_Team()[pri:38, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" started-at="2024-04-05T12:56:25 IST" name="setAllDonorDetails_Team" finished-at="2024-04-05T12:56:29 IST" duration-ms="3754" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setAllDonorDetails_Team -->
+        <test-method signature="submitTheFromAndCheckDonoationisDoneOrNot_Team()[pri:39, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" started-at="2024-04-05T12:56:29 IST" name="submitTheFromAndCheckDonoationisDoneOrNot_Team" finished-at="2024-04-05T12:56:36 IST" duration-ms="6696" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- submitTheFromAndCheckDonoationisDoneOrNot_Team -->
+        <test-method signature="isReceiptDownload_Team()[pri:40, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" started-at="2024-04-05T12:56:36 IST" name="isReceiptDownload_Team" finished-at="2024-04-05T12:56:43 IST" duration-ms="7333" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- isReceiptDownload_Team -->
+        <test-method signature="checkThisTeamManualDonoraDetailsIsStoreInDonationReportOrNor()[pri:41, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" started-at="2024-04-05T12:56:43 IST" name="checkThisTeamManualDonoraDetailsIsStoreInDonationReportOrNor" finished-at="2024-04-05T12:56:57 IST" depends-on-methods="com.affnetz.qa.test.ManualDonationTest.submitTheFromAndCheckDonoationisDoneOrNot_Team" duration-ms="13755" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkThisTeamManualDonoraDetailsIsStoreInDonationReportOrNor -->
+        <test-method signature="checkThisTeamManualDonorDetailsIsShowInThatParticularCampaignAndTeamOrNot()[pri:42, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" started-at="2024-04-05T12:56:57 IST" name="checkThisTeamManualDonorDetailsIsShowInThatParticularCampaignAndTeamOrNot" finished-at="2024-04-05T12:57:12 IST" depends-on-methods="com.affnetz.qa.test.ManualDonationTest.submitTheFromAndCheckDonoationisDoneOrNot_Team" duration-ms="15633" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkThisTeamManualDonorDetailsIsShowInThatParticularCampaignAndTeamOrNot -->
+        <test-method signature="isThisTeamManualDonationIsShownInThatParticularDonorProfilePage()[pri:43, instance:com.affnetz.qa.test.ManualDonationTest@38089a5a]" started-at="2024-04-05T12:57:12 IST" name="isThisTeamManualDonationIsShownInThatParticularDonorProfilePage" finished-at="2024-04-05T12:57:30 IST" depends-on-methods="com.affnetz.qa.test.ManualDonationTest.submitTheFromAndCheckDonoationisDoneOrNot_Team" duration-ms="17789" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- isThisTeamManualDonationIsShownInThatParticularDonorProfilePage -->
+      </class> <!-- com.affnetz.qa.test.ManualDonationTest -->
+    </test> <!-- Manual Donation -->
+  </suite> <!-- Manual Donation -->
 </testng-results>

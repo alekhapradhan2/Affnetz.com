@@ -57,6 +57,8 @@ public class TributeRepo {
 	
 	private String donateButton="xpath=//button[@id='donate_btn']";
 	
+	private String manualDonationButton="//span[contains(text(),'Manual Donation')]";
+	
 	private String recepitDownload="xpath=//span[text()='Download Receipt']";
 	
 	private String receiptError="//div[@class='card-details']";
@@ -65,7 +67,7 @@ public class TributeRepo {
 		this.page=page;
 	}
 	
-	public void searchTributeName(String tName) {
+	public void searchTributeName(String tName) throws InterruptedException {
 		Locator searchBox=page.locator(searchTribute).first();
 		Locator searchButton=page.locator(tributeSearchButton).first();
 		searchBox.waitFor();
@@ -194,6 +196,10 @@ public class TributeRepo {
 			flag=true;
 		}
 		return flag;
+	}
+	
+	public void clickOnManualDonationButton() {
+		page.click(manualDonationButton);
 	}
 	
 	

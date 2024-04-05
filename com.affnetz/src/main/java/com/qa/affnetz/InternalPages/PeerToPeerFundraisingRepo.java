@@ -35,6 +35,7 @@ public class PeerToPeerFundraisingRepo {
 	
 	private String teamDonateButton="//span[contains(text(),' Donate')]";
 	
+	private String manualDonationPage="//span[contains(text(),'Manual Donation')]";
 	
 
 	
@@ -160,6 +161,11 @@ public class PeerToPeerFundraisingRepo {
 		}
 	
 		
+	}
+	
+	public void clickOnManualDonationButton()
+	{
+		page.click(manualDonationPage);
 	}
 	
 	

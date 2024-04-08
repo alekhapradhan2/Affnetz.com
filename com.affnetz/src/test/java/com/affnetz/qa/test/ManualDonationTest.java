@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import com.affnetz.qa.factory.PlayWrightFactory;
 import com.microsoft.playwright.Page;
 import com.qa.affnetz.InternalPages.DashboardRepo;
+import com.qa.affnetz.InternalPages.EntitiesPageRepo;
 import com.qa.affnetz.InternalPages.ManualDonationRepo;
 import com.qa.affnetz.InternalPages.ManualTributeDonationRepo;
 import com.qa.affnetz.InternalPages.PeerToPeerFundraisingRepo;
@@ -534,7 +535,51 @@ public class ManualDonationTest {
 		String name=teamDonorFirstName+" "+teamDonorLastName;
 		sk.goToThatDonation("campaign");
 		sk.verifyDonorDetails(name, paymentMode, teamDonorMail, campaignName);
-	}	
+	}
+	
+	
+	//---------------------------------------------Entiti Donation---------------------------------------------------------------------//
+	@Test(priority = 44,groups = {"Entiti","Manual Donation"})
+	public void goToEntityPage() throws IOException
+	{
+		try {
+			db=new DashboardRepo(page);
+			db.goToEntityPage();
+			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("entitiUrl"));
+		} catch (Exception e) {
+			page=PlayWrightFactory.intitBrowser("login");
+			PlayWrightFactory.login();
+			db=new DashboardRepo(page);
+			page.reload();
+			db.goToEntityPage();
+			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("entitiUrl"));
+		}
+	}
+	
+	String entitiName;
+	int entitiDonationAmount;
+	EntitiesPageRepo ep;
+	
+	@Test(priority = 45,groups = {"Entiti","Manual Donation"})
+	public void ClickOnOneEntiti()
+	{
+		ep=new EntitiesPageRepo(page);
+		entitiName=ep.getEntitiName();
+		System.out.println(entitiName);
+		ep.clickOneEntiti();
+		String headline=ep.getEntitiHeadline();
+		System.out.println(headline);
+		assertEquals(headline, entitiName);
+	}
+	@Test(priority = 45,groups = {"Entiti","Manual Donation"})
+	public void doOneEntitiManualDonation() throws InterruptedException {
+		ep=new EntitiesPageRepo(page);
+		ep.clickOnManualDonationButton();
+		
+		entitiDonationAmount=ep.setDonationAmount(); 
+		ep.selectPaymentMode();
+		ep.setDateAndTime("20");
+	}
 	
 	
 	

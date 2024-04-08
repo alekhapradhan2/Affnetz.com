@@ -37,7 +37,7 @@ public class Listener implements ITestListener {
 		reporter.config().setReportName("Affnetz Test Results");
 		exetentReport.attachReporter(reporter);
 		exetentReport.setSystemInfo("System", "Window");
-		exetentReport.setSystemInfo("Domain", "Affnetz");
+		exetentReport.setSystemInfo("Enviroment", "Affnetz_T1");
 		exetentReport.setSystemInfo("Author", "Alekha Pradhan");
 		
 		return exetentReport;

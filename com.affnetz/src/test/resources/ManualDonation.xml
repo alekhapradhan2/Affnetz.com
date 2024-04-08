@@ -9,7 +9,7 @@
 	<test name="Manual Donation">
 		<groups>
 			<run>
-				<include name="Team"></include>
+				<include name="Entiti"></include>
 				
 			</run>
 		</groups>

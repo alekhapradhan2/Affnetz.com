@@ -63,6 +63,10 @@ public class TributeRepo {
 	
 	private String receiptError="//div[@class='card-details']";
 	
+	private String createButton="//span[contains(text(),'Create')]";
+	
+	private String editTribute="//i[text()='edit']";
+	
 	public TributeRepo(Page page) {
 		this.page=page;
 	}
@@ -202,6 +206,19 @@ public class TributeRepo {
 		page.click(manualDonationButton);
 	}
 	
+	public void clickOnCreateButton()
+	{
+		Locator create=page.locator(createButton);
+		create.waitFor();
+		page.click(createButton);
+	}
+	public Locator getCreateButton()
+	{
+		Locator create=page.locator(createButton);
+		return create;
+	}
+	
+	public 
 	
 
 }

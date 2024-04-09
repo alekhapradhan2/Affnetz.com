@@ -1,0 +1,12 @@
+<suite name="allSuites">
+	
+	<listeners>
+		<listener class-name="com.affnetz.qa.factory.Listener"></listener>
+	</listeners>
+
+  <suite-files>
+     <suite-file path="src/test/resources/ManualDonation.xml" />
+     
+    ...
+  </suite-files>
+</suite>

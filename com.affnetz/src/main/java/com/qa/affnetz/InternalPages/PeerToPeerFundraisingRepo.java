@@ -37,6 +37,12 @@ public class PeerToPeerFundraisingRepo {
 	
 	private String manualDonationPage="//span[contains(text(),'Manual Donation')]";
 	
+	private String createButton="//span[contains(text(),'Create')]";
+	
+	private String teamButton="//span[contains(text(),'Teams')]";
+	
+	private String eventEdit="//i[text()='edit']";
+	
 
 	
 	
@@ -167,6 +173,38 @@ public class PeerToPeerFundraisingRepo {
 	{
 		page.click(manualDonationPage);
 	}
+	
+	public Locator getCreateButton()
+	{
+		Locator create=page.locator(createButton);
+		return create;
+	}
+	
+	public void clickOnCreateButton()
+	{
+		Locator create=page.locator(createButton);
+		create.waitFor();
+		page.click(createButton);
+	}
+	
+	public Locator getonTeamButton()
+	{
+		Locator create=page.locator(teamButton);
+		return create;
+	}
+	
+	public void clickOnTeamButton()
+	{
+		Locator create=page.locator(teamButton);
+		create.waitFor();
+		page.click(teamButton);
+	}
+	
+	public void clickEditCampaign() {
+		page.click(eventEdit);
+	}
+	
+	
 	
 	
 

@@ -16,7 +16,9 @@ import com.microsoft.playwright.Page;
 import com.qa.affnetz.InternalPages.DashboardRepo;
 import com.qa.affnetz.InternalPages.EventPageRepo;
 import com.qa.affnetz.InternalPages.HomePageRepo;
+import com.qa.affnetz.InternalPages.PeerToPeerFundraisingRepo;
 import com.qa.affnetz.InternalPages.StakeHolderRepo;
+import com.qa.affnetz.InternalPages.TributeRepo;
 import com.qa.affnetz.Publicapages.LoginPageRepo;
 
 public class SmokeTesting {
@@ -42,21 +44,23 @@ public class SmokeTesting {
 		try {
 			db=new DashboardRepo(page);
 			db.goToDashBoard();
+			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("dashboardUrl"));
 		} catch (Exception e) {
 			page=PlayWrightFactory.intitBrowser("login");
 			PlayWrightFactory.login();
+			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("dashboardUrl"));
 		}
 		db=new DashboardRepo(page);
-		assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("dashboardUrl"));
+		
 		db.clickOnMonthDonorLink();
-		if(page.locator("//h1").textContent().trim().contains("New Donor Report")) {
+		if( page.locator("//h1").textContent().trim().contains("New Donor Report")) {
 			assertTrue(true, "New Donor Report");
 		}else {
 			assertTrue(false, "New Donor Report");
 		}
 		page.goBack();
 		db.clickOnMemberReportLink();
-		if(page.locator("//h1").textContent().trim().contains("New Member Report"))
+		if( page.locator("//h1").textContent().trim().contains("New Member Report"))
 		{
 			assertTrue(true, "New Member Report");
 		}else {
@@ -64,7 +68,7 @@ public class SmokeTesting {
 		}
 		page.goBack();
 		db.clickOnVolunteerLink();
-		if(page.locator("//h1").textContent().trim().contains("Volunteer Report"))
+		if( page.locator("//h1").textContent().trim().contains("Volunteer Report"))
 		{
 			assertTrue(true, "Volunteer Report");
 		}else {
@@ -73,7 +77,7 @@ public class SmokeTesting {
 		
 		page.goBack();
 		db.clickOnDonorReportLink();
-		if(page.locator("//h1").textContent().trim().contains("Donation Report"))
+		if( page.locator("//h1").textContent().trim().contains("Donation Report"))
 		{
 			assertTrue(true, "Donation Reportt");
 		}else {
@@ -83,20 +87,22 @@ public class SmokeTesting {
 	
 	StakeHolderRepo sk;
 	@Test(priority = 2)
-	public void staleHolder() throws IOException, InterruptedException {
+	public void stakeHolder() throws IOException, InterruptedException {
 		try {
 			db=new DashboardRepo(page);
 			db.goToStakeHolders();
+			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("stakeholderUrl"));
 		} catch (Exception e) {
 			page=PlayWrightFactory.intitBrowser("login");
 			PlayWrightFactory.login();
 			db=new DashboardRepo(page);
 			page.reload();
 			db.goToStakeHolders();
+			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("stakeholderUrl"));
 		}
 		sk=new StakeHolderRepo(page);
 		
-		assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("stakeholderUrl"));
+		
 		
 		if(sk.getCreateButton().isEnabled() && sk.getImportButton().isEnabled())
 		{
@@ -106,7 +112,7 @@ public class SmokeTesting {
 		}
 		
 		sk.clickOnCreateButton();
-		if(page.locator("//h1").textContent().trim().equals("New Stakeholders"))
+		if( page.locator("//h1").textContent().trim().equals("New Stakeholders"))
 		{
 			assertTrue(true);
 		}else {
@@ -133,7 +139,7 @@ public class SmokeTesting {
 		}
 		
 		sk.clickOnEditButton();
-		if(page.locator("//h1").textContent().trim().contains("Edit Profile"))
+		if( page.locator("//h1").textContent().trim().contains("Edit Profile"))
 		{
 			assertTrue(true);
 		}else {
@@ -146,15 +152,17 @@ public class SmokeTesting {
 		try {
 			db=new DashboardRepo(page);
 			db.goToEventPage();
+			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("eventUrl"));
 		} catch (Exception e) {
 			page=PlayWrightFactory.intitBrowser("login");
 			PlayWrightFactory.login();
 			db=new DashboardRepo(page);
 			page.reload();
 			db.goToEventPage();
+			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("eventUrl"));
 		}
 		ev=new EventPageRepo(page);
-		assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("eventUrl"));
+		
 		if(ev.getCreateButton().isEnabled())
 		{
 			assertTrue(true);
@@ -163,7 +171,7 @@ public class SmokeTesting {
 		}
 		
 		ev.clickOnCreateButton();
-		if(page.locator("//h1").textContent().trim().contains("Create Event"))
+		if( page.locator("//h1").textContent().trim().contains("Create Event"))
 		{
 			assertTrue(true);
 		}else {
@@ -177,12 +185,111 @@ public class SmokeTesting {
 		assertEquals(eventTitle,eventName);
 		page.goBack();
 		ev.clickEditEvent();
-		if(page.locator("//h1").textContent().trim().equals("Edit Event"))
+		if( page.locator("//h1").textContent().trim().equals("Edit Event"))
 		{
 			assertTrue(true);
 		}else {
 			assertTrue(false, "Edit Event");
 		}
+		
+		
+	}
+	
+	PeerToPeerFundraisingRepo pr;
+	@Test(priority = 4)
+	public void peerToPeerFundRaisIng() throws IOException {
+		try {
+			db=new DashboardRepo(page);
+			db.clickOnPeerToPeerFundarasing();
+			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("campaignUrl"));
+		} catch (Exception e) {
+			page=PlayWrightFactory.intitBrowser("login");
+			PlayWrightFactory.login();
+			db=new DashboardRepo(page);
+			page.reload();
+			db.clickOnPeerToPeerFundarasing();
+			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("campaignUrl"));
+		}
+		
+		pr=new PeerToPeerFundraisingRepo(page);
+		if(pr.getCreateButton().isEnabled() && pr.getCreateButton().isVisible())
+		{
+			assertTrue(true);
+		}
+		else {
+			assertTrue(false, "Campaign Page");
+		}
+		
+		pr.clickOnCreateButton();
+		if( page.locator("//h1").textContent().trim().equals("Create Campaign"))
+		{
+			assertTrue(true);
+		}else {
+			assertTrue(false, "Create Campaign");
+		}
+		page.goBack();
+		
+		pr.clickOnTeamButton();
+		if( page.locator("//h1").textContent().trim().equals("Teams"))
+		{
+			assertTrue(true);
+		}else {
+			assertTrue(false, "Team Creation");
+		}
+		page.goBack();
+		String name=pr.getCampaignName();
+		pr.clickOnOneCampaign();
+		String title=pr.getCampaignName();
+		assertEquals(title, name);
+		page.goBack();
+		
+		pr.clickEditCampaign();
+		
+		if( page.locator("//h1").textContent().trim().equals("Edit Campaign"))
+		{
+			assertTrue(true);
+		}else {
+			assertTrue(false, "Edit Campaign");
+		}	
+	}
+	TributeRepo tr;
+	@Test
+	public void tributePage() throws IOException {
+		try {
+			db=new DashboardRepo(page);
+			db.clickOnTributeLink();
+			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("tributeUrl"));
+		} catch (Exception e) {
+			page=PlayWrightFactory.intitBrowser("login");
+			PlayWrightFactory.login();
+			db=new DashboardRepo(page);
+			page.reload();
+			db.clickOnTributeLink();
+			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("tributeUrl"));
+		}
+		tr=new TributeRepo(page);
+		if(tr.getCreateButton().isEnabled())
+		{
+			assertTrue(true);
+		}else {
+			assertTrue(false, "Tribute Create Button");
+		}
+		
+		tr.clickOnCreateButton();
+		if( page.locator("//h1").textContent().trim().equals("Create Tribute"))
+		{
+			assertTrue(true);
+		}else {
+			assertTrue(false, "Create Tribute");
+		}	
+		
+		page.goBack();
+		
+		String name=tr.getTributeName();
+		tr.clickOnSearchedTribute();
+		String title=tr.getTributeName();
+		assertEquals(title, name);
+		
 		
 		
 	}

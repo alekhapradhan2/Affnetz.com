@@ -80,7 +80,7 @@ public class Listener implements ITestListener {
 	{
 		System.out.println(result.getMethod().getMethodName()+" passed");
 		test.get().pass("T1_Test passed");
-//		test.get().pass(result.getThrowable(),MediaEntityBuilder.createScreenCaptureFromPath(PlayWrightFactory.takeScreenshot()).build());
+		test.get().pass(result.getThrowable(),MediaEntityBuilder.createScreenCaptureFromPath(PlayWrightFactory.takeScreenshot()).build());
 		test.get().getModel().setEndTime(getTime(result.getEndMillis()));
 		test.get().getModel().getDescription();
 		

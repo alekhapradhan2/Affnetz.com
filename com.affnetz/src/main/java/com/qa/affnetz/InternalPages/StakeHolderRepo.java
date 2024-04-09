@@ -63,6 +63,12 @@ public class StakeHolderRepo {
 	
 	private String tributeRadioButton="//div[@class='v-input--selection-controls__ripple']";
 	
+	private String editButton="//a[contains(@href,'https://t1.affnetz.org/stakeholder/edit/6745')]";
+	
+	private String createButton="//span[contains(text(),'Create')]";
+	
+	private String importBulkButton="//span[contains(text(),'Import Bulk')]";
+	
 	public StakeHolderRepo(Page page)
 	{
 		this.page=page;
@@ -279,6 +285,35 @@ public class StakeHolderRepo {
 		
 		
 	}
+	
+	public Locator getEditBUtton() {
+		Locator edit=page.locator(editButton);
+		return edit;
+	}
+	
+	public void clickOnEditButton() {
+		page.click(editButton);
+	}
+	
+	public void clickOnCreateButton() {
+		page.click(createButton);
+	}
+	
+	public void clickOnImportButton() {
+		page.click(importBulkButton);
+	}
+	
+	public Locator getCreateButton() {
+		Locator create=page.locator(createButton);
+		return create;
+	}
+	
+	public Locator getImportButton() {
+		Locator importButton=page.locator(importBulkButton);
+		return importButton;
+	}
+	
+	
 	
 	
 

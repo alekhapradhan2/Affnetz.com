@@ -23,6 +23,10 @@ public class PublicCampaignRepo {
 	
 	private String teamDonateButton="//span[contains(text(),' Donate')]";
 	
+	private String searchCampaign="#input-7";
+	
+	private String searchButton="(//button[@type='submit'])[1]";
+	
 	
 	public PublicCampaignRepo(Page page)
 	{
@@ -78,5 +82,11 @@ public class PublicCampaignRepo {
 	
 	public void teamDonate() {
 		page.click(teamDonateButton);
+	}
+	
+	public void searchCampaign(String campaignName)
+	{
+		page.fill(searchCampaign, campaignName);
+		page.click(searchButton);
 	}
 }

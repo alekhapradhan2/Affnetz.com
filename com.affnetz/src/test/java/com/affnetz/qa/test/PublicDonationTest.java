@@ -342,12 +342,15 @@ public class PublicDonationTest {
 	Random rm2=new Random();
 	int w=rm2.nextInt(999);
 	/** This method will click on one public campaign
-	 *  and validate the name is marching or not*/
+	 *  and validate the name is marching or not
+	 * @throws InterruptedException */
 	
 	@Test(priority = 21,groups = {"Campaign","Donation"})
-	public void clickOnCampaign() {
+	public void clickOnCampaign() throws InterruptedException {
 		pc=new PublicCampaignRepo(page);
 		campName=pc.getCampaignName();
+		pc.searchCampaign(campName);
+		Thread.sleep(2000);
 		pc.clickOnCampaign();
 		String title=pc.getCampaignTitle();
 		assertEquals(campName, title);

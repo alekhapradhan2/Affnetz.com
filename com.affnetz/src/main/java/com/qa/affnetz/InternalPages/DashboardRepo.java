@@ -13,6 +13,10 @@ public class DashboardRepo {
 	
 	private String monthDonorList="xpath=//a[contains(@href,'month-donor-list?')]";
 	
+	private String memberReprtList="//a[contains(@href,'member-list')]";
+	
+	private String volunteerReportLink="//a[contains(@href,'volunteer-report')]";
+	
 	private String donorNameSearch="#input-72";
 	
 	private String searchButton="xpath=//span[contains(text(),'SEARCH')]";
@@ -37,6 +41,7 @@ public class DashboardRepo {
 	
 	private String entitiesLink="//div[text()='Entities']";
 	
+	private String eventLink="//div[text()='Events']";
 	
 	
 	
@@ -147,6 +152,18 @@ public class DashboardRepo {
 	
 	public void goToEntityPage() {
 		page.click(entitiesLink);
+	}
+	
+	public void clickOnMemberReportLink() {
+		page.click(memberReprtList);
+	}
+	
+	public void clickOnVolunteerLink() {
+		page.click(volunteerReportLink);
+	}
+	
+	public void goToEventPage() {
+		page.click(eventLink);
 	}
 	
 

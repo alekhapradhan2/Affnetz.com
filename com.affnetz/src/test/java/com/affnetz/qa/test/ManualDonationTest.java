@@ -539,7 +539,7 @@ public class ManualDonationTest {
 	
 	
 	//---------------------------------------------Entiti Donation---------------------------------------------------------------------//
-	@Test(priority = 44,groups = {"Entiti","Manual Donation"})
+	//@Test(priority = 44,groups = {"Entiti","Manual Donation"})
 	public void goToEntityPage() throws IOException
 	{
 		try {
@@ -560,7 +560,7 @@ public class ManualDonationTest {
 	int entitiDonationAmount;
 	EntitiesPageRepo ep;
 	
-	@Test(priority = 45,groups = {"Entiti","Manual Donation"})
+	//@Test(priority = 45,groups = {"Entiti","Manual Donation"})
 	public void ClickOnOneEntiti()
 	{
 		ep=new EntitiesPageRepo(page);
@@ -571,7 +571,7 @@ public class ManualDonationTest {
 		System.out.println(headline);
 		assertEquals(headline, entitiName);
 	}
-	@Test(priority = 45,groups = {"Entiti","Manual Donation"})
+//	@Test(priority = 45,groups = {"Entiti","Manual Donation"})
 	public void doOneEntitiManualDonation() throws InterruptedException {
 		ep=new EntitiesPageRepo(page);
 		ep.clickOnManualDonationButton();

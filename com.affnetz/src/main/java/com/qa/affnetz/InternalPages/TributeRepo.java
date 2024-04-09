@@ -218,7 +218,9 @@ public class TributeRepo {
 		return create;
 	}
 	
-	public 
+	public void clickOnEditTribute() {
+		page.click(editTribute);
+	}
 	
 
 }

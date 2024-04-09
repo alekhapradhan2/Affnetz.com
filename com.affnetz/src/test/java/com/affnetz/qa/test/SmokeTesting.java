@@ -86,7 +86,7 @@ public class SmokeTesting {
 	}
 	
 	StakeHolderRepo sk;
-	@Test(priority = 2)
+	@Test(priority = 2,groups = {"stakeholder"})
 	public void stakeHolder() throws IOException, InterruptedException {
 		try {
 			db=new DashboardRepo(page);
@@ -101,9 +101,7 @@ public class SmokeTesting {
 			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("stakeholderUrl"));
 		}
 		sk=new StakeHolderRepo(page);
-		
-		
-		
+
 		if(sk.getCreateButton().isEnabled() && sk.getImportButton().isEnabled())
 		{
 			assertTrue(true);
@@ -253,7 +251,7 @@ public class SmokeTesting {
 		}	
 	}
 	TributeRepo tr;
-	@Test
+	@Test(priority = 5)
 	public void tributePage() throws IOException {
 		try {
 			db=new DashboardRepo(page);
@@ -289,6 +287,15 @@ public class SmokeTesting {
 		tr.clickOnSearchedTribute();
 		String title=tr.getTributeName();
 		assertEquals(title, name);
+		page.goBack();
+		tr.clickOnEditTribute();
+		
+		if( page.locator("//h1").textContent().trim().equals("Edit Tribute"))
+		{
+			assertTrue(true);
+		}else {
+			assertTrue(false, "Edit Tribute");
+		}	
 		
 		
 		

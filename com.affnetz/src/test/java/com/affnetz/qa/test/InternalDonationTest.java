@@ -65,7 +65,7 @@ public class InternalDonationTest {
 		intDon=new InternalDonationRepo(page);
 		fname="Ashman"+x;
 		lname="Derw"+x;
-		mail="engineering+ash"+x+"@affnetz.com";
+		mail="engineering+sep21@affnetz.com";
 		String PhNo="7873530919";
 		amt=""+x+"";
 		intDon.setPesonalDetails(fname,lname, PhNo,mail);
@@ -172,7 +172,7 @@ public class InternalDonationTest {
 		tr=new TributeRepo(page);
 		TributeDonorFirstName="Lacki"+y+"ui";
 		TributeDonorLastName="Shym"+y+"ma";
-		TributeDonorMail="engineering+lacki"+y+"@affnetz.com";
+		TributeDonorMail="engineering+sep21@affnetz.com";
 		tributeAmt="50";
 		tr.setPesonalDetails(TributeDonorFirstName, TributeDonorLastName, TributeDonorMail);
 		tr.setDonationAmount(tributeAmt);

@@ -1,5 +1,7 @@
 package com.qa.affnetz.InternalPages;
 
+import java.util.Random;
+
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
@@ -14,6 +16,58 @@ public class EventPageRepo {
 	private String eventTitle="//h2";
 	
 	private String eventEdit="//i[text()='edit']";
+	
+	//-----------------------------------New Event  Create Repo--------------------------------------//
+	
+	private String title="#input-78";
+	
+	private String BriefDescription="#input-81";
+	
+	private String eventtype="#input-84";
+	
+	private String eventTypeList="#list-84";
+	
+	private String eventTypeName="//div[contains(@id,'list-item-216')]";
+	
+	private String Description="(//div[contains(@class,'ql-editor')])[1]";
+	
+	private String Organizer="#input-100";
+	
+	private String organizerList="#list-100";
+	
+	private String oraganizerNames="//div[contains(@id,'list-item-222')]";
+	
+	private String Email="#input-105";
+	
+	private String phoneNumber="#input-108";
+	
+	private String EventStartDate="#input-135";
+	
+	private String startDateCal="(//table)[1]";
+	
+	private String EventEndDate="#input-140";
+	
+	private String endDateCal="(//table)[2]";
+	
+	private String RegistrationClosingTime="#input-145";
+	
+	private String regDateCal="(//table)[3]";
+	
+	private String RegularPrice="#input-148";
+	
+	private String VIPPrice="#input-165";
+	
+	private String MinimumAttendees="#input-173";
+	
+	private String MaximumAttendees="#input-176";
+	
+	private String publish="#input-200";
+	
+	private String publishList="#list-200";
+	
+	private String publishName="//div[contains(@id,'list-item-897')]";
+	
+	private String saveButton="//span[contains(text(),'Save')]";
 	
 	public EventPageRepo(Page page)
 	{
@@ -57,5 +111,74 @@ public class EventPageRepo {
 	public void clickEditEvent() {
 		page.click(eventEdit);
 	}
+	
+	public void fillEventTitle(String eventTitle) {
+		page.fill(title, eventTitle);
+	}
+	
+	public void setBriefDescription(String disc)
+	{
+		page.fill(BriefDescription, disc);
+	}
+	
+	public void selectEventType() throws InterruptedException {
+		page.click(eventtype);
+		Thread.sleep(1000);
+		Locator eventList=page.locator(eventTypeList);
+		Locator TypeName=eventList.locator(eventTypeName);
+		TypeName.first().click();
+	}
+	
+	public void setDescription(String desc)
+	{
+		page.fill(Description, desc);
+	}
+	
+	public String selectOraganizerDetails(String mailId) throws InterruptedException {
+		page.click(Organizer);
+		Thread.sleep(1000);
+		Locator List=page.locator(organizerList);
+		Locator names=List.locator(oraganizerNames);
+		Random r=new Random();
+		int x=r.nextInt(15);
+		String organizerName=names.nth(x).textContent().trim();
+		names.nth(x).click();
+		page.locator(Email).clear();
+		page.fill(Email, mailId);
+		page.locator(phoneNumber).clear();
+		page.fill(phoneNumber, "6371772552856584");
+		return organizerName;
+	}
+	
+	public void setDates() throws InterruptedException {
+		page.click(EventStartDate);
+		page.click(EventStartDate);
+		Thread.sleep(2000);
+		Locator table=page.locator(startDateCal);
+		Locator row=table.locator("//tr");
+		row.nth(4).locator("//td").nth(2).click();
+		Thread.sleep(2000);
+		page.click("//span[text()='OK ']");
+		
+		page.click(EventEndDate);
+//		page.click(EventEndDate);
+		Thread.sleep(2000);
+		Locator table1=page.locator(endDateCal);
+		Locator row1=table.locator("//tr");
+		row1.nth(5).locator("//td").nth(5).click();
+		Thread.sleep(2000);
+		page.click("//span[text()='OK ']");
+		
+		page.click(RegistrationClosingTime);
+//		page.click(RegistrationClosingTime);
+		Thread.sleep(2000);
+		Locator table2=page.locator(regDateCal);
+		Locator row2=table.locator("//tr");
+		row2.nth(4).locator("//td").nth(3).click();
+		Thread.sleep(2000);
+		page.click("//span[text()='OK ']");
+	}
+	
+	
 
 }

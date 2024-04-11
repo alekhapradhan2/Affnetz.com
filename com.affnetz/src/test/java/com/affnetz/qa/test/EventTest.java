@@ -59,8 +59,9 @@ public class EventTest {
 		ev.setBriefDescription(BriefDescription);
 		ev.setDescription(Description);
 		ev.selectEventType();
-		ev.selectOraganizerDetails(mailId);
+		OrgaNizer=ev.selectOraganizerDetails(mailId);
 		ev.setDates();
+		System.out.println(OrgaNizer);
 		
 	}
 

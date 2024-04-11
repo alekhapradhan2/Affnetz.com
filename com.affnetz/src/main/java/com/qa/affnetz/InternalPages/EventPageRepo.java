@@ -151,32 +151,45 @@ public class EventPageRepo {
 	}
 	
 	public void setDates() throws InterruptedException {
-		page.click(EventStartDate);
-		page.click(EventStartDate);
-		Thread.sleep(2000);
+		
+		
+		//--------Start Date---------------//
+		while (!page.locator("//span[text()='OK ']").isVisible()) {
+		
+			page.click(EventStartDate);
+		}
+		Thread.sleep(1000);
 		Locator table=page.locator(startDateCal);
 		Locator row=table.locator("//tr");
-		row.nth(4).locator("//td").nth(2).click();
-		Thread.sleep(2000);
+		row.nth(2).locator("//td").nth(2).click();
+		Thread.sleep(1000);
 		page.click("//span[text()='OK ']");
 		
-		page.click(EventEndDate);
-//		page.click(EventEndDate);
-		Thread.sleep(2000);
+		
+		//-----------End Date---------------//
+		while (!page.locator("(//span[text()='OK '])[2]").isVisible()) {
+			
+			page.click(EventEndDate);
+		}
+		Thread.sleep(1000);
 		Locator table1=page.locator(endDateCal);
-		Locator row1=table.locator("//tr");
-		row1.nth(5).locator("//td").nth(5).click();
-		Thread.sleep(2000);
-		page.click("//span[text()='OK ']");
+		Locator row1=table1.locator("//tr");
+		row1.nth(4).locator("//td").nth(3).click();
+		Thread.sleep(1000);
+		page.click("(//span[text()='OK '])[2]");
 		
-		page.click(RegistrationClosingTime);
-//		page.click(RegistrationClosingTime);
-		Thread.sleep(2000);
+		// ---------------Reg. Closing Date----------//
+		while (!page.locator("(//span[text()='OK '])[3]").isVisible()) {
+			
+			page.click(RegistrationClosingTime);
+		}
+		
+		Thread.sleep(1000);
 		Locator table2=page.locator(regDateCal);
-		Locator row2=table.locator("//tr");
-		row2.nth(4).locator("//td").nth(3).click();
-		Thread.sleep(2000);
-		page.click("//span[text()='OK ']");
+		Locator row2=table2.locator("//tr");
+		row2.nth(3).locator("//td").nth(3).click();
+		Thread.sleep(1000);
+		page.click("(//span[text()='OK '])[3]");
 	}
 	
 	

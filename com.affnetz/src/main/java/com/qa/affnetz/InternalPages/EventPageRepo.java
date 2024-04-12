@@ -1,5 +1,8 @@
 package com.qa.affnetz.InternalPages;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
 import java.util.Random;
 
 import com.microsoft.playwright.Locator;
@@ -13,9 +16,20 @@ public class EventPageRepo {
 	
 	private String eventName="//h4";
 	
-	private String eventTitle="//h2";
+	private String eventTitle="//h2[@class='js-event-title']";
+	
+	private String organizername="//div[contains(@class,'organizer-name')]";
+	
+	private String oragnizerMailId="(//a[contains(@href,'mailto')])[1]";
+	
+	private String about="(//p)";
 	
 	private String eventEdit="//i[text()='edit']";
+	
+	private String eventSearchBox="#input-73";
+	
+	private String searchButton="//span[contains(text(),'Search')]";
+	
 	
 	//-----------------------------------New Event  Create Repo--------------------------------------//
 	
@@ -65,9 +79,14 @@ public class EventPageRepo {
 	
 	private String publishList="#list-200";
 	
-	private String publishName="//div[contains(@id,'list-item-897')]";
+	private String publishName="//div[contains(@id,'list-item-')]";
 	
 	private String saveButton="//span[contains(text(),'Save')]";
+	
+	//----------------------------------Event Edit Repo------------------------------------------//
+	 private String Title="#input-74";
+	
+	
 	
 	public EventPageRepo(Page page)
 	{
@@ -112,6 +131,12 @@ public class EventPageRepo {
 		page.click(eventEdit);
 	}
 	
+	public void searchEvent(String EventName) throws InterruptedException {
+		page.fill(eventSearchBox, EventName);
+		Thread.sleep(1000);
+		page.click(searchButton);
+	}
+	 //--------------------------------------------EVent Creation Methods--------------------------------//
 	public void fillEventTitle(String eventTitle) {
 		page.fill(title, eventTitle);
 	}
@@ -190,6 +215,62 @@ public class EventPageRepo {
 		row2.nth(3).locator("//td").nth(3).click();
 		Thread.sleep(1000);
 		page.click("(//span[text()='OK '])[3]");
+	}
+	
+	public void setPrice() {
+		Random rm=new Random();
+		int x=rm.nextInt(499);
+		int vipPrice=x+50;
+		page.fill(RegularPrice, ""+x+"");
+		page.fill(VIPPrice, ""+vipPrice+"");
+	}
+	
+	public void setAttendees() {
+		Random rm=new Random();
+		int x=rm.nextInt(200);
+		int max=x+50;
+		
+		page.fill(MinimumAttendees, ""+x+"");
+		page.fill(MaximumAttendees, ""+max+"");
+		
+	}
+	
+	public void doPubishTheEventAndSaveTheEvent() throws InterruptedException {
+		page.click(publish);
+		Thread.sleep(1000);
+		Locator list=page.locator(publishList);
+		Locator name=list.locator(publishName);
+		name.nth(1).click();
+		page.click(saveButton);
+	}
+	
+	public void verifyTheEventDetails(String eventName,String orgaNizerName,String mail) {
+		String eventname=page.locator(eventTitle).textContent().trim();
+		String oarganizename=page.locator(organizername).textContent().trim();
+		String organizerMail=page.locator(oragnizerMailId).textContent().trim()	;
+		
+		if(orgaNizerName.contains(oarganizename))
+		{
+			assertTrue(true);
+		}else {
+			assertTrue(false, "OrganizerName Not Matched");
+		}
+		assertEquals(eventname, eventName);
+		assertEquals(organizerMail, mail);
+	
+			
+	}
+	
+	public void clickOnSaveButton() {
+		page.click(saveButton);
+	}
+	
+	//------------Edit Event------------------------//
+	
+	public void changeEventName(String eventName)
+	{
+		page.locator(Title).clear();
+		page.fill(Title, eventName);
 	}
 	
 	

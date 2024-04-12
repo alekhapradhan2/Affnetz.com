@@ -43,7 +43,27 @@ public class PeerToPeerFundraisingRepo {
 	
 	private String eventEdit="//i[text()='edit']";
 	
-
+	//------------------------------------------Create Campaign Repo-----------------------------------------//
+	
+	private String title="#campaign_name";
+	
+	private String type="#campaign_type";
+	
+	private String typeList="#list-78";
+	
+	private String campaignType="//div[contains(@id,'list-item-146')]";
+	
+	private String Target_Amount="#input-83";
+	
+	private String EndDateEndTime="#input-88";
+	
+	private String EmployeeContact="#input-91";
+	
+	private String employeeList="#list-91";
+	
+	private String employeeNames="//div[contains(@id,'list-item-152')]";
+	
+	
 	
 	
 	

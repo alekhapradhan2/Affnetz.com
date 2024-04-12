@@ -38,21 +38,21 @@ public class InternalDonationTest {
 	String campaignFirstName,campaignLastname,campaignmail,campaignAmt,CampaignName;
 	String teamName,teamDonorFirstName,teamDonorLastName,teamDonorMailId,teamDonorAmt;
 	Random rm=new Random();
-	int x=rm.nextInt(999);
+	int x=rm.nextInt(9999);
 	Random rm1=new Random();
-	int y=rm1.nextInt(999);
+	int y=rm1.nextInt(9999);
 	Random rm2=new Random();
-	int w=rm2.nextInt(999);
+	int w=rm2.nextInt(9999);
 	
 	//-----------------------------------------------Direct Donation------------------------------------------------------------------//
 	
-	@Test(priority = 0 ,groups = {"DirectDonation","Donation"})
+	@Test(priority = 0 ,groups = {"DirectDonation","Donation","Smoke"})
 	public void LoginAsASuperAdmin() throws IOException {
 		page=PlayWrightFactory.intitBrowser("login");
 		PlayWrightFactory.login();
 	}
 	
-	@Test(priority = 1,groups = {"DirectDonation","Donation"})
+	@Test(priority = 1,groups = {"DirectDonation","Donation","Smoke"})
 	public void clickDirectDonatteButton() {
 		hp=new HomePageRepo(page);
 		page.reload();
@@ -60,43 +60,44 @@ public class InternalDonationTest {
 		hp.clickDonate();
 	}
 	
-	@Test(priority = 2,groups = {"DirectDonation","Donation"},dependsOnMethods = "clickDirectDonatteButton")
+	@Test(priority = 2,groups = {"DirectDonation","Donation","Smoke"},dependsOnMethods = "clickDirectDonatteButton")
 	public void fillAllDonorDetails() throws InterruptedException {
 		intDon=new InternalDonationRepo(page);
 		fname="Ashman"+x;
 		lname="Derw"+x;
-		mail="engineering+sep21@affnetz.com";
+		mail="engineering+sep"+x+"@affnetz.com";
 		String PhNo="7873530919";
 		amt=""+x+"";
 		intDon.setPesonalDetails(fname,lname, PhNo,mail);
 		intDon.setDonationAmount(amt);
 		intDon.setAddress();
 	}
-	@Test(priority = 3,groups = {"DirectDonation","Donation"})
+	@Test(priority = 3,groups = {"DirectDonation","Donation","Smoke"})
 	public void setCardDetils() {
 		intDon=new InternalDonationRepo(page);
 		intDon.setCardDetails();
 	}
-	@Test(priority = 4,groups = {"DirectDonation","Donation"})
+	@Test(priority = 4,groups = {"DirectDonation","Donation","Smoke"})
 	public void submitAllDetails() throws InterruptedException {
 		Thread.sleep(2000);
 		intDon=new InternalDonationRepo(page);
 		intDon.clickOnDonate();
 	}
-	@Test(priority = 5,groups = {"DirectDonation","Donation"})
+	@Test(priority = 5,groups = {"DirectDonation","Donation","Smoke"})
 	public void isDonationDone() {
 		intDon=new InternalDonationRepo(page);
 		intDon.isFormSubmit();
 	}
-	@Test(priority = 6,groups = {"DirectDonation","Donation"},dependsOnMethods = "isDonationDone")
+	@Test(priority = 6,groups = {"DirectDonation","Donation","Smoke"},dependsOnMethods = "isDonationDone")
 	public void isReciptDownload() throws InterruptedException {
 		intDon=new InternalDonationRepo(page);
 		boolean flag=intDon.downloadReceipt();
 		assertTrue(flag);
+		page.goBack();
 	}
 	@Test(priority = 7,groups = {"DirectDonation","Donation"},dependsOnMethods = "isDonationDone")
 	public void isDonorDetailsStoreInDonorReport() throws InterruptedException {
-		page.goBack();
+		
 		db=new DashboardRepo(page);
 		db.goToDashBoard();
 		db.clickOnDonorReportLink();
@@ -136,7 +137,7 @@ public class InternalDonationTest {
 	
 	//-----------------------------------------------Tribute Donation------------------------------------------------------------------//
 	
-	@Test(priority = 10,groups = {"Donation","Tribute"})
+	@Test(priority = 10,groups = {"Donation","Tribute","Smoke"})
 	public void goToTributePage() throws IOException {
 		try {
 			db=new DashboardRepo(page);
@@ -152,7 +153,7 @@ public class InternalDonationTest {
 
 	}
 	
-	@Test(priority = 11,groups = {"Donation","Tribute"})
+	@Test(priority = 11,groups = {"Donation","Tribute","Smoke"})
 	public void clickOneDonate() {
 		tr=new TributeRepo(page);
 		tributeName=tr.getTributeName();
@@ -160,54 +161,55 @@ public class InternalDonationTest {
 		String tributeTitle=tr.getTributeName();
 		assertEquals(tributeName, tributeTitle);
 	}
-	@Test(priority = 12,groups = {"Donation","Tribute"})
+	@Test(priority = 12,groups ={"Donation","Tribute","Smoke"})
 	public void goToTributeDOnationPage() {
 		tr=new TributeRepo(page);
 		tr.goToDonationPage();
 		String name=tr.getDonorNameOnDonationPage();
 		assertEquals(tributeName, name);
 	}
-	@Test(priority = 13,groups = {"Donation","Tribute"},dependsOnMethods = "goToTributeDOnationPage")
+	@Test(priority = 13,groups = {"Donation","Tribute","Smoke"},dependsOnMethods = "goToTributeDOnationPage")
 	public void setUserDetails() {
 		tr=new TributeRepo(page);
 		TributeDonorFirstName="Lacki"+y+"ui";
 		TributeDonorLastName="Shym"+y+"ma";
-		TributeDonorMail="engineering+sep21@affnetz.com";
+		TributeDonorMail="engineering+septri"+y+"@affnetz.com";
 		tributeAmt="50";
 		tr.setPesonalDetails(TributeDonorFirstName, TributeDonorLastName, TributeDonorMail);
 		tr.setDonationAmount(tributeAmt);
 	}
-	@Test(priority = 14,groups = {"Donation","Tribute"})
+	@Test(priority = 14,groups = {"Donation","Tribute","Smoke"})
 	public void setUserAddress() throws InterruptedException {
 		tr=new TributeRepo(page);
 		tr.setAddress();
 	}
-	@Test(priority = 15,groups = {"Donation","Tribute"})
+	@Test(priority = 15,groups = {"Donation","Tribute","Smoke"})
 	public void setCardDetails() {
 		tr=new TributeRepo(page);
 		tr.setCardDetails();
 	}
-	@Test(priority = 16,groups = {"Donation","Tribute"})
+	@Test(priority = 16,groups = {"Donation","Tribute","Smoke"})
 	public void submitAllDetails_Tribute() throws InterruptedException {
 		Thread.sleep(2000);
 		tr=new TributeRepo(page);
 		tr.clickOnDonate();
 	}
-	@Test(priority = 17,groups = {"Donation","Tribute"})
+	@Test(priority = 17,groups = {"Donation","Tribute","Smoke"})
 	public void isDonationDone_Tribute() {
 		tr=new TributeRepo(page);
 		tr.isFormSubmit();
 	}
-	@Test(priority = 18,groups = {"Donation","Tribute"},dependsOnMethods = "isDonationDone_Tribute")
+	@Test(priority = 18,groups = {"Donation","Tribute","Smoke"},dependsOnMethods = "isDonationDone_Tribute")
 	public void isReciptDownload_Tribute() throws InterruptedException {
 		intDon=new InternalDonationRepo(page);
 		boolean flag=intDon.downloadReceipt();
 		assertTrue(flag);
+		page.goBack();
 	}
 	
 	@Test(priority = 19,groups = {"Donation","Tribute"},dependsOnMethods = "isDonationDone_Tribute")
 	public void isDonorDetailsStoredInTributeDonationReport() throws InterruptedException {
-		page.goBack();
+		
 		db=new DashboardRepo(page);
 		db.clickOnReport();
 		Thread.sleep(1000);
@@ -241,7 +243,7 @@ public class InternalDonationTest {
 	
 	//-----------------------------------------------Campaign Donation------------------------------------------------------------------//
 	
-	@Test(priority = 22,groups = {"Campaign","Donation"})
+	@Test(priority = 22,groups = {"Campaign","Donation","Smoke"})
 	public void goToCampaignPage() throws IOException {
 		
 		try {
@@ -257,7 +259,7 @@ public class InternalDonationTest {
 		}
 
 	}
-	@Test(priority = 22,groups = {"Campaign","Donation"},dependsOnMethods = "goToCampaignPage")
+	@Test(priority = 22,groups = {"Campaign","Donation","Smoke"},dependsOnMethods = "goToCampaignPage")
 	public void clickOnCampaing() {
 		pr=new PeerToPeerFundraisingRepo(page);
 		CampaignName=pr.getCampaignName();
@@ -266,12 +268,12 @@ public class InternalDonationTest {
 		assertEquals(CampaignName, title);
 		
 	}
-	@Test(priority = 23,groups = {"Campaign","Donation"})
+	@Test(priority = 23,groups = {"Campaign","Donation","Smoke"})
 	public void goToCampaignDonationPage() {
 		pr=new PeerToPeerFundraisingRepo(page);
 		pr.goToDonationPage();
 	}
-	@Test(priority = 24,groups = {"Campaign","Donation"})
+	@Test(priority = 24,groups = {"Campaign","Donation","Smoke"})
 	public void setuserDetails_Campaign() {
 		intDon=new InternalDonationRepo(page);
 		campaignFirstName="Julli"+w;
@@ -281,31 +283,32 @@ public class InternalDonationTest {
 		intDon.setPesonalDetails(campaignFirstName, campaignLastname, "6371772552", campaignmail);
 		intDon.setDonationAmount(campaignAmt);
 	}
-	@Test(priority = 25,groups = {"Campaign","Donation"})
+	@Test(priority = 25,groups = {"Campaign","Donation","Smoke"})
 	public void setUserAddress_Campaign() throws InterruptedException {
 		intDon=new InternalDonationRepo(page);
 		intDon.setAddress();
 	}
-	@Test(priority = 26,groups = {"Campaign","Donation"})
+	@Test(priority = 26,groups = {"Campaign","Donation","Smoke"})
 	public void setCardDetails_Campaing() {
 		intDon=new InternalDonationRepo(page);
 		intDon.setCardDetails();
 	}
-	@Test(priority = 27,groups = {"Campaign","Donation"})
+	@Test(priority = 27,groups = {"Campaign","Donation","Smoke"})
 	public void isDonationDone_Campaing() {
 		intDon=new InternalDonationRepo(page);
 		intDon.clickOnDonate();
 		intDon.isFormSubmit();
 	}
-	@Test(priority = 28,groups = {"Campaign","Donation"})
+	@Test(priority = 28,groups = {"Campaign","Donation","Smoke"})
 	public void isReceiptDownload_Campaign() throws InterruptedException {
 		intDon=new InternalDonationRepo(page);
 		boolean flag=intDon.downloadReceipt();
 		assertTrue(flag);
+		page.goBack();
 	}
 	@Test(priority = 29,groups = {"Campaign","Donation"})
 	public void isDonorDetailsisStoredInDonationreport_Campaign() throws InterruptedException {
-		page.goBack();
+		
 		db=new DashboardRepo(page);
 		db.goToDashBoard();
 		db.clickOnDonorReportLink();
@@ -340,7 +343,7 @@ public class InternalDonationTest {
 	
 	//-----------------------------------------------Team Donation------------------------------------------------------------------//
 	
-	@Test(priority = 32,groups = {"Donation","Team"})
+	@Test(priority = 32,groups = {"Donation","Team","Smoke"})
 	public void goToCampaignPage_Team() throws IOException {
 		
 		try {
@@ -355,7 +358,7 @@ public class InternalDonationTest {
 		}
 
 	}
-	@Test(priority = 33,groups = {"Donation","Team"})
+	@Test(priority = 33,groups = {"Donation","Team","Smoke"})
 	public void clickOnCampaing_Team() {
 		pr=new PeerToPeerFundraisingRepo(page);
 		CampaignName=pr.getCampaignName();
@@ -365,7 +368,7 @@ public class InternalDonationTest {
 		
 	}
 	
-	@Test(priority = 34,groups = {"Donation","Team"})
+	@Test(priority = 34,groups = {"Donation","Team","Smoke"})
 	public void goToCampaignTeam() {
 		pr=new PeerToPeerFundraisingRepo(page);
 		pr.goToTeamSection();
@@ -376,14 +379,14 @@ public class InternalDonationTest {
 	}
 	
 	
-	@Test(priority = 35,groups = {"Donation","Team"})
+	@Test(priority = 35,groups = {"Donation","Team","Smoke"})
 	public void goToTeamDonationPage() {
 		pr=new PeerToPeerFundraisingRepo(page);
 		pr.teamDonate();
 	}
 	
 	
-	@Test(priority = 36,groups = {"Donation","Team"})
+	@Test(priority = 36,groups = {"Donation","Team","Smoke"})
 	public void setuserDetails_Team() {
 		intDon=new InternalDonationRepo(page);
 		teamDonorFirstName="JulliTeam"+w;
@@ -393,31 +396,32 @@ public class InternalDonationTest {
 		intDon.setPesonalDetails(teamDonorFirstName, teamDonorLastName, "6371772552", teamDonorMailId);
 		intDon.setDonationAmount(teamDonorAmt);
 	}
-	@Test(priority = 37,groups = {"Donation","Team"})
+	@Test(priority = 37,groups = {"Donation","Team","Smoke"})
 	public void setUserAddress_Team() throws InterruptedException {
 		intDon=new InternalDonationRepo(page);
 		intDon.setAddress();
 	}
-	@Test(priority = 38,groups = {"Donation","Team"})
+	@Test(priority = 38,groups = {"Donation","Team","Smoke"})
 	public void setCardDetails_Team() {
 		intDon=new InternalDonationRepo(page);
 		intDon.setCardDetails();
 	}
-	@Test(priority = 39,groups = {"Donation","Team"})
+	@Test(priority = 39,groups = {"Donation","Team","Smoke"})
 	public void isDonationDone_Team() {
 		intDon=new InternalDonationRepo(page);
 		intDon.clickOnDonate();
 		intDon.isFormSubmit();
 	}
-	@Test(priority = 40,groups = {"Donation","Team"})
+	@Test(priority = 40,groups = {"Donation","Team","Smoke"})
 	public void isReceiptDownload_Team() throws InterruptedException {
 		intDon=new InternalDonationRepo(page);
 		boolean flag=intDon.downloadReceipt();
 		assertTrue(flag);
+		page.goBack();
 	}
 	@Test(priority = 41,groups = {"Donation","Team"})
 	public void isDonorDetailsisStoredInDonationreport_Team() throws InterruptedException {
-		page.goBack();
+		
 		db=new DashboardRepo(page);
 		db.goToDashBoard();
 		db.clickOnDonorReportLink();

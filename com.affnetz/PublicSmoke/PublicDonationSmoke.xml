@@ -6,11 +6,11 @@
 		<listener class-name="com.affnetz.qa.factory.Listener"></listener>
 	</listeners>	
 	<test name="Public Donation">
-		<groups><run><include name="Smoke"></include>
-		</run>
+		<groups>
+			<run><include name="Smoke"></include></run>
 		</groups>
 		<classes>
-			<class name="com.affnetz.qa.test.SmokeTesting"></class>
+			<class name="com.affnetz.qa.test.PublicDonationTest"></class>
 		</classes>
 	</test> 
 	

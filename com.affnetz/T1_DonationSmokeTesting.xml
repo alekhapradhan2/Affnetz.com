@@ -1,0 +1,14 @@
+<suite name="allSuites">
+	
+	<listeners>
+		<listener class-name="com.affnetz.qa.factory.Listener"></listener>
+	</listeners>
+
+  <suite-files>
+	  <suite-file path="PublicSmoke/PublicDonationSmoke.xml" />
+     <suite-file path="PublicSmoke/InternalDonationSmoke.xml" />
+     <suite-file path="PublicSmoke/ManualDonationSmoke.xml" />
+     
+    ...
+  </suite-files>
+</suite>

@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Public Donation">	
+<suite name="Internal Donation">	
 	
 	<listeners>
 		<listener class-name="com.affnetz.qa.factory.Listener"></listener>
 	</listeners>	
-	<test name="Public Donation">
-		<groups><run><include name="Smoke"></include>
-		</run>
+	<test name="Internal Donation">
+		
+		<groups>
+			<run><include name="Smoke"></include></run>
 		</groups>
 		<classes>
-			<class name="com.affnetz.qa.test.SmokeTesting"></class>
+			<class name="com.affnetz.qa.test.InternalDonationTest"></class>
 		</classes>
 	</test> 
-	
-	
-	
+
 </suite>

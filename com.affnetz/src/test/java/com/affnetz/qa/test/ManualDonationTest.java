@@ -36,7 +36,7 @@ public class ManualDonationTest {
 	//------------------------------------Stake Holder Campaign---------------------------------------------------------------------//
 	
 
-	@Test(priority = 0,groups = {"Stakeholder","Stakeholder Campaign","Manual Donation"})
+	@Test(priority = 0,groups = {"Stakeholder","Stakeholder Campaign","Manual Donation","Smoke"})
 	public void GoToStakeHolder() throws IOException
 	{
 		page=PlayWrightFactory.intitBrowser("login");
@@ -46,7 +46,7 @@ public class ManualDonationTest {
 		db.goToStakeHolders();
 		assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("stakeholderUrl"));
 	}
-	@Test(priority = 1,groups = {"Stakeholder","Stakeholder Campaign","Manual Donation"},dependsOnMethods ="GoToStakeHolder" )
+	@Test(priority = 1,groups = {"Stakeholder","Stakeholder Campaign","Manual Donation","Smoke"},dependsOnMethods ="GoToStakeHolder" )
 	public void goToOneUserProfile() throws InterruptedException {
 		sk=new StakeHolderRepo(page);
 //		sk.chooseUserType();
@@ -58,7 +58,7 @@ public class ManualDonationTest {
 		System.out.println(userType+" "+UserName+" "+UserMail);
 	}
 	
-	@Test(priority = 2,groups = {"Stakeholder","Stakeholder Campaign","Manual Donation"})
+	@Test(priority = 2,groups ={"Stakeholder","Stakeholder Campaign","Manual Donation","Smoke"})
 	public void clickManualDonationButtonAndSelectOnrCampaign() throws InterruptedException
 	{
 		sk=new StakeHolderRepo(page);
@@ -67,7 +67,7 @@ public class ManualDonationTest {
 		campaignName=sk.getCampaignNameselectOneCampaign();
 		System.out.println(campaignName);
 	}
-	@Test(priority = 3,groups = {"Stakeholder","Stakeholder Campaign","Manual Donation"})
+	@Test(priority = 3,groups = {"Stakeholder","Stakeholder Campaign","Manual Donation","Smoke"})
 	public void clickOnProceedButtonAndGotToManualDonationPage() {
 		sk=new StakeHolderRepo(page);
 		sk.clickOnProceedButton();
@@ -78,7 +78,7 @@ public class ManualDonationTest {
 		
 	}
 	
-	@Test(priority = 4,groups = {"Stakeholder","Stakeholder Campaign","Manual Donation"})
+	@Test(priority = 4,groups = {"Stakeholder","Stakeholder Campaign","Manual Donation","Smoke"})
 	public void setAllDonorDetailsAndAdress() throws InterruptedException {
 		md=new ManualDonationRepo(page);
 
@@ -91,22 +91,24 @@ public class ManualDonationTest {
 		md.setAddress();
 	}
 	
-	@Test(priority = 5,groups = {"Stakeholder","Stakeholder Campaign","Manual Donation"})
+	@Test(priority = 5,groups = {"Stakeholder","Stakeholder Campaign","Manual Donation","Smoke"})
 	public void submitTheFromAndCheckDonoationisDoneOrNot() {
 		md=new ManualDonationRepo(page);
 		md.clickOnDonate();
 		md.isFormSubmit();
 	}
-	@Test(priority = 6,groups = {"Stakeholder","Stakeholder Campaign","Manual Donation"})
+	@Test(priority = 6,groups = {"Stakeholder","Stakeholder Campaign","Manual Donation","Smoke"})
 	public void isReceiptDownload() throws InterruptedException {
 		md=new ManualDonationRepo(page);
 		boolean flag=md.downloadReceipt();
+		page.goBack();
 		assertTrue(flag);
+		
 	}
 	
 	@Test(priority = 7,groups = {"Stakeholder","Stakeholder Campaign","Manual Donation"},dependsOnMethods = "submitTheFromAndCheckDonoationisDoneOrNot")
 	public void checkThatInThatUserProfileThisDonationIsShowingOrNot() throws InterruptedException {
-		page.goBack();
+		
 		db=new DashboardRepo(page);
 		db.goToStakeHolders();
 		sk=new StakeHolderRepo(page);
@@ -122,7 +124,7 @@ public class ManualDonationTest {
 	
 	//------------------------------------Stake Holder Tribute---------------------------------------------------------------------//
 	
-	@Test(priority = 9,groups = {"Stakeholder","Stakeholder Tribute","Manual Donation"})
+	@Test(priority = 9,groups = {"Stakeholder","Stakeholder Tribute","Manual Donation","Smoke"})
 	public void goToStakeHolderAndChooseOneUser_TRCammpaign() throws IOException, InterruptedException {
 		try {
 			db=new DashboardRepo(page);
@@ -153,7 +155,7 @@ public class ManualDonationTest {
 			System.out.println(userType+" "+UserName+" "+UserMail);
 		}
 	}
-	@Test(priority = 10,groups = {"Stakeholder","Stakeholder Tribute","Manual Donation"})
+	@Test(priority = 10,groups =  {"Stakeholder","Stakeholder Tribute","Manual Donation","Smoke"})
 	public void clickManualDonationButtonAndSelectOneTribute() throws InterruptedException
 	{
 		sk=new StakeHolderRepo(page);
@@ -162,7 +164,7 @@ public class ManualDonationTest {
 		tributeName=sk.getTributeNameAndSelectOneTribute();
 		System.out.println(tributeName);
 	}
-	@Test(priority = 11,groups = {"Stakeholder","Stakeholder Tribute","Manual Donation"})
+	@Test(priority = 11,groups =  {"Stakeholder","Stakeholder Tribute","Manual Donation","Smoke"})
 	public void clickOnProceedButtonAndGotToManualDonationPage_SHtribute() {
 		sk=new StakeHolderRepo(page);
 		sk.clickOnProceedButton();
@@ -172,7 +174,7 @@ public class ManualDonationTest {
 		assertEquals(triName, tributeName);
 		
 	}
-	@Test(priority = 12,groups = {"Stakeholder","Stakeholder Tribute","Manual Donation"})
+	@Test(priority = 12,groups = {"Stakeholder","Stakeholder Tribute","Manual Donation","Smoke"})
 	public void setAllDonorDetailsAndAdress_SHtribute() throws InterruptedException {
 		mtdr=new ManualTributeDonationRepo(page);
 		String fName="Alekha";
@@ -183,22 +185,23 @@ public class ManualDonationTest {
 		mtdr.transactionId();
 		mtdr.setAddress();
 	}
-	@Test(priority = 13,groups = {"Stakeholder","Stakeholder Tribute","Manual Donation"})
+	@Test(priority = 13,groups =  {"Stakeholder","Stakeholder Tribute","Manual Donation","Smoke"})
 	public void submitTheFromAndCheckDonoationisDoneOrNot_SHtribut() {
 		md=new ManualDonationRepo(page);
 		md.clickOnDonate();
 		md.isFormSubmit();
 	}
-	@Test(priority = 14,groups = {"Stakeholder","Stakeholder Tribute","Manual Donation"})
+	@Test(priority = 14,groups =  {"Stakeholder","Stakeholder Tribute","Manual Donation","Smoke"})
 	public void isReceiptDownload_SHtribut() throws InterruptedException {
 		md=new ManualDonationRepo(page);
 		boolean flag=md.downloadReceipt();
+		page.goBack();
 		assertTrue(flag);
 	}
 	
 	@Test(priority = 15,groups = {"Stakeholder","Stakeholder Tribute","Manual Donation"},dependsOnMethods = "submitTheFromAndCheckDonoationisDoneOrNot_SHtribut")
 	public void checkThatInThatUserProfileThisDonationIsShowingOrNot_SHtribute() throws InterruptedException {
-		page.goBack();
+		
 		db=new DashboardRepo(page);
 		db.goToStakeHolders();
 		sk=new StakeHolderRepo(page);
@@ -211,7 +214,7 @@ public class ManualDonationTest {
 	}
 	
 	//------------------------------------Tribute Donation---------------------------------------------------------------------//
-	@Test(priority = 16,groups = {"Tribute","Manual Donation"})
+	@Test(priority = 16,groups = {"Tribute","Manual Donation","Smoke"})
 	public void goToTributePage() throws IOException {
 		try {
 			db=new DashboardRepo(page);
@@ -226,7 +229,7 @@ public class ManualDonationTest {
 			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("tributeUrl"));
 		}
 	}
-	@Test(priority = 17,groups = {"Tribute","Manual Donation"},dependsOnMethods = "goToTributePage")
+	@Test(priority = 17,groups =  {"Tribute","Manual Donation","Smoke"},dependsOnMethods = "goToTributePage")
 	public void goToOneTribute()
 	{
 		tr=new TributeRepo(page);
@@ -236,7 +239,7 @@ public class ManualDonationTest {
 		String name=tr.getTributeName();
 		assertEquals(name, tributeName);	
 	}
-	@Test(priority = 18,groups = {"Tribute","Manual Donation"},dependsOnMethods = "goToOneTribute")
+	@Test(priority = 18,groups =  {"Tribute","Manual Donation","Smoke"},dependsOnMethods = "goToOneTribute")
 	public void clickOnManualDonationPage() {
 		mtdr=new ManualTributeDonationRepo(page);
 		tr=new TributeRepo(page);
@@ -249,7 +252,7 @@ public class ManualDonationTest {
 	Random rm=new Random();
 	int x=rm.nextInt(999);
 	
-	@Test(priority = 19,groups = {"StakeHolder","Tribute","Manual Donation"})
+	@Test(priority = 19,groups =  {"Tribute","Manual Donation","Smoke"})
 	public void setTributeDonorAddress() throws InterruptedException {
 		mtdr=new ManualTributeDonationRepo(page);
 		tributeDonorFirstName="CheriManual"+x;
@@ -265,23 +268,24 @@ public class ManualDonationTest {
 		mtdr.setAddress();
 	}
 	
-	@Test(priority = 20,groups = {"Tribute","Manual Donation"})
+	@Test(priority = 20,groups =  {"Tribute","Manual Donation","Smoke"})
 	public void submitTheFromAndCheckDonoationisDoneOrNot_tribute() {
 		md=new ManualDonationRepo(page);
 		md.clickOnDonate();
 		md.isFormSubmit();
 	}
 	
-	@Test(priority = 22,groups = {"Tribute","Manual Donation"})
+	@Test(priority = 22,groups =  {"Tribute","Manual Donation","Smoke"})
 	public void isReceiptDownload_tribute() throws InterruptedException {
 		md=new ManualDonationRepo(page);
 		boolean flag=md.downloadReceipt();
+		page.goBack();
 		assertTrue(flag);
 	}
 	
 	@Test(priority = 23,groups = {"Tribute","Manual Donation"},dependsOnMethods = "submitTheFromAndCheckDonoationisDoneOrNot_tribute")
 	public void checkThatDonorDetailsIsStoreInTributeReportOrNor() throws InterruptedException {
-		page.goBack();
+		
 		db=new DashboardRepo(page);
 		db.clickOnReport();
 		db.clickOnTributeDonationReport();
@@ -304,7 +308,6 @@ public class ManualDonationTest {
 	
 	@Test(priority = 25,groups = {"Tribute","Manual Donation"},dependsOnMethods = "submitTheFromAndCheckDonoationisDoneOrNot_tribute")
 	public void isThisTributeManualDonationIsShownInThatParticularDonorProfilePage() throws InterruptedException {
-		page.goBack();
 		db=new DashboardRepo(page);
 		db.goToStakeHolders();
 		sk=new StakeHolderRepo(page);
@@ -318,7 +321,7 @@ public class ManualDonationTest {
 	
 	//------------------------------------Campaign Donation---------------------------------------------------------------------//
 	
-	@Test(priority = 26,groups = {"Campaign","Manual Donation"})
+	@Test(priority = 26,groups = {"Campaign","Manual Donation","Smoke"})
 	public void goToCampaignPage() throws IOException {
 		try {
 			db=new DashboardRepo(page);
@@ -340,7 +343,7 @@ public class ManualDonationTest {
 	Random camp=new Random();
 	int y=camp.nextInt(999);
 	
-	@Test(priority = 27,groups = {"Campaign","Manual Donation"},dependsOnMethods = "goToCampaignPage")
+	@Test(priority = 27,groups = {"Campaign","Manual Donation","Smoke"},dependsOnMethods = "goToCampaignPage")
 	public void goToOneCampaign() {
 		pr=new PeerToPeerFundraisingRepo(page);
 		campaignName=pr.getCampaignName();
@@ -349,7 +352,7 @@ public class ManualDonationTest {
 		assertEquals(name, campaignName);
 	}
 	
-	@Test(priority = 28,groups = {"Campaign","Manual Donation"})
+	@Test(priority = 28,groups = {"Campaign","Manual Donation","Smoke"})
 	public void clickOnManualDonationButton() {
 		md=new ManualDonationRepo(page);
 		pr=new PeerToPeerFundraisingRepo(page);
@@ -358,7 +361,7 @@ public class ManualDonationTest {
 		assertEquals(name, campaignName);
 	}
 	
-	@Test(priority = 29,groups = {"Campaign","Manual Donation"})
+	@Test(priority = 29,groups = {"Campaign","Manual Donation","Smoke"})
 	public void setAllDonorDetails() throws InterruptedException {
 		md=new ManualDonationRepo(page);
 	
@@ -372,23 +375,24 @@ public class ManualDonationTest {
 		md.setAddress();
 	}
 	
-	@Test(priority = 30,groups = {"Campaign","Manual Donation"})
+	@Test(priority = 30,groups = {"Campaign","Manual Donation","Smoke"})
 	public void submitTheFromAndCheckDonoationisDoneOrNot_campaign() {
 		md=new ManualDonationRepo(page);
 		md.clickOnDonate();
 		md.isFormSubmit();
 	}
 	
-	@Test(priority = 31,groups = {"Campaign","Manual Donation"})
+	@Test(priority = 31,groups = {"Campaign","Manual Donation","Smoke"})
 	public void isReceiptDownload_campaign() throws InterruptedException {
 		md=new ManualDonationRepo(page);
 		boolean flag=md.downloadReceipt();
+		page.goBack();
 		assertTrue(flag);
 	}
 	
 	@Test(priority = 32,groups = {"Campaign","Manual Donation"},dependsOnMethods = "submitTheFromAndCheckDonoationisDoneOrNot_campaign")
 	public void checkThisCampaignManualDonoraDetailsIsStoreInDonationReportOrNor() throws InterruptedException {
-		page.goBack();
+	
 		
 		db=new DashboardRepo(page);
 		db.goToDashBoard();
@@ -424,7 +428,7 @@ public class ManualDonationTest {
 	
 	//---------------------------------------------Team Donation---------------------------------------------------------------------//
 	
-	@Test(priority = 35,groups = {"Team","Manual Donation"})
+	@Test(priority = 35,groups = {"Team","Manual Donation","Smoke"})
 	public void goToCampaignPage_Team() throws IOException {
 		try {
 			db=new DashboardRepo(page);
@@ -446,7 +450,7 @@ public class ManualDonationTest {
 	int t=team.nextInt(999);
 	
 	
-	@Test(priority = 36,groups = {"Team","Manual Donation"})
+	@Test(priority = 36,groups = {"Team","Manual Donation","Smoke"})
 	public void goToOneCampaignTeamSection() {
 		pr=new PeerToPeerFundraisingRepo(page);
 		campaignName=pr.getCampaignName();
@@ -460,7 +464,7 @@ public class ManualDonationTest {
 		assertEquals(title, teamName);
 		
 	}
-	@Test(priority = 37,groups = {"Team","Manual Donation"})
+	@Test(priority = 37,groups = {"Team","Manual Donation","Smoke"})
 	public void clickOnTeamManulDonationButton() {
 		pr=new PeerToPeerFundraisingRepo(page);
 		md=new ManualDonationRepo(page);
@@ -470,7 +474,7 @@ public class ManualDonationTest {
 	}
 	
 	
-	@Test(priority = 38,groups = {"Team","Manual Donation"})
+	@Test(priority = 38,groups = {"Team","Manual Donation","Smoke"})
 	public void setAllDonorDetails_Team() throws InterruptedException {
 		md=new ManualDonationRepo(page);
 	
@@ -484,23 +488,24 @@ public class ManualDonationTest {
 		md.setAddress();
 	}
 	
-	@Test(priority = 39,groups = {"Team","Manual Donation"})
+	@Test(priority = 39,groups = {"Team","Manual Donation","Smoke"})
 	public void submitTheFromAndCheckDonoationisDoneOrNot_Team() {
 		md=new ManualDonationRepo(page);
 		md.clickOnDonate();
 		md.isFormSubmit();
 	}
 	
-	@Test(priority = 40,groups = {"Team","Manual Donation"})
+	@Test(priority = 40,groups = {"Team","Manual Donation","Smoke"})
 	public void isReceiptDownload_Team() throws InterruptedException {
 		md=new ManualDonationRepo(page);
 		boolean flag=md.downloadReceipt();
+		page.goBack();
 		assertTrue(flag);
 	}
 	
 	@Test(priority = 41,groups = {"Team","Manual Donation"},dependsOnMethods = "submitTheFromAndCheckDonoationisDoneOrNot_Team")
 	public void checkThisTeamManualDonoraDetailsIsStoreInDonationReportOrNor() throws InterruptedException {
-		page.goBack();
+		
 		
 		db=new DashboardRepo(page);
 		db.goToDashBoard();

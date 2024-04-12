@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 import com.affnetz.qa.factory.PlayWrightFactory;
 import com.microsoft.playwright.Page;
 import com.qa.affnetz.InternalPages.DashboardRepo;
+import com.qa.affnetz.InternalPages.EventPageRepo;
 import com.qa.affnetz.InternalPages.StakeHolderRepo;
 
 public class StakeHolderTest {
@@ -20,6 +21,7 @@ public class StakeHolderTest {
 	static Page page;
 	DashboardRepo db;
 	StakeHolderRepo sp;
+
 	boolean flag=false;
 	String firstName,lastName,mailId,userType;
 	Random uc=new Random();
@@ -27,7 +29,7 @@ public class StakeHolderTest {
 	
 //--------------------------------------New User Creation With Valid Inputs-----------------------------------------//
 	
-	@Test(priority = 0,groups = {"StakeHolder","New User Creation", "Valid"})
+	@Test(priority = 0,groups = {"StakeHolder","New User Creation", "Valid","Smoke"})
 	public void goToStakeHolderPage() throws IOException {
 		page=PlayWrightFactory.intitBrowser("login");
 		PlayWrightFactory.login();
@@ -40,7 +42,7 @@ public class StakeHolderTest {
 		
 	}
 	
-	@Test(priority = 1,groups = {"StakeHolder","New User Creation", "Valid"})
+	@Test(priority = 1,groups = {"StakeHolder","New User Creation", "Valid","Smoke"})
 	public void clickOnCreateButton() {
 		sp=new StakeHolderRepo(page);
 		if(sp.getCreateButton().isEnabled())
@@ -53,7 +55,7 @@ public class StakeHolderTest {
 	}
 	
 	
-	@Test(priority = 2,groups = {"StakeHolder","New User Creation", "Valid"})
+	@Test(priority = 2,groups = {"StakeHolder","New User Creation", "Valid","Smoke"})
 	public void fillAllTheValidInputAndSave() throws InterruptedException {
 		sp=new StakeHolderRepo(page);
 		firstName="Jani"+x;
@@ -63,14 +65,14 @@ public class StakeHolderTest {
 		sp.clickOnSaveButton();
 	}
 	
-	@Test(priority = 3,groups = {"StakeHolder","New User Creation", "Valid"})
+	@Test(priority = 3,groups = {"StakeHolder","New User Creation", "Valid","Smoke"})
 	public void isUserCreated() throws InterruptedException {
 		sp=new StakeHolderRepo(page);
 		boolean flag=sp.isUserCreated();
 		assertTrue(flag, "Some Error Created");
 	}
 	
-	@Test(priority = 4,groups = {"StakeHolder","New User Creation", "Valid"})
+	@Test(priority = 4,groups = {"StakeHolder","New User Creation", "Valid","Smoke"})
 	public void verifyTheCreatedUserDetails() {
 		sp=new StakeHolderRepo(page);
 		String userName=firstName+" "+lastName;
@@ -80,7 +82,7 @@ public class StakeHolderTest {
 	//--------------------------------------New User Creation With Existing Email-----------------------------------------//
 	
 	
-	@Test(priority = 5,groups = {"StakeHolder","New User Creation", "Invalid"})
+	@Test(priority = 5,groups = {"StakeHolder","New User Creation", "Invalid","Smoke"})
 	public void goToStakeHolderPage_Invalid() throws IOException {
 		try {
 			db=new DashboardRepo(page);
@@ -99,7 +101,7 @@ public class StakeHolderTest {
 		}
 	}
 	
-	@Test(priority = 6,groups = {"StakeHolder","New User Creation", "Invalid"})
+	@Test(priority = 6,groups = {"StakeHolder","New User Creation", "Invalid","Smoke"})
 	public void clickOnCreateButton_Invalid() {
 		sp=new StakeHolderRepo(page);
 		if(sp.getCreateButton().isEnabled())
@@ -111,7 +113,7 @@ public class StakeHolderTest {
 		}
 	}
 	
-	@Test(priority = 7,groups = {"StakeHolder","New User Creation", "Invalid"},dependsOnMethods = "clickOnCreateButton_Invalid")
+	@Test(priority = 7,groups = {"StakeHolder","New User Creation", "Invalid","Smoke"},dependsOnMethods = "clickOnCreateButton_Invalid")
 	public void fillExstingEmailIdAndFillAllOtherDetailsAndClickSaveButton() throws InterruptedException {
 		sp=new StakeHolderRepo(page);
 		if(flag==true)
@@ -130,7 +132,7 @@ public class StakeHolderTest {
 		
 	}
 	
-	@Test(priority = 8,groups = {"StakeHolder","New User Creation", "Invalid"},dependsOnMethods = "fillExstingEmailIdAndFillAllOtherDetailsAndClickSaveButton")
+	@Test(priority = 8,groups = {"StakeHolder","New User Creation", "Invalid","Smoke"},dependsOnMethods = "fillExstingEmailIdAndFillAllOtherDetailsAndClickSaveButton")
 	public void isSystemShowingErrorMsgWhenExistingMailIdEntered() {
 		sp=new StakeHolderRepo(page);
 		String name=sp.getCofirmMsg();
@@ -138,7 +140,7 @@ public class StakeHolderTest {
 	}
 	
 	//	-------------------------------------------Edit The user Profile--------------------------------------------------------------  //
-	@Test(priority = 9,groups = {"StakeHolder", "Edit"})
+	@Test(priority = 9,groups = {"StakeHolder", "Edit","Smoke"})
 	public void goToStakeHolderPage_Edit() throws IOException {
 		try {
 			db=new DashboardRepo(page);
@@ -158,7 +160,7 @@ public class StakeHolderTest {
 		}
 	}
 	
-	@Test(priority = 10,groups = {"StakeHolder", "Edit"})
+	@Test(priority = 10,groups = {"StakeHolder", "Edit","Smoke"})
 	public void searchExistingUserAndClikcOnThat() throws InterruptedException {
 		sp=new StakeHolderRepo(page);
 		if(flag==true)
@@ -178,7 +180,7 @@ public class StakeHolderTest {
 		mailId=sp.getUserMail();
 	}
 	
-	@Test(priority = 11,groups = {"StakeHolder", "Edit"})
+	@Test(priority = 11,groups = {"StakeHolder", "Edit","Smoke"})
 	public void clickOnEditaButtonAndUpdateTheUserDetailsAndSave() {
 		sp=new StakeHolderRepo(page);
 		sp.clickOnEditButton();
@@ -188,7 +190,7 @@ public class StakeHolderTest {
 		sp.clickOnEditSaveButton();
 	}
 	
-	@Test(priority = 12,groups = {"StakeHolder", "Edit"})
+	@Test(priority = 12,groups = {"StakeHolder", "Edit","Smoke"})
 	public void isUserDetailsUpdatedAndSaved() {
 		sp=new StakeHolderRepo(page);
 		String userName=firstName+" "+lastName;

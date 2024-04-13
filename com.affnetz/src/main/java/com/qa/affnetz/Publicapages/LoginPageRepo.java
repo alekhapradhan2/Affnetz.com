@@ -19,7 +19,7 @@ public class LoginPageRepo {
 	
 	private String superAdminText="xpath=//div[text()='Super Admin']";
 	
-	private String logoutButton="xpath=//a[@title='logout']";
+	private String logoutButton="xpath=//a[@title='logout']";	//span[contains(text(),'logout')]
 	
 	private String errMsg="xpath=//div[contains(@style,'text-align: left')]";
 	

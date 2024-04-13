@@ -13,6 +13,7 @@ import com.qa.affnetz.InternalPages.StakeHolderRepo;
 import com.qa.affnetz.Publicapages.LoginPageRepo;
 import com.qa.affnetz.Publicapages.RegisterPageRepo;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import static org.testng.Assert.assertFalse;
 
 public class RegisterTest {
 	
@@ -25,6 +26,7 @@ public class RegisterTest {
 	SettingPageRepo sp;
 	Random rm=new Random();
 	int x=rm.nextInt(999);
+	boolean screening=PlayWrightFactory.screeningProcess_Member();
 	
 	@Test(priority = 0)
 	public void goaToRegisterpage() throws IOException {
@@ -52,6 +54,13 @@ public class RegisterTest {
 	public void submitTheApplication() {
 		rp=new RegisterPageRepo(page);
 		rp.SubmitApp();
+		if(screening==true)
+		{
+			rp.isFormSubmit();
+		}else {
+			rp.doLogout();
+		}
+		
 	}
 	
 	@Test(priority = 3)
@@ -62,7 +71,7 @@ public class RegisterTest {
 		db.goToStakeHolders();
 		sk=new StakeHolderRepo(page);
 		sk.searchUser(MailId);
-		String name=FirstName+"  "+LastName;
+		String name=FirstName+" "+LastName;
 		sk.isUserCreated(name);
 		sk.clickOnSearchedUser();
 		sk.verifyUserDetails("Members",name,MailId);
@@ -71,10 +80,16 @@ public class RegisterTest {
 	
 	@Test(priority = 4)
 	public void checkThisUserGoForScreeningProcessOrNot() throws InterruptedException {
-		db=new DashboardRepo(page);
-		db.goToSettingPage();
-		sp.gotToScreeningProcessPage();
-		sp.isDonorDetailsShownInScreeningProcess(FirstName+" "+LastName, MailId, "Members");
+		if(screening==true)
+		{
+			db=new DashboardRepo(page);
+			db.goToSettingPage();
+			sp.gotToScreeningProcessPage();
+			sp.isDonorDetailsShownInScreeningProcess(FirstName+" "+LastName, MailId, "Members");
+		}else {
+			assertFalse(false, "Screering Process is off");
+		}
+	
 	}
 	
 	

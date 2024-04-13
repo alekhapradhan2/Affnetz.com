@@ -1,6 +1,7 @@
 package com.affnetz.qa.test;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
@@ -43,6 +44,8 @@ public class InternalDonationTest {
 	int y=rm1.nextInt(9999);
 	Random rm2=new Random();
 	int w=rm2.nextInt(9999);
+	
+	boolean screeing=PlayWrightFactory.screeningProcess_Donor();
 	
 	//-----------------------------------------------Direct Donation------------------------------------------------------------------//
 	
@@ -108,14 +111,19 @@ public class InternalDonationTest {
 	}
 	@Test(priority =8 ,groups = {"DirectDonation","Donation"},dependsOnMethods = "isDonationDone")
 	public void isDonorShownInScreeningProcessForApproveTheUser() throws InterruptedException {
-		settRepo=new SettingPageRepo(page);
-		db=new DashboardRepo(page);
-		db.goToSettingPage();
-		settRepo.gotToScreeningProcessPage();
-		String name=fname+" "+lname;
-		settRepo.isDonorDetailsShownInScreeningProcess(name, mail,"Donors");
-		hp=new HomePageRepo(page);
-		hp.clickOnHome();
+		if(screeing==true)
+		{
+			settRepo=new SettingPageRepo(page);
+			db=new DashboardRepo(page);
+			db.goToSettingPage();
+			settRepo.gotToScreeningProcessPage();
+			String name=fname+" "+lname;
+			settRepo.isDonorDetailsShownInScreeningProcess(name, mail,"Donors");
+		
+		}else {
+			assertFalse(false, "Screeing Process Is Off");
+		}
+	
 	}
 	//@Test(priority = 9,groups = {"DirectDonation","Donation"},dependsOnMethods = "isDonationDone")
 	public void isNewDonorUserIsCreated() throws InterruptedException
@@ -140,6 +148,8 @@ public class InternalDonationTest {
 	@Test(priority = 10,groups = {"Donation","Tribute","Smoke"})
 	public void goToTributePage() throws IOException {
 		try {
+			hp=new HomePageRepo(page);
+			hp.clickOnHome();
 			db=new DashboardRepo(page);
 			db.clickOnTributeLink();
 			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("tributeUrl"));
@@ -231,14 +241,19 @@ public class InternalDonationTest {
 	}
 	@Test(priority = 21,groups = {"Donation","Tribute"},dependsOnMethods = "isDonationDone_Tribute")
 	public void isDonorShownInScreeningProcessForApproveTheuser_Tribute() throws InterruptedException {
-		settRepo=new SettingPageRepo(page);
-		db=new DashboardRepo(page);
-		db.goToSettingPage();
-		settRepo.gotToScreeningProcessPage();
-		String name=TributeDonorFirstName+" "+TributeDonorLastName;
-		settRepo.isDonorDetailsShownInScreeningProcess(name, TributeDonorMail,"Donors");
-		hp=new HomePageRepo(page);
-		hp.clickOnHome();
+		if(screeing==true)
+		{
+			settRepo=new SettingPageRepo(page);
+			db=new DashboardRepo(page);
+			db.goToSettingPage();
+			settRepo.gotToScreeningProcessPage();
+			String name=TributeDonorFirstName+" "+TributeDonorLastName;
+			settRepo.isDonorDetailsShownInScreeningProcess(name, TributeDonorMail,"Donors");
+		}else {
+			assertFalse(false, "Screeing Process is Pradhan");
+		}
+
+		
 	}
 	
 	//-----------------------------------------------Campaign Donation------------------------------------------------------------------//
@@ -247,6 +262,8 @@ public class InternalDonationTest {
 	public void goToCampaignPage() throws IOException {
 		
 		try {
+			hp=new HomePageRepo(page);
+			hp.clickOnHome();
 			db=new DashboardRepo(page);
 			db.clickOnPeerToPeerFundarasing();
 			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("campaignUrl"));
@@ -331,14 +348,20 @@ public class InternalDonationTest {
 	}
 	@Test(priority = 31,groups = {"Campaign","Donation"})
 	public void isDonorShownInScreeningProcessForApproveTheuser_Campaign() throws InterruptedException {
-		settRepo=new SettingPageRepo(page);
-		db=new DashboardRepo(page);
-		db.goToSettingPage();
-		settRepo.gotToScreeningProcessPage();
-		String name=campaignFirstName+" "+campaignLastname;
-		settRepo.isDonorDetailsShownInScreeningProcess(name, campaignmail,"Donors");
-		hp=new HomePageRepo(page);
-		hp.clickOnHome();
+		if(screeing==true)
+		{
+			settRepo=new SettingPageRepo(page);
+			db=new DashboardRepo(page);
+			db.goToSettingPage();
+			settRepo.gotToScreeningProcessPage();
+			String name=campaignFirstName+" "+campaignLastname;
+			settRepo.isDonorDetailsShownInScreeningProcess(name, campaignmail,"Donors");
+			
+		}else {
+			assertFalse(false, "Screeing Process is Pradhan");
+		}
+	
+		
 	}
 	
 	//-----------------------------------------------Team Donation------------------------------------------------------------------//
@@ -347,8 +370,11 @@ public class InternalDonationTest {
 	public void goToCampaignPage_Team() throws IOException {
 		
 		try {
+			hp=new HomePageRepo(page);
+			hp.clickOnHome();
 			db=new DashboardRepo(page);
 			db.clickOnPeerToPeerFundarasing();
+			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("campaignUrl"));
 		} catch (Exception e) {
 			page=PlayWrightFactory.intitBrowser("login");
 			PlayWrightFactory.login();
@@ -449,12 +475,18 @@ public class InternalDonationTest {
 	}
 	@Test(priority = 43,groups = {"Donation","Team"})
 	public void isDonorShownInScreeningProcessForApproveTheuser_Team() throws InterruptedException {
-		settRepo=new SettingPageRepo(page);
-		db=new DashboardRepo(page);
-		db.goToSettingPage();
-		settRepo.gotToScreeningProcessPage();
-		String name=teamDonorFirstName+" "+teamDonorLastName;
-		settRepo.isDonorDetailsShownInScreeningProcess(name, teamDonorMailId,"Donors");
+		if(screeing==true)
+		{
+			settRepo=new SettingPageRepo(page);
+			db=new DashboardRepo(page);
+			db.goToSettingPage();
+			settRepo.gotToScreeningProcessPage();
+			String name=teamDonorFirstName+" "+teamDonorLastName;
+			settRepo.isDonorDetailsShownInScreeningProcess(name, teamDonorMailId,"Donors");	
+		}else {
+			assertFalse(false, "Screeing Process is Pradhan");
+		}
+	
 	}
 	
 	

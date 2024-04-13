@@ -1,5 +1,7 @@
 package com.qa.affnetz.Publicapages;
 
+import static org.testng.Assert.assertTrue;
+
 import com.microsoft.playwright.Frame;
 import com.microsoft.playwright.FrameLocator;
 import com.microsoft.playwright.Locator;
@@ -70,6 +72,8 @@ public class RegisterPageRepo {
 	
 	private String logoutButton="//span[contains(text(),'logout')]";
 	
+	private String regSucessfullMsg="//div[@class='v-alert__content']";
+	
 	public RegisterPageRepo(Page page)
 	{
 		this.page=page;
@@ -139,10 +143,27 @@ public class RegisterPageRepo {
 	public void SubmitApp() {
 		page.click(condtionCheckBox);
 		page.click(submitApplicationButton);
-//		Locator logout=page.locator(logoutButton);
-//		logout.waitFor();
-//		logout.click();
+
 	}
+	
+	public void doLogout() {
+		Locator logout=page.locator(logoutButton);
+		logout.waitFor();
+		logout.click();
+	}
+	
+	public void isFormSubmit() {
+		Locator msg=page.locator(regSucessfullMsg);
+		msg.waitFor();
+		String regMsg=msg.textContent().trim();
+		if(regMsg.contains("Registration Successful"))
+		{
+			assertTrue(true, "Some Error Occured");
+		}
+	}
+	
+	
+	
 	
 	
 	

@@ -25,6 +25,8 @@ public class PlayWrightFactory {
 	static Properties prop;
 	
 	static boolean flag=false;	
+	static boolean screeningProcessForDonor=false;
+	static boolean screeingProcessForMembers=false;
 	public static Page intitBrowser(String whichPage) throws IOException
 	{
 		
@@ -85,11 +87,20 @@ public class PlayWrightFactory {
 		return prop;
 	}
 	
-	@Test
+	
 	public static void login() throws IOException {
 		lp=new LoginPageRepo(page);
 		lp.doLogin(initProp().getProperty("userName"), initProp().getProperty("password"));
 		
 	
+	}
+	
+	public static boolean screeningProcess_Donor() {
+		return screeningProcessForDonor;
+	}
+	
+	public static boolean screeningProcess_Member()
+	{
+		return screeingProcessForMembers;
 	}
 }

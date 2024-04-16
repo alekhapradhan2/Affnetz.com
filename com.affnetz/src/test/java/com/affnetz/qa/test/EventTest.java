@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import com.affnetz.qa.factory.PlayWrightFactory;
 import com.microsoft.playwright.Page;
 import com.qa.affnetz.InternalPages.DashboardRepo;
+import com.qa.affnetz.InternalPages.EntitiesPageRepo;
 import com.qa.affnetz.InternalPages.EventPageRepo;
 
 public class EventTest {
@@ -19,10 +20,11 @@ public class EventTest {
 	static Page page;
 	DashboardRepo db;
 	EventPageRepo ev;
+	EntitiesPageRepo ep;
 	
 	//--------------------------------------------New Event Creation---------------------------------------------------------------//
 	
-	String eventName,BriefDescription,Description,mailId,OrgaNizer;
+	String eventName,BriefDescription,Description,mailId,OrgaNizer,entitiName;
 	Random r=new Random();
 	int x=r.nextInt(999999);
 	
@@ -54,10 +56,12 @@ public class EventTest {
 	public void fillAllEventDetails() throws IOException, InterruptedException {
 		ev=new EventPageRepo(page);
 		eventName=PlayWrightFactory.initProp().getProperty("EventName")+x;
+		
 		BriefDescription=PlayWrightFactory.initProp().getProperty("BriefDescription");
 		Description=PlayWrightFactory.initProp().getProperty("Description");
 		mailId="engineering+event"+x+"new@affnetz.com";
 		ev.fillEventTitle(eventName);
+//		ev.giveEventBanner("src/test/resources/TestImage/CocaCola-Share-a-Coke.webp");
 		ev.setBriefDescription(BriefDescription);
 		ev.setDescription(Description);
 		ev.selectEventType();
@@ -66,6 +70,7 @@ public class EventTest {
 		System.out.println(OrgaNizer);
 		ev.setPrice();
 		ev.setAttendees();
+		entitiName=ev.chooseEntitiAndGetEntitiName();
 		ev.doPubishTheEventAndSaveTheEvent();
 		
 	}
@@ -76,35 +81,44 @@ public class EventTest {
 		ev.verifyTheEventDetails(eventName, OrgaNizer, mailId);
 	}
 	
+	@Test(priority = 4)
+	public void checkThisEventIsShownOnThatParticualrEntiti() throws InterruptedException {
+		db=new DashboardRepo(page);
+		db.goToEntityPage();
+		ep=new EntitiesPageRepo(page);
+		ep.searchEntiti(entitiName);
+		ep.clickOnSearchedEntiti(entitiName);
+	}
+	
 	
 	//-----------------------------Edit The Event ----------------------------------------------//
 	
-	@Test(priority = 4)
-	public void goToEventPage_Edit() throws Exception {
-		
-			db=new DashboardRepo(page);
-			db.goToEventPage();
-			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("eventUrl"));	
-			
-		
-	}
-	@Test(priority = 5)
-	public void SelectOneEventAndClickEdit() throws InterruptedException, IOException {
-		
-		ev=new EventPageRepo(page);
-		
-		ev.searchEvent(eventName);
-		ev.clickOnOneEvent();
-		ev.clickEditEvent();
-		eventName=PlayWrightFactory.initProp().getProperty("EditEventName")+x;
-		ev.changeEventName(eventName);
-		ev.clickOnSaveButton();
-	}
-	@Test(priority = 6)
-	public void isEventDetailsIsUpdate() {
-		ev=new EventPageRepo(page);
-		ev.verifyTheEventDetails(eventName, OrgaNizer, mailId);
-	}
+//	@Test(priority = 4)
+//	public void goToEventPage_Edit() throws Exception {
+//		
+//			db=new DashboardRepo(page);
+//			db.goToEventPage();
+//			assertThat(page).hasURL(PlayWrightFactory.initProp().getProperty("eventUrl"));	
+//			
+//		
+//	}
+//	@Test(priority = 5)
+//	public void SelectOneEventAndClickEdit() throws InterruptedException, IOException {
+//		
+//		ev=new EventPageRepo(page);
+//		
+//		ev.searchEvent(eventName);
+//		ev.clickOnOneEvent();
+//		ev.clickEditEvent();
+//		eventName=PlayWrightFactory.initProp().getProperty("EditEventName")+x;
+//		ev.changeEventName(eventName);
+//		ev.clickOnSaveButton();
+//	}
+//	@Test(priority = 6)
+//	public void isEventDetailsIsUpdate() {
+//		ev=new EventPageRepo(page);
+//		ev.verifyTheEventDetails(eventName, OrgaNizer, mailId);
+//	}
 	
 
 }

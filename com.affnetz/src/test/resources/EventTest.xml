@@ -6,7 +6,7 @@
 		<listener class-name="com.affnetz.qa.factory.Listener"></listener>
 	</listeners>
 	
-	<test name="LoginFunction">
+	<test name="Event Page Test">
 		
 		<classes>
 			<class name="com.affnetz.qa.test.EventTest"></class>

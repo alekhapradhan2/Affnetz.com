@@ -35,6 +35,8 @@ public class EventPageRepo {
 	
 	private String title="#input-78";
 	
+	private String banner="//input[@id='banner']";
+	
 	private String BriefDescription="#input-81";
 	
 	private String eventtype="#input-84";
@@ -78,6 +80,12 @@ public class EventPageRepo {
 	private String publish="#input-200";
 	
 	private String publishList="#list-200";
+	
+	private String entitiInput="#input-189";
+	
+	private String entitiList="#list-189";
+	
+	private String enetiNames="//div[contains(@id,'list-item-')]";
 	
 	private String publishName="//div[contains(@id,'list-item-')]";
 	
@@ -139,6 +147,10 @@ public class EventPageRepo {
 	 //--------------------------------------------EVent Creation Methods--------------------------------//
 	public void fillEventTitle(String eventTitle) {
 		page.fill(title, eventTitle);
+	}
+	
+	public void giveEventBanner(String PhotoURL) {
+		page.fill(banner, PhotoURL);
 	}
 	
 	public void setBriefDescription(String disc)
@@ -233,6 +245,18 @@ public class EventPageRepo {
 		page.fill(MinimumAttendees, ""+x+"");
 		page.fill(MaximumAttendees, ""+max+"");
 		
+	}
+	
+	public String chooseEntitiAndGetEntitiName() throws InterruptedException {
+		page.click(entitiInput);
+		Thread.sleep(1000);
+		Locator List=page.locator(entitiList);
+		Locator names=List.locator(enetiNames);
+		Random rm=new Random();
+		int x=rm.nextInt(10);
+		String name=names.nth(x).textContent().trim();
+		names.nth(x).click();
+		return name;
 	}
 	
 	public void doPubishTheEventAndSaveTheEvent() throws InterruptedException {

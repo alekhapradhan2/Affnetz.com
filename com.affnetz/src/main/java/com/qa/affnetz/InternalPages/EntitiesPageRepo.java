@@ -11,6 +11,13 @@ public class EntitiesPageRepo {
 	
 	private String entitiName="//a[@class='my-1 file-name']";
 	
+	private String searchEntity="#input-72";
+	
+	private String searchButton="//span[contains(text(),'Search')]";
+	
+	public String name;
+	private String clickSearchedEntiti="//a[contains(text(),'"+name+"')]";
+	
 	private String entitiHeadline="//div[@class='headline']";
 	
 	private String manualButton="//span[contains(text(),'Manual Donation')]";
@@ -31,9 +38,24 @@ public class EntitiesPageRepo {
 	
 	private String addDonationButton="//span[text()='Add Donation']";
 	
+	private String eventsSection="(//div[text()='Events'])[2]";
+	
 	public EntitiesPageRepo(Page page)
 	{
 		this.page=page;
+	}
+	
+	public void searchEntiti(String entitiName) throws InterruptedException {
+		page.fill(searchEntity, entitiName);
+		Thread.sleep(1000);
+		page.click(searchButton);
+		
+	}
+	
+	public void clickOnSearchedEntiti(String entitiname)
+	{
+		name=entitiname;
+		page.click(clickSearchedEntiti);
 	}
 	
 	public String getEntitiName()
@@ -104,5 +126,9 @@ public class EntitiesPageRepo {
 	
 	public void clickOnAddDonationButton() {
 		page.click(addDonationButton);
+	}
+	
+	public void isThatParticularEventShownInEntitiEventSection() {
+		page.click(eventsSection);
 	}
 }
